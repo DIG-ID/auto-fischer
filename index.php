@@ -1,12 +1,11 @@
 <?php
-
 get_header();
-
-
 ?>
 
-<h1>hello</h1>
+
+<div data-embedded-src="https://www.autoscout24.ch/de/hci/list?design=269&filter=268" class="embedded-content-area"></div>
+
+<script src=" https://www.autoscout24.ch/MVC/Content/as24-hci-desktop/js/e.min.js"></script>
 
 <?php
-
 get_footer();
