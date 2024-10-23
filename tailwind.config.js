@@ -12,6 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      sans: ['DM Sans', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
       miller: [ 'miller-headline', 'serif']
     },
@@ -22,6 +23,12 @@ module.exports = {
         //wider: '.06em',
       },
       colors: {
+        'orange-shade': '#F48123',
+        'blue-shade': '#005AA9',
+        'white-shade': '#EFEFEF',
+        'dark-blue-shade': '#001629',
+        'beige-shade': '#FFEDDE',
+        'light-blue-shade': '#E6F0FA',
         'blue-shade-5': '#0E324A',
         'blue-shade-4': '#1D4763',
         'blue-shade-3': '#3E6C8A',

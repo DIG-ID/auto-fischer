@@ -1,0 +1,54 @@
+.text-title
+  @apply font-miller font-light text-2xl md:text-4xl xl:text-5xl
+  font-feature-settings: 'ss02' on
+
+
+.text-title-h2
+  @apply font-miller font-light text-2xl lg:text-5xl
+  font-feature-settings: 'ss02' on
+
+.text-title-h3
+  @apply font-miller font-normal text-2xl tracking-[0.24px]
+  font-feature-settings: 'ss02' on
+
+.text-description
+  @apply font-miller font-light text-sm md:text-lg xl:text-2xl tracking-[-0.14px] xl:tracking-[-0.24px]
+  font-feature-settings: 'ss02' on
+
+.text-hero-title
+  @apply font-miller font-light italic tracking-[-0.92px] xl:tracking-[-1.92px] text-[46px] xl:text-8xl
+  font-feature-settings: 'ss02' on
+
+.text-subtitle,
+.text-description-small
+  @apply font-miller font-normal italic text-sm xl:text-2xl
+
+.text-bullets
+  &--primary
+    @apply font-miller font-normal text-sm xl:text-2xl
+  &--secondary
+    @apply font-poppins font-normal text-sm
+
+.text-body
+  @apply font-poppins font-normal text-sm tracking-[0.14px]
+  &--serif
+    @apply font-miller font-normal text-sm md:text-lg xl:text-2xl leading-[19px] lg:leading-[39px] tracking-[0.14px] lg:tracking-[0.24px] 
+    font-feature-settings: 'ss02' on
+  p
+    @apply font-poppins font-normal text-sm tracking-[0.14px] mb-6
+    &:last-of-type
+      @apply mb-0
+  &--subtitle
+    @apply font-bold
+
+.text-breadcrumbs
+  @apply font-poppins font-normal text-xs
+
+.list
+  li
+    @apply  font-poppins font-normal text-sm text-blue-shade-5 tracking-[0.14px] relative ml-4 mb-4
+    &:last-of-type
+      @apply mb-0
+    &::before
+      @apply absolute -left-4 inline-block
+      content: '•'

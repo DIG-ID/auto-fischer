@@ -1,0 +1,42 @@
+.wpcf7
+  .wpcf7-form-control-wrap
+    @apply block mb-4 md:mb-6
+  .wpcf7-form-control
+    &.wpcf7-text,
+    &.wpcf7-textarea
+      @apply w-full rounded-[50px] py-4 px-6 text-sm text-blue-shade-5 font-poppins font-normal tracking-[0.14px]  opacity-100 border border-blue-shade-5
+      &::placeholder
+        @apply font-poppins font-normal text-sm tracking-[0.14px] opacity-100 text-blue-shade-3
+    &.wpcf7-textarea
+      @apply rounded-[20px]
+    &.wpcf7-number
+      @apply w-full rounded-[50px] py-4 px-6 text-sm text-blue-shade-5 font-poppins font-normal tracking-[0.14px]  opacity-100 border border-blue-shade-5
+      &::placeholder
+        @apply font-poppins font-normal text-sm tracking-[0.14px] opacity-100 text-blue-shade-3
+    &.wpcf7-date
+      @apply w-full rounded-[50px] py-4 px-6 text-sm text-blue-shade-5 font-poppins font-normal tracking-[0.14px]  opacity-100 border border-blue-shade-5
+    &.wpcf7-submit
+      @apply inline-block transition-all duration-150 font-miller font-normal text-xl text-blue-shade-5 text-center tracking-[0.2px] py-3 px-28 relative border border-blue-shade-5 rounded-[48px]
+  .wpcf7-spinner
+    @apply bg-blue-shade-3
+  .wpcf7-not-valid-tip
+    @apply  text-sm text-red-600 font-poppins font-normal tracking-[0.14px] mt-2 pl-6
+
+  form
+    .wpcf7-response-output
+      @apply  text-sm font-poppins font-normal tracking-[0.14px] rounded-[10px] mt-6
+    &.sent
+      .wpcf7-response-output
+        @apply border-green-400 bg-green-400
+    &.failed,
+    &.aborted
+      .wpcf7-response-output
+        @apply border-red-400 bg-red-400
+    &.spam
+      .wpcf7-response-output
+        @apply border-orange-400 bg-orange-400
+    &.invalid,
+    &.unaccepted
+      .wpcf7-response-output 
+        @apply border-yellow-400 bg-yellow-400
+

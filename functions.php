@@ -2,11 +2,14 @@
 /**
  * Setup theme
  */
-function autofischer_theme_setup() {
+function fischer_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-menu'      => __( 'Main Menu', 'auto-fischer' ),
+			'main-menu'      => __( 'Main Menu', 'fischer' ),
+			'main-mega-menu' => __( 'Main Mega Menu', 'fischer' ),
+			'secondary-menu' => __( 'Secondary Menu', 'fischer' ),
+			'copyright-menu' => __( 'Copyright Menu', 'fischer' ),
 		)
 	);
 
@@ -26,12 +29,12 @@ function autofischer_theme_setup() {
 
 }
 
-add_action( 'after_setup_theme', 'autofischer_theme_setup' );
+add_action( 'after_setup_theme', 'fischer_theme_setup' );
 
 /**
  * Register our sidebars and widgetized areas.
  */
-function autofischer_theme_footer_widgets_init() {
+function fischer_theme_footer_widgets_init() {
 
 	register_sidebar(
 		array(
@@ -57,134 +60,18 @@ function autofischer_theme_footer_widgets_init() {
 
 }
 
-add_action( 'widgets_init', 'autofischer_theme_footer_widgets_init' );
+add_action( 'widgets_init', 'fischer_theme_footer_widgets_init' );
 
-if ( ! function_exists( 'autofischer_get_font_face_styles' ) ) :
+function add_adobe_fonts() {
+    wp_enqueue_style( 'adobe-fonts', 'https://use.typekit.net/cfj8kzo.css' );
+}
+add_action( 'wp_enqueue_scripts', 'add_adobe_fonts' );
 
-	/**
-	 * Get font face styles.
-	 * Called by functions dig_theme_enqueue_styles() and twentytwentytwo_editor_styles() above.
-	 */
-	function autofischer_get_font_face_styles() {
-
-		return "
-			@import url('https://p.typekit.net/p.css?s=1&k=wel7pmx&ht=tk&f=29432.29434.29435.29436&a=100534906&app=typekit&e=css');
-
-			@font-face {
-				font-family: 'miller-headline';
-				src:
-					url('https://use.typekit.net/af/d2cbde/00000000000000007736b593/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3') format('woff2'),url('https://use.typekit.net/af/d2cbde/00000000000000007736b593/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3') format('woff'),
-					url('https://use.typekit.net/af/d2cbde/00000000000000007736b593/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3') format('opentype');
-				font-display: auto;
-				font-style: italic;
-				font-weight: 400;
-				font-stretch: normal;
-			}
-
-			@font-face {
-				font-family: 'miller-headline';
-				src:
-					url('https://use.typekit.net/af/d41f24/00000000000000007736b58d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff2'),url('https://use.typekit.net/af/d41f24/00000000000000007736b58d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff'),
-					url('https://use.typekit.net/af/d41f24/00000000000000007736b58d/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('opentype');
-				font-display: auto;
-				font-style: normal;
-				font-weight: 700;
-				font-stretch: normal;
-			}
-
-			@font-face {
-				font-family: 'miller-headline';
-				src:
-					url('https://use.typekit.net/af/fffcc2/00000000000000007736b58e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('woff2'),
-					url('https://use.typekit.net/af/fffcc2/00000000000000007736b58e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('woff'),url('https://use.typekit.net/af/fffcc2/00000000000000007736b58e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('opentype');
-				font-display: auto;
-				font-style: normal;
-				font-weight: 400;
-				font-stretch: normal;
-			}
-
-			@font-face {
-				font-family:'miller-headline';
-				src:
-					url('https://use.typekit.net/af/ea9a3c/00000000000000007736b594/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3') format('woff2'),url('https://use.typekit.net/af/ea9a3c/00000000000000007736b594/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3') format('woff'),
-					url('https://use.typekit.net/af/ea9a3c/00000000000000007736b594/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3') format('opentype');
-				font-display: auto;
-				font-style: normal;
-				font-weight: 300;
-				font-stretch: normal;
-			}
-		
-			@font-face {
-				font-family: 'Poppins';
-				src:
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Regular.ttf' ) . "') format('truetype'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Regular.woff2' ) . "') format('woff2'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Regular.woff' ) . "') format('woff');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
-			}
-
-			@font-face {
-				font-family: 'Poppins';
-				src:
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-ExtraLight.ttf' ) . "') format('truetype'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-ExtraLight.woff2' ) . "') format('woff2'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-ExtraLight.woff' ) . "') format('woff');
-				font-weight: 200;
-				font-style: normal;
-				font-display: swap;
-			}
-
-			@font-face {
-				font-family: 'Poppins';
-				src:
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-SemiBold.ttf' ) . "') format('truetype'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-SemiBold.woff2' ) . "') format('woff2'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-SemiBold.woff' ) . "') format('woff');
-				font-weight: 600;
-				font-style: normal;
-				font-display: swap;
-			}
-
-			@font-face {
-				font-family: 'Poppins';
-				src:
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Bold.ttf' ) . "') format('truetype'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Bold.woff2' ) . "') format('woff2'),
-						url('" . get_theme_file_uri( 'assets/fonts/poppins/Poppins-Bold.woff' ) . "') format('woff');
-				font-weight: bold;
-				font-style: normal;
-				font-display: swap;
-			}
-
-		";
-
-	}
-
-endif;
-
-if ( ! function_exists( 'autofischer_preload_webfonts' ) ) :
-
-	/**
-	 * Preloads the main web font to improve performance.
-	 */
-	function autofischer_preload_webfonts() {
-		?>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preconnect" href="use.typekit.net" crossorigin>
-		<?php
-	}
-
-endif;
-
-add_action( 'wp_head', 'autofischer_preload_webfonts' );
 
 /**
  * Enqueue styles and scripts
  */
-function autofischer_theme_enqueue_styles() {
+function fischer_theme_enqueue_styles() {
 
 	//Get the theme data
 	$the_theme     = wp_get_theme();
@@ -192,31 +79,29 @@ function autofischer_theme_enqueue_styles() {
 
 	// Register Theme main style.
 	wp_register_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array(), $theme_version );
-	// Add styles inline.
-	wp_add_inline_style( 'theme-styles', autofischer_get_font_face_styles() );
 	// Enqueue theme stylesheet.
 	wp_enqueue_style( 'theme-styles' );
 	//https://use.typekit.net/evg0ous.css first loaded fonts library backup
 	//wp_enqueue_style( 'theme-fonts', 'https://use.typekit.net/buy6qwo.css', array(), $theme_version );
 
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, false );
-	/*if ( is_page_template( 'page-templates/page-home.php' ) || is_page_template( 'page-templates/page-arrival-contacts.php' ) || is_admin() ) :
+	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
+	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
+	if ( is_page_template( 'page-templates/page-home.php' ) || is_page_template( 'page-templates/page-arrival-contacts.php' ) || is_admin() ) :
 		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), $theme_version, true );
 		wp_enqueue_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0&callback=initMap', array(), $theme_version, true );
-	endif;*/
+	endif;
 }
 
-//add_action( 'wp_enqueue_scripts', 'autofischer_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'fischer_theme_enqueue_styles' );
 
 //Google Map Init
-function autofischer_theme_google_map_init() {
+function fischer_theme_google_map_init() {
 	if ( is_admin() ) :
 		acf_update_setting( 'google_api_key', 'AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0' );
 	endif;
 }
 
-add_action( 'acf/init', 'autofischer_theme_google_map_init' );
+add_action( 'acf/init', 'fischer_theme_google_map_init' );
 
 /**
  * Remove <p> Tag From Contact Form 7.
@@ -230,18 +115,25 @@ add_filter( 'wpcf7_autop_or_not', '__return_false' );
  *
  * @return string $priority The potentially altered priority.
  */
-function autofischer_theme_lower_yoast_metabox_priority( $priority ) {
+function fischer_theme_lower_yoast_metabox_priority( $priority ) {
 	return 'core';
 }
 
-add_filter( 'wpseo_metabox_prio', 'autofischer_theme_lower_yoast_metabox_priority' );
+add_filter( 'wpseo_metabox_prio', 'fischer_theme_lower_yoast_metabox_priority' );
 
 
 // Theme custom template tags.
-//require get_template_directory() . '/inc/theme-template-tags.php';
+require get_template_directory() . '/inc/theme-template-tags.php';
 
 // The theme admin settings.
-//require get_template_directory() . '/inc/theme-admin-settings.php';
+require get_template_directory() . '/inc/theme-admin-settings.php';
 
 // The theme custom menu walker settings.
-//require get_template_directory() . '/inc/theme-custom-menu-walker.php';
+require get_template_directory() . '/inc/theme-custom-menu-walker.php';
+
+function my_console_log(...$data) {
+	$json = json_encode($data);
+	add_action('shutdown', function() use ($json) {
+		 echo "<script>console.log({$json})</script>";
+	});
+}

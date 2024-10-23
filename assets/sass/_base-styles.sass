@@ -1,0 +1,59 @@
+$blue-shade-1: #F2FAFF
+$blue-shade-2: #D2E9F7
+$blue-shade-3: #3E6C8A
+$blue-shade-4: #1D4763
+$blue-shade-5: #0E324A
+$orange-shade: #F48123
+$blue-shade: #005AA9
+$white-shade: #EFEFEF
+$dark-blue-shade: #001629
+$beige-shade: #FFEDDE
+$light-blue-shade: #E6F0FA
+
+
+:root
+  --swiper-navigation-size: 24px
+  --swiper-theme-color: #fff
+
+::-moz-selection
+  @apply bg-white-shade text-blue-shade
+
+::selection
+  @apply bg-white-shade text-blue-shade
+
+body
+  text-rendering: optimizelegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  //font-family: font-poppins
+  //@apply transition-all duration-300 ease-in-out
+  height: auto
+
+
+html.lenis,
+html.lenis body
+  height: auto
+
+.lenis.lenis-smooth
+  scroll-behavior: auto
+
+.lenis.lenis-smooth [data-lenis-prevent]
+  overscroll-behavior: contain
+
+.lenis.lenis-stopped
+  overflow: hidden
+
+.lenis.lenis-scrolling iframe
+  pointer-events: none
+
+
+.theme-container
+  @apply px-6 mx-auto w-full lg:max-w-[1440px]
+
+.theme-grid
+  @apply grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-6
+
+
+.fancybox
+  &__backdrop
+    @apply bg-[#0a161eed]

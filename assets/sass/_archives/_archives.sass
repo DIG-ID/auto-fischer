@@ -1,0 +1,19 @@
+//@import zimmer
+
+.post-type-archive-zimmer
+  .section-zimmer-archive-info
+    background: linear-gradient(180deg, $blue-shade-2 0%, $blue-shade-2 45%, #FFF 45%)
+    
+    .list__include-services
+      li
+        @apply relative ml-6 lg:ml-8 mb-6 lg:mb-10
+        &:last-of-type
+          @apply mb-0
+        &::before
+          @apply absolute -left-6 lg:-left-8 inline-block
+          content: '•'
+
+@media (max-width: 1024px)
+  .post-type-archive-zimmer
+    .section-zimmer-archive-info
+      background: $blue-shade-3

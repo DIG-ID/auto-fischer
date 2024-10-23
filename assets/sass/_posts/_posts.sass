@@ -1,0 +1,38 @@
+.single-post
+  .section-post-content-wrapper
+    @apply text-blue-shade-2
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      @apply font-miller font-light mb-6
+      font-feature-settings: 'ss02' on
+    h2
+      @apply text-2xl lg:text-4xl
+    h3
+      @apply text-3xl
+    h4
+      @apply text-2xl
+    h5
+      @apply text-xl
+    h6
+      @apply text-lg
+    p
+      @apply font-poppins font-normal text-sm tracking-[0.14px] mb-6
+      &:last-of-type
+        @apply mb-0
+    a
+      @apply font-poppins font-normal text-sm tracking-[0.14px] mb-6 transition-all duration-300
+    ul
+      @apply mb-6
+      li
+        @apply  font-poppins font-normal text-sm tracking-[0.14px] relative ml-4 mb-4
+        &:last-of-type
+          @apply mb-0
+        &::before
+          @apply absolute -left-4 inline-block
+          content: '•'
+
+    img
+      @apply mb-6

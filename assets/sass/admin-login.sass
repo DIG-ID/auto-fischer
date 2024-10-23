@@ -1,0 +1,54 @@
+$blue-shade-5: #0E324A
+$blue-shade-4: #1D4763
+$blue-shade-3: #3E6C8A
+$blue-shade-2: #D2E9F7
+$blue-shade-1: #F2FAFF
+
+$green-shade-1: #0E434A
+$purple-shade-1: #3B1C43
+
+
+body
+  @apply bg-blue-shade-5
+
+#login
+
+  width: 370px
+  #login_error
+    color: $purple-shade-1
+  .message
+    color: $purple-shade-1
+  h1
+    a
+      width: 240px
+      height: 100px
+      background-size: 240px 100px
+      margin-bottom: 0px
+      &:focus
+        box-shadow: none
+
+  form
+    @apply shadow-none p-10 border-white/0 bg-white mt-0 rounded-[20px]
+    label
+      @apply uppercase text-xs mb-2 tracking-wide text-blue-shade-5
+    input#user_pass,
+    input#user_login
+      @apply rounded-none w-full
+    input[type="submit"]
+      @apply inline-block font-normal text-sm leading-[18px] tracking-[0.08em] border border-blue-shade-5 uppercase py-[10px] px-[22px] transition-all duration-300 ease-in-out hover:text-white bg-blue-shade-5 text-blue-shade-1 rounded-[20px] hover:bg-blue-shade-3
+
+  #backtoblog, #nav
+    @apply text-center
+    a
+      @apply text-blue-shade-2
+
+  input:-webkit-autofill
+    -webkit-box-shadow: 0 0 0 30px white inset
+    -webkit-text-fill-color: #000 !important
+
+.wpml-login-ls
+  form#wpml-login-ls-form
+    select#wpml-language-switcher-locales
+      @apply rounded-none border border-solid uppercase text-xs transition-all duration-300 ease-in hover:bg-white text-blue-shade-1
+    input.button
+      @apply rounded-none border border-solid uppercase text-xs px-4 py-1 transition-all duration-300 ease-in hover:bg-white text-blue-shade-1
