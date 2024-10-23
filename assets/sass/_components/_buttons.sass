@@ -1,8 +1,8 @@
 .btn-main
-  @apply font-sans text-[15px] leading-[26px] font-medium py-5 px-[26px] border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
+  @apply font-sans text-[15px] leading-[26px] font-medium py-[0.814rem] px-[26px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
   &:focus
     @apply outline-transparent outline-4 outline-offset-1
-  &--full
+  &--full-blue
     @apply text-white border-blue-shade bg-blue-shade
     &:hover
       @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
@@ -10,7 +10,7 @@
       @apply text-white bg-blue-shade outline-blue-shade
     &:active
       @apply text-white bg-blue-shade
-  &--empty
+  &--empty-blue
     @apply text-darker-blue-shade border-dark-blue-shade bg-transparent
     &:hover
       @apply bg-blue-shade text-white border-blue-shade
@@ -18,3 +18,19 @@
       @apply text-darker-blue-shade bg-transparent outline-dark-blue-shade
     &:active
       @apply text-darker-blue-shade bg-transparent
+  &--full-orange
+    @apply text-white border-orange-shade bg-orange-shade
+    &:hover
+      @apply bg-transparent text-orange-shade border-orange-shade
+    &:focus
+      @apply text-white bg-orange-shade outline-orange-shade
+    &:active
+      @apply text-white bg-orange-shade
+  &--empty-orange
+    @apply text-orange-shade border-orange-shade bg-transparent
+    &:hover
+      @apply bg-orange-shade text-white border-orange-shade
+    &:focus
+      @apply text-orange-shade bg-transparent outline-orange-shade
+    &:active
+      @apply text-orange-shade bg-transparent
