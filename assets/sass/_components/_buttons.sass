@@ -1,114 +1,20 @@
-.btn-internal
-  @apply font-miller text-lg py-[0.65rem] px-[3.7rem] font-normal border rounded-full whitespace-nowrap break-keep tracking-[0.2px] transition-all duration-300 ease-in-out inline-block relative
-  font-feature-settings: 'ss02' on
+.btn-main
+  @apply font-sans text-[15px] leading-[26px] font-medium py-5 px-[26px] border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
   &:focus
     @apply outline-transparent outline-4 outline-offset-1
-  &--shade-1
-    @apply text-blue-shade-5 border-blue-shade-5 bg-blue-shade-2
+  &--full
+    @apply text-white border-blue-shade bg-blue-shade
     &:hover
-      @apply bg-blue-shade-3 text-blue-shade-1
+      @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
     &:focus
-      @apply text-blue-shade-5 bg-blue-shade-2 outline-blue-shade-5
+      @apply text-white bg-blue-shade outline-blue-shade
     &:active
-      @apply text-blue-shade-1 bg-blue-shade-5
-  &--shade-2
-    @apply text-blue-shade-1 border-blue-shade-1 bg-blue-shade-3
+      @apply text-white bg-blue-shade
+  &--empty
+    @apply text-darker-blue-shade border-dark-blue-shade bg-transparent
     &:hover
-      @apply bg-blue-shade-4
-    &:focus,
-    &:focus-visible
-      @apply outline-blue-shade-5 border-blue-shade-5 bg-blue-shade-3
-    &:active
-      @apply bg-blue-shade-5
-  &--shade-3
-    @apply text-blue-shade-1 border-blue-shade-1 bg-blue-shade-5
-    &:hover
-      @apply bg-blue-shade-4 text-blue-shade-1
+      @apply bg-blue-shade text-white border-blue-shade
     &:focus
-      @apply outline-blue-shade-4 border-blue-shade-4
+      @apply text-darker-blue-shade bg-transparent outline-dark-blue-shade
     &:active
-      @apply text-blue-shade-5 bg-blue-shade-2 border-blue-shade-2
-  &--shade-4
-    @apply text-blue-shade-1 border-blue-shade-1 bg-blue-shade-4
-    &:hover
-      @apply bg-blue-shade-5 text-blue-shade-1
-    &:focus
-      @apply outline-blue-shade-5 border-blue-shade-5
-    &:active
-      @apply text-blue-shade-4 bg-blue-shade-2 border-blue-shade-2
-  &--shade-transparent
-    @apply text-blue-shade-5 border-blue-shade-5 bg-transparent
-    &:hover
-      @apply bg-blue-shade-4 text-blue-shade-1
-    &:focus
-      @apply outline-blue-shade-4 border-blue-shade-4
-    &:active
-      @apply text-blue-shade-5 bg-blue-shade-2 border-blue-shade-2
-
-.btn-header
-  @apply font-poppins text-[16px] py-[0.35rem] px-8 font-normal leading-7 border rounded-full whitespace-nowrap break-keep tracking-[0.16px] transition-all duration-300 ease-in-out inline-block relative
-  font-feature-settings: 'ss02' on
-  &--booking
-    @apply text-blue-shade-1 border-blue-shade-1 bg-transparent
-    &:hover
-      @apply bg-blue-shade-4 text-blue-shade-1
-    &:focus
-      @apply outline-blue-shade-4 border-blue-shade-4
-    &:active
-      @apply text-blue-shade-5 bg-blue-shade-2 border-blue-shade-2
-
-.btn-custom
-  @apply font-miller text-lg py-0 px-5 font-normal border rounded-full whitespace-nowrap break-keep tracking-[0.2px] transition-all duration-300 ease-in-out inline-block relative
-  font-feature-settings: 'ss02' on
-  &--only-arrow
-    @apply text-blue-shade-5 border-blue-shade-5 bg-blue-shade-2
-    &:after
-      content: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2247%22 height=%228%22 viewBox=%220 0 47 8%22 fill=%22none%22%3E%3Cpath d=%22M46.3536 4.35355C46.5488 4.15829 46.5488 3.84171 46.3536 3.64645L43.1716 0.464466C42.9763 0.269204 42.6597 0.269204 42.4645 0.464466C42.2692 0.659728 42.2692 0.976311 42.4645 1.17157L45.2929 4L42.4645 6.82843C42.2692 7.02369 42.2692 7.34027 42.4645 7.53553C42.6597 7.7308 42.9763 7.7308 43.1716 7.53553L46.3536 4.35355ZM0 4.5H46V3.5H0V4.5Z%22 fill=%22%23233047%22/%3E%3C/svg%3E')
-      @apply inline-block w-full
-    &:hover
-      @apply bg-blue-shade-3 text-blue-shade-1
-      &:after
-        content: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2247%22 height=%228%22 viewBox=%220 0 47 8%22 fill=%22none%22%3E%3Cpath d=%22M46.3536 4.35355C46.5488 4.15829 46.5488 3.84171 46.3536 3.64645L43.1716 0.464466C42.9763 0.269204 42.6597 0.269204 42.4645 0.464466C42.2692 0.659728 42.2692 0.976311 42.4645 1.17157L45.2929 4L42.4645 6.82843C42.2692 7.02369 42.2692 7.34027 42.4645 7.53553C42.6597 7.7308 42.9763 7.7308 43.1716 7.53553L46.3536 4.35355ZM0 4.5H46V3.5H0V4.5Z%22 fill=%22%23D2E9F7%22/%3E%3C/svg%3E')
-  &--shade-4
-    @apply text-blue-shade-2 border-blue-shade-2 bg-blue-shade-4
-    &:hover
-      @apply bg-blue-shade-5 text-blue-shade-2
-    &:focus
-      @apply outline-blue-shade-5 border-blue-shade-5
-    &:active
-      @apply text-blue-shade-4 bg-blue-shade-2 border-blue-shade-2
-
-.btn-external
-  @apply font-poppins font-semibold text-sm uppercase outline-none whitespace-nowrap tracking-[0.84px] break-keep transition-all duration-300 ease-in-out
-  font-feature-settings: 'ss02' on
-  &:after
-    content: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12'%3E%3Cpath d='M59.361 6.53a.75.75 0 0 0 0-1.06L54.59.697a.75.75 0 0 0-1.061 1.06L57.77 6l-4.242 4.243a.75.75 0 0 0 1.06 1.06l4.773-4.773ZM.95 6.75h57.882v-1.5H.95v1.5Z' fill='%233E6C8A'/%3E%3C/svg%3E")
-    @apply inline-block w-full max-w-16 ml-4
-  &--shade-1
-    @apply text-blue-shade-5
-    &:hover
-      @apply underline
-    &:focus
-      text-stroke: 1px #3E6C8A
-    &:active
-      @apply font-bold underline
-  &--shade-2
-    @apply text-blue-shade-1
-    &:after
-      content: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12'%3E%3Cpath d='M59.361 6.53a.75.75 0 0 0 0-1.06L54.59.697a.75.75 0 0 0-1.061 1.06L57.77 6l-4.242 4.243a.75.75 0 0 0 1.06 1.06l4.773-4.773ZM.95 6.75h57.882v-1.5H.95v1.5Z' fill='%23D2E8F7'/%3E%3C/svg%3E")
-    &:hover
-      @apply underline
-    &:focus
-      text-stroke: 1px #3E6C8A
-    &:active
-      @apply font-bold underline
-  &--shade-3
-    @apply text-blue-shade-1
-    &:after
-      content: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12'%3E%3Cpath d='M59.361 6.53a.75.75 0 0 0 0-1.06L54.59.697a.75.75 0 0 0-1.061 1.06L57.77 6l-4.242 4.243a.75.75 0 0 0 1.06 1.06l4.773-4.773ZM.95 6.75h57.882v-1.5H.95v1.5Z' fill='%23D2E8F7'/%3E%3C/svg%3E")
-    &:hover
-      @apply underline
-    &:focus
-      text-stroke: 1px #3E6C8A
-    &:active
-      @apply font-bold underline
+      @apply text-darker-blue-shade bg-transparent

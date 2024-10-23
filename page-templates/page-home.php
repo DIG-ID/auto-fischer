@@ -10,6 +10,7 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/pages/home/hero' );
 			get_template_part( 'template-parts/pages/home/intro' );
+			get_template_part( 'template-parts/pages/home/why-choose' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

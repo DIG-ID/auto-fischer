@@ -7,8 +7,8 @@ function fischer_theme_setup() {
 	register_nav_menus(
 		array(
 			'main-menu'      => __( 'Main Menu', 'fischer' ),
-			'main-mega-menu' => __( 'Main Mega Menu', 'fischer' ),
-			'secondary-menu' => __( 'Secondary Menu', 'fischer' ),
+			'footer-menu-left' => __( 'Footer Menu Left', 'fischer' ),
+			'footer-menu-right' => __( 'Footer Menu Right', 'fischer' ),
 			'copyright-menu' => __( 'Copyright Menu', 'fischer' ),
 		)
 	);

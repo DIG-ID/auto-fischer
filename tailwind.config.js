@@ -27,6 +27,7 @@ module.exports = {
         'blue-shade': '#005AA9',
         'white-shade': '#EFEFEF',
         'dark-blue-shade': '#001629',
+        'darker-blue-shade': '#050B20',
         'beige-shade': '#FFEDDE',
         'light-blue-shade': '#E6F0FA',
         'blue-shade-5': '#0E324A',
