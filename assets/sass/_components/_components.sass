@@ -3,3 +3,18 @@
 @import buttons
 @import breadcrumbs
 @import contact-form
+
+
+
+.has-offset-bg
+    @apply relative
+    &::before
+        content: ''
+        background-color: #EDF4FA
+        position: absolute
+        right: 270px
+        top: 0
+        width: 300%
+        height: 100%
+        z-index: 1
+        border-radius: 16px

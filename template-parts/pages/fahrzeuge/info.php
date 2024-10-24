@@ -1,4 +1,4 @@
-<section class="section-gut-zu-wissen bg-white relative overflow-hidden">
+<section class="section-info bg-white relative overflow-hidden">
     <div class="theme-container theme-grid">
         <div class="has-offset-bg col-span-2 md:col-span-3 xl:col-span-6 py-24">
             <?php
