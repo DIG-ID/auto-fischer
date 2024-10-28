@@ -1,43 +1,78 @@
 .btn-main
-  @apply font-sans text-[15px] leading-[26px] font-medium py-[0.814rem] px-[26px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
+  @apply font-sans text-[15px] leading-[26px] font-medium py-[0.814rem] pl-[26px] pr-[50px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
+  &::after
+    content: ''
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 20px
+    width: 14px
+    height: 14px
+    background-size: cover
+    background-repeat: no-repeat
   &:focus
     @apply outline-transparent outline-4 outline-offset-1
+
   &--full-blue
     @apply text-white border-blue-shade bg-blue-shade
+    &::after
+      background-image: url('../../assets/images/right-up.svg')
     &:hover
       @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
+      &::after
+        background-image: url('../../assets/images/right-up-blue.svg')
     &:focus
       @apply text-white bg-blue-shade outline-blue-shade
     &:active
       @apply text-white bg-blue-shade
+
   &--full-blue-darkbg
     @apply text-white border-blue-shade bg-blue-shade
+    &::after
+      background-image: url('../../assets/images/right-up.svg')
     &:hover
       @apply bg-transparent text-white border-white
+      &::after
+        background-image: url('../../assets/images/right-up.svg')
     &:focus
       @apply text-white bg-blue-shade outline-blue-shade
     &:active
       @apply text-white bg-blue-shade
+
   &--empty-blue
     @apply text-darker-blue-shade border-dark-blue-shade bg-transparent
+    &::after
+      background-image: url('../../assets/images/right-up-blue.svg')
     &:hover
       @apply bg-blue-shade text-white border-blue-shade
+      &::after
+        background-image: url('../../assets/images/right-up.svg')
     &:focus
       @apply text-darker-blue-shade bg-transparent outline-dark-blue-shade
     &:active
       @apply text-darker-blue-shade bg-transparent
+
   &--full-orange
     @apply text-white border-orange-shade bg-orange-shade
+    &::after
+      background-image: url('../../assets/images/right-up.svg')
     &:hover
       @apply bg-transparent text-orange-shade border-orange-shade
+      &::after
+        background-image: url('../../assets/images/right-up-orange.svg')
     &:focus
       @apply text-white bg-orange-shade outline-orange-shade
     &:active
       @apply text-white bg-orange-shade
+
   &--empty-orange
     @apply text-orange-shade border-orange-shade bg-transparent
+    &::after
+      background-image: url('../../assets/images/right-up-orange.svg')
     &:hover
       @apply bg-orange-shade text-white border-orange-shade
+      &::after
+        background-image: url('../../assets/images/right-up.svg')
     &:focus
       @apply text-orange-shade bg-transparent outline-orange-shade
     &:active
