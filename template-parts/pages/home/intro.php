@@ -1,8 +1,8 @@
-<section class="section-intro bg-transparent pt-36 pb-[140px] relative overflow-hidden">
+<section class="section-intro min-h-[99vh] bg-transparent pt-36 pb-[140px] relative overflow-hidden">
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-3 xl:col-span-6 mb-12">
             <p class="title-pre text-darker-blue-shade"><?php echo get_field( 'intro_pre_title' ); ?></p>
-            <h1 class="title-main text-darker-blue-shade mb-14"><?php echo get_field( 'intro_title' ); ?></h1>
+            <h1 class="title-main text-darker-blue-shade mb-14 mt-7"><?php echo get_field( 'intro_title' ); ?></h1>
             <?php
 				$button_1 = get_field( 'intro_button_1' );
 				if ( $button_1 ) :
