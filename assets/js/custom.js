@@ -10,26 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 question.addEventListener('click', function() {
                     const answer = this.nextElementSibling;
                     const icon = this.querySelector('.icon-plus');
-                    const isOpen = !answer.classList.contains('hidden');
+                    const isOpen = answer.classList.contains('open');
                     
                     // Close all other answers
-                    document.querySelectorAll('.faq-answer').forEach(el => el.classList.add('hidden'));
-                    document.querySelectorAll('.faq-question').forEach(el => el.classList.add('q-closed'));
+                    document.querySelectorAll('.faq-answer').forEach(el => {
+                        el.classList.remove('open');
+                        el.previousElementSibling.classList.add('q-closed');
+                    });
                     document.querySelectorAll('.icon-plus').forEach(icon => icon.textContent = '+');
-                    
+        
                     // Toggle the current answer
                     if (!isOpen) {
                         question.classList.remove('q-closed');
-                        answer.classList.remove('hidden');
+                        answer.classList.add('open');
                         icon.textContent = '-';
                     } else {
                         question.classList.add('q-closed');
-                        answer.classList.add('hidden');
+                        answer.classList.remove('open');
                         icon.textContent = '+';
                     }
                 });
             });
         }
+        
 
     }, false);
 });

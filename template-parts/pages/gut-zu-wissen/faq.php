@@ -16,8 +16,8 @@
                                 <?php echo esc_html($question); ?>
                                 <span class="icon-plus float-right">+</span>
                             </button>
-                            <div class="faq-answer hidden pb-10 px-10 text-body rounded-b-2xl">
-                                <?php echo wp_kses_post($answer); ?>
+                            <div class="faq-answer <?php echo !is_admin() ? 'faq-closed' : ''; ?> px-10 text-body rounded-b-2xl">
+                                <span class="inline-block pb-10"><?php echo wp_kses_post($answer); ?></span>
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -26,11 +26,6 @@
                 <p>No FAQs available at the moment.</p>
             <?php endif; ?>
         </div>
+
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-    });
-</script>
