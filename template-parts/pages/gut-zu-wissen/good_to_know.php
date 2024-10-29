@@ -45,7 +45,7 @@
                 $link_title  = $button_good['title'];
                 $link_target = $button_good['target'] ? $button_good['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-blue max-w-[176px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-blue max-w-[209px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
@@ -74,7 +74,7 @@
                 $link_title  = $button_good['title'];
                 $link_target = $button_good['target'] ? $button_good['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-orange max-w-[176px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-orange max-w-[166px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
