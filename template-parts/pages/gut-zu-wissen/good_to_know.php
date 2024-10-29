@@ -32,8 +32,8 @@
             <?php
             if( have_rows('vehicles_info_1_info_list') ):
                 while( have_rows('vehicles_info_1_info_list') ) : the_row(); ?>
-                <p class="text-body !font-bold flex items-center mb-2"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
-                <p class="text-body mb-5"><?php echo get_sub_field( 'text' ); ?></p>
+                <p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
+                <p class="text-body ml-3 pl-[25px] [&:not(:last-of-type)]:border-l border-black pt-2 pb-8"><?php echo get_sub_field( 'text' ); ?></p>
             <?php
                 endwhile;
             endif;
@@ -61,8 +61,8 @@
             <?php
             if( have_rows('vehicles_info_2_info_list') ):
                 while( have_rows('vehicles_info_2_info_list') ) : the_row(); ?>
-                <p class="text-body !font-bold flex items-center mb-2"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
-                <p class="text-body mb-5"><?php echo get_sub_field( 'text' ); ?></p>
+                <p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
+                <p class="text-body ml-3 pl-[25px] [&:not(:last-of-type)]:border-l border-black pt-2 pb-8"><?php echo get_sub_field( 'text' ); ?></p>
             <?php
                 endwhile;
             endif;
