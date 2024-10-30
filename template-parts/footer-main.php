@@ -47,6 +47,7 @@
 			</div>
             <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-11">
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Folgen Sie uns auf', 'fischer' ) ?></h4>
+								<?php do_action( 'socials' ); ?>
             </div>
         </div>
     </div>
