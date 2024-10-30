@@ -1,0 +1,32 @@
+/* Hide the actual file input */
+.wpcf7-form-control.wpcf7-file
+    display: none
+
+#image-preview
+    @apply float-left
+
+/* Style the label to look like the upload button */
+.file-upload-label
+    position: relative !important
+    width: 190px
+    height: 167px
+    background-color: #E9F2FF
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #333
+    font-size: 16px
+    text-align: center
+    border: 1px dashed #405FF2
+    cursor: pointer
+    border-radius: 8px
+    transition: background-color 0.3s ease
+    .wpcf7-form-control-wrap
+        width: auto !important
+
+/* Optional: Hover effect */
+.file-upload-label:hover
+    background-color: #E9F2FF
+
+.preview-slot
+    @apply w-[220px] h-[167px] bg-[#F9FBFC] flex items-center justify-center rounded-xl text-body font-medium mr-8 overflow-hidden
