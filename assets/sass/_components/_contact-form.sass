@@ -1,0 +1,28 @@
+.wpcf7--custom-grid
+  @apply grid grid-cols-2 md:grid-cols-6 xl:grid-cols-6 gap-x-7 border border-[#E1E1E1] rounded-2xl px-8 pt-8 pb-10 mb-16
+  h2
+    @apply  inline-block font-sans font-medium text-base text-darker-blue-shade relative mb-4
+    &:after
+      content: ''
+      @apply block w-full h-[1px] bg-[#405FF2] absolute left-0 -bottom-4
+  .title-separator
+    @apply block w-full h-[1px] bg-[#E1E1E1] -mt-[1px] mb-8
+  .form-separator
+    @apply block w-full h-[1px] bg-[#E1E1E1]  my-8
+  &-form-footer
+    @apply flex justify-end items-center gap-x-4
+    a
+      @apply font-sans font-bold text-xl text-blue-shade inline-block order-1
+    .wpcf7-submit
+      order: 3
+    .wpcf7-spinner
+      order: 2
+.wpcf7
+  .wpcf7-form
+
+    label
+      @apply absolute top-3 left-4 font-sans text-xs text-[#818181]
+    &-control-wrap
+      @apply block w-full mb-7 
+      .wpcf7-form-control
+        @apply w-full border border-[#E1E1E1] rounded-xl px-4 py-3 pt-7 font-sans text-sm

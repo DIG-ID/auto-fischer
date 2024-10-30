@@ -108,6 +108,8 @@ add_action( 'acf/init', 'fischer_theme_google_map_init' );
  */
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
+
+
 /**
  * Lowers the metabox priority to 'core' for Yoast SEO's metabox.
  *

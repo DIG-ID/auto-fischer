@@ -12,7 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['DM Sans', 'sans-serif'],
+      sans: ['dm-sans', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
       miller: [ 'miller-headline', 'serif']
     },
