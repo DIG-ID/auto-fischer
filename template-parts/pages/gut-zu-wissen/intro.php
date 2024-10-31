@@ -1,4 +1,4 @@
-<section class="section-intro min-h-[99vh] bg-transparent pt-36 pb-[140px] relative overflow-hidden">
+<section class="section-intro min-h-[99vh] bg-transparent pt-20 pb-[140px] relative overflow-hidden">
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-3 xl:col-span-6 mb-12">
             <?php do_action( 'breadcrumbs' ); ?>
