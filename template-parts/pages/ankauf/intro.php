@@ -15,12 +15,3 @@
         </div>
     </div>
 </section>
-
-<section class="section-intro bg-transparent pt-36 pb-32 relative overflow-hidden">
-    <div class="theme-container theme-grid mb-28">
-        <div class="col-span-12">
-        <?php echo do_shortcode( '[contact-form-7 id="5919259" title="Selling Form"]' ); ?>
-        </div>
-
-    </div>
-    </section>
