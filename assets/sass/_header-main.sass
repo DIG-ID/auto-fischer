@@ -1,11 +1,15 @@
 .home, .page-template-page-gut-zu-wissen
     #main-menu
         .menu-item
-            @apply text-light-blue-shade
+            @apply lg:text-light-blue-shade
     
 #main-menu
     .menu-item
-        @apply font-sans text-[15px] font-[500] leading-[26px] text-dark-blue-shade
-    .menu-item:not(:last-child)
-        @apply mr-8
+        @apply font-sans text-[20px] lg:text-[15px] font-medium leading-[32px] lg:leading-[26px] text-light-blue-shade lg:text-dark-blue-shade px-5 lg:px-0 py-6 lg:py-0 rounded-xl lg:rounded-none
+        &.current_page_item
+            @apply bg-[#ffffff1a]
+        &:hover, &:active
+            @apply bg-[#ffffff1a] lg:bg-transparent
             
+    .menu-item:not(:last-child)
+        @apply lg:mr-8    

@@ -10,15 +10,22 @@
 
 				<div class="col-span-2 flex justify-end items-center gap-x-8">
 					<!-- Burger Menu Button for Mobile -->
-					<button id="burger-menu-toggle" class="lg:hidden focus:outline-none text-white z-50" aria-label="Open main menu">
-						<!-- Icon for burger menu (3 lines) -->
-						<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+					<button id="burger-menu-toggle" class="lg:hidden focus:outline-none text-black z-50" aria-label="Toggle main menu">
+						<!-- Icon for burger menu (3 equal bars) -->
+						<svg id="burger-icon" class="w-[22px] h-[20px] transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+							<rect width="22" height="2" fill="#001629"/>
+							<rect y="9" width="22" height="2" fill="#001629"/>
+							<rect y="18" width="22" height="2" fill="#001629"/>
+						</svg>
+						<!-- Icon for "X" (hidden by default) -->
+						<svg id="close-icon" class="w-[18px] h-[18px] hidden transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+							<rect x="0.414062" y="16" width="22" height="2" transform="rotate(-45 0.414062 16)" fill="white"/>
+							<rect x="1.41431" width="22" height="2" transform="rotate(45 1.41431 0)" fill="white"/>
 						</svg>
 					</button>
 
 					<!-- Main Menu -->
-					<div id="main-menu-container" class="main-menu-container hidden lg:flex flex-col lg:flex-row lg:items-center absolute  pt-40 lg:pt-0 px-6 lg:px-0 lg:relative top-0 lg:top-0 left-0 lg:left-auto w-full lg:w-auto h-[100vh] lg:h-auto bg-dark-blue-shade lg:bg-transparent z-40 lg:z-auto transition-transform duration-300 ease-in-out">
+					<div id="main-menu-container" class="main-menu-container hidden lg:flex flex-col lg:flex-row lg:items-center absolute pt-40 lg:pt-0 px-6 lg:px-0 lg:relative top-0 lg:top-0 left-0 lg:left-auto w-full lg:w-auto h-[100vh] lg:h-auto bg-dark-blue-shade lg:bg-transparent z-40 lg:z-auto transition-transform duration-300 ease-in-out transform -translate-y-full lg:translate-y-0">
 						<?php
 						wp_nav_menu(
 							array(
@@ -41,9 +48,18 @@
 	// Toggle burger menu
 	const burgerToggle = document.getElementById('burger-menu-toggle');
 	const menuContainer = document.getElementById('main-menu-container');
+	const burgerIcon = document.getElementById('burger-icon');
+	const closeIcon = document.getElementById('close-icon');
 
 	burgerToggle.addEventListener('click', () => {
+		// Toggle menu visibility with transition
 		menuContainer.classList.toggle('hidden');
-		menuContainer.classList.toggle('flex');
+		menuContainer.classList.toggle('transform');
+		menuContainer.classList.toggle('-translate-y-full');
+		menuContainer.classList.toggle('translate-y-0');
+
+		// Toggle icons
+		burgerIcon.classList.toggle('hidden');
+		closeIcon.classList.toggle('hidden');
 	});
 </script>
