@@ -40,8 +40,8 @@
                                         <span class="text-white text-body">No Picture</span>
                                     </div>
                                 <?php endif; ?>
-                                    <div class="mt-4 text-center">
-                                        <h3 class="title-smallest"><?php echo esc_html($name); ?></h3>
+                                    <div class="mt-7 text-left">
+                                        <h3 class="title-smallest mb-3"><?php echo esc_html($name); ?></h3>
                                         <p class="text-body"><?php echo esc_html($role); ?></p>
                                     </div>
                                 </div>
