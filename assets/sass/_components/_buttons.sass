@@ -13,6 +13,19 @@
   &:focus
     @apply outline-transparent outline-4 outline-offset-1
 
+  &--transparent
+    @apply text-darker-blue-shade border-transparent bg-transparent
+    &::after
+      background-image: url('../../assets/images/right-up-blue.svg')
+    &:hover
+      @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
+      &::after
+        background-image: url('../../assets/images/right-up-blue.svg')
+    &:focus
+      @apply text-white bg-blue-shade outline-blue-shade
+    &:active
+      @apply text-white bg-blue-shade
+
   &--full-blue
     @apply text-white border-blue-shade bg-blue-shade
     &::after
