@@ -16,7 +16,7 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/home/contact' );
 			get_template_part( 'template-parts/pages/home/highlight' );
 			get_template_part( 'template-parts/pages/home/team' );
-			get_template_part( 'template-parts/pages/home/testimonials' );
+			get_template_part( 'template-parts/components/reviews' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;

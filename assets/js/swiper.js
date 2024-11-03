@@ -15,4 +15,27 @@ window.addEventListener("load", () => {
         });
     }
 
+    if (document.body.classList.contains("page-template-page-home")) {
+        var reviewSwiper = new Swiper(".reviews-swiper", {
+            lazy: {
+                loadOnTransitionStart: true,
+            },
+            slidesPerView: 3,
+            spaceBetween: 24,
+            speed: 800,
+            loop: false,
+            pagination: {
+                el: ".pagination-info",
+                type: "custom",
+                renderCustom: function (swiper, current, total) {
+                    return `${current} of ${total}`;
+                },
+            },
+            navigation: {
+                nextEl: ".arrow-right",
+                prevEl: ".arrow-left",
+            },
+        });
+    }    
+
 }, false);
