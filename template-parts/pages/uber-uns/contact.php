@@ -12,14 +12,9 @@
 				<h2 class="title-secondary text-light-blue-shade"><?php echo get_field( 'contact_title' ); ?></h2>
 				<p class="text-body text-light-blue-shade my-10"><?php echo get_field( 'contact_text' ); ?></p>
 				<?php
-				$button_contact = get_field( 'contact_button' );
-				if ( $button_contact ) :
-					$link_url    = $button_contact['url'];
-					$link_title  = $button_contact['title'];
-					$link_target = $button_contact['target'] ? $button_contact['target'] : '_self';
-					?>
-					<a class="btn-main btn-main--full-blue-darkbg max-w-[207px]" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-					<?php
+				$contactf = get_field( 'contact_contact_form' );
+				if ( $contactf ) :
+					echo do_shortcode( $contactf );
 				endif;
 				?>
 			</div>

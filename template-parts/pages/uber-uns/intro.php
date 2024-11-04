@@ -11,7 +11,6 @@
 		</div>
 		<div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-4 xl:col-start-7">
 			<p class="text-body"><?php echo get_field( 'intro_description' ); ?></p>
-			<p class="text-body"><?php echo get_field( 'intro_warning' ); ?></p>
 		</div>
 	</div>
 </section>
