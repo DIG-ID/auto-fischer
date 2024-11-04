@@ -38,4 +38,17 @@ window.addEventListener("load", () => {
         });
     }    
 
+    if (document.body.classList.contains("page-template-page-uber-uns")) {
+        var gallerySwiper = new Swiper(".gallerySwiper", {
+            lazy: {
+                loadOnTransitionStart: true,
+            },
+            slidesPerView: 3,
+            spaceBetween: 24,
+            speed: 800,
+            loop: true,
+            centeredSlides: true,
+        });
+    }    
+
 }, false);
