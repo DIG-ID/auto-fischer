@@ -7,6 +7,7 @@
         }
         ?>
     </div>
+    <div class="hidden flex-wrap gap-4"></div>
 </section>
 
 <script>
@@ -18,7 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
             previewSlots: [
                 document.getElementById('preview-slot-1'),
                 document.getElementById('preview-slot-2'),
-                document.getElementById('preview-slot-3')
+                document.getElementById('preview-slot-3'),
+                document.getElementById('preview-slot-4'),
+                document.getElementById('preview-slot-5'),
+                document.getElementById('preview-slot-6'),
+                document.getElementById('preview-slot-7'),
+                document.getElementById('preview-slot-8'),
+                document.getElementById('preview-slot-9'),
+                document.getElementById('preview-slot-10')
             ]
         },
         {
@@ -26,7 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
             previewSlots: [
                 document.getElementById('preview-slot-1-innen'),
                 document.getElementById('preview-slot-2-innen'),
-                document.getElementById('preview-slot-3-innen')
+                document.getElementById('preview-slot-3-innen'),
+                document.getElementById('preview-slot-4-innen'),
+                document.getElementById('preview-slot-5-innen'),
+                document.getElementById('preview-slot-6-innen'),
+                document.getElementById('preview-slot-7-innen'),
+                document.getElementById('preview-slot-8-innen'),
+                document.getElementById('preview-slot-9-innen'),
+                document.getElementById('preview-slot-10-innen')
             ]
         }
     ];
@@ -51,6 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (!previewSlots[i].innerHTML) { // Check if the slot is empty
                                     previewSlots[i].innerHTML = ""; // Clear any existing content
                                     previewSlots[i].appendChild(img); // Display the new image in the available slot
+                                    previewSlots[i].classList.remove('hidden');
+                                    previewSlots[i].classList.add('flex');
                                     break; // Exit the loop after placing the image
                                 }
                             }
