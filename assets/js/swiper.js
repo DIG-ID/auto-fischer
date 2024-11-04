@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
         });
     }
 
-    if (document.body.classList.contains("page-template-page-home")) {
+    if (document.body.classList.contains("page-template-page-home") || document.body.classList.contains("page-template-page-uber-uns")) {
         var reviewSwiper = new Swiper(".reviews-swiper", {
             lazy: {
                 loadOnTransitionStart: true,
