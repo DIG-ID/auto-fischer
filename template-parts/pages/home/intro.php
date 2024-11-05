@@ -21,7 +21,7 @@
 					$link_title  = $button_2['title'];
 					$link_target = $button_2['target'] ? $button_2['target'] : '_self';
 					?>
-					<a class="btn-main btn-main--empty-blue" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+					<a class="btn-main btn-main--empty" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>

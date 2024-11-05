@@ -14,50 +14,48 @@
     @apply outline-transparent outline-4 outline-offset-1
 
   &--transparent
-    @apply text-darker-blue-shade border-transparent bg-transparent
+    @apply text-blue-shade border-transparent bg-transparent
     &::after
       background-image: url('../../assets/images/right-up-blue.svg')
     &:hover
-      @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
+      @apply bg-transparent text-dark-blue-shade border-transparent
       &::after
         background-image: url('../../assets/images/right-up-blue.svg')
     &:focus
-      @apply text-white bg-blue-shade outline-blue-shade
+      @apply text-white bg-darker-blue-shade outline-darker-blue-shade
     &:active
-      @apply text-white bg-blue-shade
+      @apply text-white bg-darker-blue-shade
 
   &--full-blue
     @apply text-white border-blue-shade bg-blue-shade
     &::after
       background-image: url('../../assets/images/right-up.svg')
     &:hover
-      @apply bg-transparent text-darker-blue-shade border-darker-blue-shade
-      &::after
-        background-image: url('../../assets/images/right-up-blue.svg')
+      @apply bg-dark-blue-shade text-white border-dark-blue-shade
     &:focus
       @apply text-white bg-blue-shade outline-blue-shade
     &:active
-      @apply text-white bg-blue-shade
+      @apply text-white bg-darker-blue-shade
 
   &--full-blue-darkbg
     @apply text-white border-blue-shade bg-blue-shade
     &::after
       background-image: url('../../assets/images/right-up.svg')
     &:hover
-      @apply bg-transparent text-white border-white
+      @apply bg-orange-shade text-white border-orange-shade
       &::after
         background-image: url('../../assets/images/right-up.svg')
     &:focus
-      @apply text-white bg-blue-shade outline-blue-shade
+      @apply text-white bg-orange-shade outline-orange-shade
     &:active
-      @apply text-white bg-blue-shade
+      @apply text-white bg-[#CC610A]
 
-  &--empty-blue
+  &--empty
     @apply text-darker-blue-shade border-dark-blue-shade bg-transparent
     &::after
       background-image: url('../../assets/images/right-up-blue.svg')
     &:hover
-      @apply bg-blue-shade text-white border-blue-shade
+      @apply bg-orange-shade text-white border-orange-shade
       &::after
         background-image: url('../../assets/images/right-up.svg')
     &:focus
@@ -70,13 +68,11 @@
     &::after
       background-image: url('../../assets/images/right-up.svg')
     &:hover
-      @apply bg-transparent text-orange-shade border-orange-shade
-      &::after
-        background-image: url('../../assets/images/right-up-orange.svg')
+      @apply bg-[#CC610A] text-white border-[#CC610A]
     &:focus
-      @apply text-white bg-orange-shade outline-orange-shade
+      @apply text-white bg-[##CC610A] outline-[#CC610A]
     &:active
-      @apply text-white bg-orange-shade
+      @apply text-white bg-[##CC610A]
 
   &--empty-orange
     @apply text-orange-shade border-orange-shade bg-transparent

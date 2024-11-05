@@ -1,4 +1,4 @@
-<section class="section-contact bg-white pt-28 pb-24 relative overflow-hidden">
+<section class="section-contact bg-white pt-28 pb-0 relative overflow-hidden">
     <div class="px-6 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
         <div class="col-span-2 md:col-span-6 xl:col-span-6">
             <?php
@@ -18,7 +18,7 @@
                 $link_title  = $button_contact['title'];
                 $link_target = $button_contact['target'] ? $button_contact['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-blue-darkbg max-w-[207px]" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-blue-darkbg max-w-[225px]" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
