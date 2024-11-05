@@ -1,5 +1,5 @@
 <section class="section-vehicles-info-1 bg-light-blue-shade py-40 relative overflow-hidden">
-    <div class="theme-container theme-grid">
+    <div class="px-6 2xl:px-0 mx-auto w-full lg:max-w-[1440px] grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-6">
         <div class="col-span-2 md:col-span-3 xl:col-span-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 py-24">
             <div class="col-span-1 md:col-span-1 xl:col-span-2">
                 <?php

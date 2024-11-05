@@ -37,7 +37,6 @@
                                 <?php else : ?>
                                     <!-- Placeholder with background color if no image -->
                                     <div class="w-full h-[415px] bg-dark-blue-shade flex items-center justify-center rounded-xl">
-                                        <span class="text-white text-body">No Picture</span>
                                     </div>
                                 <?php endif; ?>
                                     <div class="mt-7 text-left">

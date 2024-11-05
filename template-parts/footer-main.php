@@ -5,7 +5,7 @@
                 <p class="title-smaller text-white !font-normal"><?php echo get_field( 'footer_contact_text', 'option' ); ?></p>
             </div>
             <div class="col-span-2 md:col-span-3 xl:col-span-3 text-right col-start-1 md:col-start-4 xl:col-start-10">
-                <p class="title-smaller text-white !font-normal"><?php echo get_field( 'general_phone_number', 'option' ); ?></p>
+                <a href="tel:<?php echo get_field( 'general_phone_number', 'option' ); ?>" class="title-smaller text-white !font-normal hover:!font-semibold"><?php echo get_field( 'general_phone_number', 'option' ); ?></a>
             </div>
         </div>
     </div>
