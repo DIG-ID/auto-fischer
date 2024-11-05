@@ -1,4 +1,4 @@
-<section class="section-contact bg-white pt-28 pb-24 relative overflow-hidden">
+<section class="section-contact bg-white pt-28 relative overflow-hidden">
 	<div class="px-6 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
 			<div class="col-span-2 md:col-span-6 xl:col-span-6">
 				<?php

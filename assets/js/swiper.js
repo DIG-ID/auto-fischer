@@ -40,14 +40,20 @@ window.addEventListener("load", () => {
 
     if (document.body.classList.contains("page-template-page-uber-uns")) {
         var gallerySwiper = new Swiper(".gallerySwiper", {
-            lazy: {
-                loadOnTransitionStart: true,
-            },
             slidesPerView: 3,
             spaceBetween: 24,
-            speed: 800,
             loop: true,
             centeredSlides: true,
+            grabCursor: true,
+            /*effect: "coverflow",
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 0,
+                modifier: 2,
+                slideShadows: true,
+                scale: 1,
+              },*/
         });
     }    
 
