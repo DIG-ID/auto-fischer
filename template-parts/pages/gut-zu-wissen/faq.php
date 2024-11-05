@@ -17,7 +17,7 @@
                                 <span class="icon-plus float-right">+</span>
                             </button>
                             <div class="faq-answer <?php echo !is_admin() ? 'faq-closed' : ''; ?> px-10 text-body rounded-b-2xl">
-                                <span class="inline-block pb-10"><?php echo wp_kses_post($answer); ?></span>
+                                <span class="inline-block pb-10 pr-5"><?php echo wp_kses_post($answer); ?></span>
                             </div>
                         </div>
                     <?php endwhile; ?>
