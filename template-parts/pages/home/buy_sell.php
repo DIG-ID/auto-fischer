@@ -25,7 +25,7 @@
             <h3 class="title-smaller"><?php echo get_field( 'sell_title' ); ?></h3>
             <p class="text-body max-w-[350px] py-7"><?php echo get_field( 'sell_text' ); ?></p>
             <?php
-            $button_sell = get_field( 'buy_button' );
+            $button_sell = get_field( 'sell_button' );
             if ( $button_sell ) :
                 $link_url    = $button_sell['url'];
                 $link_title  = $button_sell['title'];
