@@ -65,28 +65,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (file && file.type.startsWith('image/')) {
                         const reader = new FileReader();
                         reader.onload = function(event) {
-                            // Create image preview element
-                            const img = document.createElement('img');
-                            img.src = event.target.result;
-                            img.alt = "Uploaded Image";
-                            img.classList.add("max-w-full", "h-auto", "rounded", "border", "shadow-lg");
-
-                            // Create delete icon element
-                            const deleteIcon = document.createElement('img');
-                            deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg'; // Replace with the path to your SVG
-                            deleteIcon.alt = "Delete Image";
-                            deleteIcon.classList.add("absolute", "top-1/2", "left-1/2", "transform", "-translate-x-1/2", "-translate-y-1/2", "cursor-pointer");
-
-                            // Add click event for delete functionality
-                            deleteIcon.addEventListener('click', () => {
-                                previewSlots[i].innerHTML = ""; // Clear the slot
-                                previewSlots[i].classList.add('hidden'); // Hide slot after deletion
-                            });
-
                             // Find the first available slot to display the image and delete icon
                             for (let i = 0; i < previewSlots.length; i++) {
                                 if (!previewSlots[i].innerHTML) {
                                     previewSlots[i].innerHTML = ""; // Clear any existing content
+
+                                    // Create image preview element
+                                    const img = document.createElement('img');
+                                    img.src = event.target.result;
+                                    img.alt = "Uploaded Image";
+                                    img.classList.add("max-w-full", "h-auto", "rounded", "border", "shadow-lg");
+
+                                    // Create delete icon element
+                                    const deleteIcon = document.createElement('img');
+                                    deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
+                                    deleteIcon.alt = "Delete Image";
+                                    deleteIcon.classList.add("absolute", "top-1/2", "left-1/2", "transform", "-translate-x-1/2", "-translate-y-1/2", "cursor-pointer");
+
+                                    // Add click event for delete functionality
+                                    deleteIcon.addEventListener('click', () => {
+                                        previewSlots[i].innerHTML = ""; // Clear the slot
+                                        previewSlots[i].classList.add('hidden'); // Hide slot after deletion
+                                    });
+
+                                    // Append image and delete icon to the preview slot
                                     previewSlots[i].appendChild(img); // Add image to slot
                                     previewSlots[i].appendChild(deleteIcon); // Add delete icon to slot
                                     previewSlots[i].classList.remove('hidden'); // Make slot visible
