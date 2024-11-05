@@ -1,4 +1,4 @@
-<section class="section-intro 2xl:min-h-[99vh] bg-light-blue-shade pt-36 pb-[140px] relative overflow-hidden">
+<section class="section-intro 2xl:min-h-[99vh] bg-light-blue-shade pt-64 pb-[140px] relative overflow-hidden">
 	<?php
     $heroimage = get_field( 'intro_image' );
     if ( $heroimage ) :
