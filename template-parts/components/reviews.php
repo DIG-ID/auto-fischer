@@ -36,7 +36,7 @@
 							$quote = get_field('quote'); // Textarea for the quote
 							?>
 							<div class="swiper-slide">
-								<div class="p-10 h-[350px] bg-white rounded-2xl flex flex-col relative text-left">
+								<div class="p-10 lg:h-[250px] lg:max-h-[250px] bg-white rounded-2xl flex flex-col relative text-left">
 									<h3 class="title-smallest text-blue-shade mb-12"><?php echo esc_html($name); ?></h3>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/quoteMarks.svg" class="absolute top-10 right-10" alt="quotation marks" title="quotation marks" />
 									<p class="text-body !leading-[30px] line-clamp-4">&ldquo;<?php echo esc_html($quote); ?><span class="whitespace-nowrap">&rdquo;</span></p>
@@ -45,9 +45,9 @@
 						<?php endwhile; ?>
 					</div>
 					<!-- Pagination Controls -->
-					<div class="reviews-pagination flex items-center justify-center space-x-4 mt-4">
+					<div class="reviews-pagination flex items-center justify-start space-x-4 mt-4">
 						<button class="arrow-left border border-darker-blue-shade py-[0.45rem] px-[1.55rem] rounded-xl"><</button>
-						<div class="pagination-info text-body"></div>
+						<div class="pagination-info text-body max-w-16 text-center"></div>
 						<button class="arrow-right border border-darker-blue-shade py-[0.45rem] px-[1.55rem] rounded-xl">></button>
 					</div>
 				</div>
