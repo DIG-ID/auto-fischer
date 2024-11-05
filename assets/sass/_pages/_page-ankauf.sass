@@ -1,36 +1,70 @@
 /* Hide the actual file input */
-.wpcf7-form-control.wpcf7-file, .file-upload-label .wpcf7-form-control-wrap
+.wpcf7-form-control.wpcf7-file, .file-upload-label .wpcf7-form-control-wrap, .file-upload-documents .wpcf7-form-control-wrap
     display: none !important
 
 #image-preview
-    @apply float-left mb-4
+    @apply mb-4
+
+.section-faq 
+    .wpcf7 .wpcf7-form .wpcf7-form-control.wpcf7-submit
+        @apply btn-main btn-main--full-blue
+    label.title-pre
+        font-family: "DM Sans"
+        font-size: 16px
+        font-style: normal
+        font-weight: 500
+        line-height: 28px
+        color: #050B20
+        margin-bottom: 20px
+        display: inline-block
 
 /* Style the label to look like the upload button */
-.file-upload-label
-    position: relative !important
-    width: 190px
-    height: 167px
-    top: 0 !important
-    background-color: #E9F2FF
-    display: flex
-    align-items: center
-    justify-content: center
-    color: #333
-    font-size: 16px
-    text-align: center
-    border: 1px dashed #405FF2
-    cursor: pointer
-    border-radius: 8px
-    transition: background-color 0.3s ease
-    .wpcf7-form-control-wrap
-        width: auto !important
+.file-upload
+    &-label
+        position: relative !important
+        width: 190px
+        height: 167px
+        top: 0 !important
+        left: 0 !important
+        background-color: #E9F2FF
+        display: flex
+        align-items: center
+        justify-content: center
+        color: #333
+        font-size: 16px
+        text-align: center
+        border: 1px dashed #405FF2
+        cursor: pointer
+        border-radius: 8px
+        transition: background-color 0.3s ease
+        .wpcf7-form-control-wrap
+            width: auto !important
+    &-documents
+        position: relative !important
+        width: 190px
+        height: 167px
+        top: 0 !important
+        left: 0 !important
+        background-color: #F9FBFC
+        display: flex
+        align-items: center
+        justify-content: center
+        color: #333
+        font-size: 16px
+        text-align: center
+        border: 1px dashed #050B20
+        cursor: pointer
+        border-radius: 8px
+        transition: background-color 0.3s ease
+        .wpcf7-form-control-wrap
+            width: auto !important
 
 /* Optional: Hover effect */
 .file-upload-label:hover
     background-color: #E9F2FF
 
 .preview-slot
-    @apply w-[190px] h-[167px] bg-[#F9FBFC] items-center justify-center rounded-xl text-body font-medium overflow-hidden
+    @apply w-[190px] h-[167px] bg-[#F9FBFC] items-center justify-center rounded-xl text-body font-medium overflow-hidden relative
     background-image: url('../../assets/images/image-placeholder.jpg')
     background-size: cover
     background-position: center
