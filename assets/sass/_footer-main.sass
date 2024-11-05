@@ -3,15 +3,16 @@
   
 .copy-menu-nav, .footer-menu-nav
   .menu-item
-    @apply font-sans text-[15px] font-normal leading-[26px] text-white
+    @apply font-sans text-[15px] font-normal leading-[35px] text-white
 
 .copy-menu-nav
   @apply flex justify-end
   .menu-item
-    @apply ml-3 hover:font-semibold
+    @apply ml-3
+    a:hover
+      @apply border-b border-white
 
 .footer-menu-nav
   .menu-item
-    @apply ml-3
     a:hover
       @apply border-b border-white

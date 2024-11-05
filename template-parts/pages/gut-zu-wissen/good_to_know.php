@@ -28,7 +28,7 @@
         </div>
         <div class="col-span-2 md:col-span-3 xl:col-span-5 col-start-1 md:col-start-4 xl:col-start-8 flex flex-col justify-center">
             <h2 class="title-secondary"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
-            <p class="text-body py-[59px] max-w-[440px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
+            <p class="text-body py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
             <?php
             if( have_rows('vehicles_info_1_info_list') ):
                 while( have_rows('vehicles_info_1_info_list') ) : the_row(); ?>
@@ -57,7 +57,7 @@
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-3 xl:col-span-5 flex flex-col justify-center">
             <h2 class="title-secondary"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
-            <p class="text-body py-[59px] max-w-[440px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
+            <p class="text-body py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
             <?php
             if( have_rows('vehicles_info_2_info_list') ):
                 while( have_rows('vehicles_info_2_info_list') ) : the_row(); ?>

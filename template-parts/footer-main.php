@@ -5,7 +5,7 @@
                 <p class="title-smaller text-white !font-normal"><?php echo get_field( 'footer_contact_text', 'option' ); ?></p>
             </div>
             <div class="col-span-2 md:col-span-3 xl:col-span-3 text-right col-start-1 md:col-start-4 xl:col-start-10">
-                <a href="tel:<?php echo get_field( 'general_phone_number', 'option' ); ?>" class="title-smaller text-white !font-normal hover:!font-semibold"><?php echo get_field( 'general_phone_number', 'option' ); ?></a>
+                <a href="tel:<?php echo get_field( 'general_phone_number', 'option' ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white"><?php echo get_field( 'general_phone_number', 'option' ); ?></a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Adresse', 'fischer' ) ?></h4>
                 <p class="text-body text-white !leading-[35px]"><?php echo get_field( 'general_address', 'option' ); ?></p>
             </div>
-            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-7">
+            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-1 col-start-1 md:col-start-1 xl:col-start-7">
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Seiten', 'fischer' ) ?></h4>
 				<?php
 				wp_nav_menu(
@@ -32,7 +32,7 @@
 				);
 				?>
 			</div>
-            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-9 pt-[53px]">
+            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-8 pt-[53px]">
 				<?php
 				wp_nav_menu(
 					array(
