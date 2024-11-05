@@ -1,4 +1,10 @@
-<section class="section-intro min-h-[99vh] bg-transparent pt-20 pb-[140px] relative overflow-hidden">
+<section class="section-intro min-h-[99vh] bg-transparent pt-[186px] pb-[140px] relative overflow-hidden">
+	<?php
+    $heroimage = get_field( 'intro_image' );
+    if ( $heroimage ) :
+        echo wp_get_attachment_image( $heroimage, 'full', false, array( 'class' => 'w-1/2 object-cover absolute top-0 right-0' ) );
+    endif;
+    ?>
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-3 xl:col-span-6 mb-12">
             <?php do_action( 'breadcrumbs' ); ?>
