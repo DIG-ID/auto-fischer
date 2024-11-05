@@ -8,46 +8,39 @@
 	</div>
 	<div class="theme-container theme-grid">
 		<?php
-		if ( have_rows( 'team_members' ) ) :
+		$team_args = array(
+			'post_type'   => 'team',
+			'post_status' => 'published',
+			'order'       => 'DESC',
+			'orderby'     => 'date',
+		);
+		$team_query = new WP_Query( $team_args );
+		if ( $team_query->have_posts() ) :
 			$i = 0;
-			while ( have_rows( 'team_members' ) ) :
-				the_row();
-				// Get the subfields
-				$picture_id  = get_sub_field( 'picture' );
-				$name        = get_sub_field( 'name' );
-				$member_role = get_sub_field( 'roles' );
-				$picture_url = wp_get_attachment_image_url( $picture_id, 'full' );
-
+			while ( $team_query->have_posts() ) :
+				$team_query->the_post();
 				if ( 3 === $i  ) :
 					echo '<div class="team-member-card col-span-3 hidden invisible xl:block xl:visible"></div>';
 				endif;
 				?>
 				<div class="team-member-card col-span-1 md:col-span-2 xl:col-span-3 mb-6 md:mb-10 xl:mb-16">
 					<?php
-					//var_dump($i);
-					if ( $picture_id ) :
-						?>
-						<!-- Display image if it exists -->
-						<img src="<?php echo esc_url( $picture_url ); ?>" alt="<?php echo esc_attr( $name ); ?>" class="w-full h-auto object-cover rounded-xl">
-						<?php
+					if ( has_post_thumbnail() ) :
+						the_post_thumbnail( 'full', array( 'class' => 'w-full h-auto object-cover rounded-xl' ) );
 					else :
-						?>
-						<!-- Placeholder with background color if no image -->
-						<div class="w-full h-[240px] md:h-[270px] xl:h-[415px] bg-dark-blue-shade flex items-center justify-center rounded-xl">
-						</div>
-						<?php
+						echo '<div class="w-full h-[240px] md:h-[270px] xl:h-[415px] bg-dark-blue-shade flex items-center justify-center rounded-xl"></div>';
 					endif;
 					?>
 					<div class="mt-4 md:mt-6 xl:mt-7 text-left">
-						<h3 class="title-smallest mb-3"><?php echo $name; ?></h3>
-						<p class="text-body"><?php echo $member_role; ?></p>
+						<h3 class="title-smallest mb-3"><?php the_title(); ?></h3>
+						<p class="text-body"><?php the_field( 'role' ); ?></p>
 					</div>
 				</div>
-
 				<?php
 				$i++;
 			endwhile;
 		endif;
+		wp_reset_postdata();
 		?>
 	</div>
 </section>
