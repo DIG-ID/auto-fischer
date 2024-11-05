@@ -1,8 +1,10 @@
 #breadcrumbs
+  @apply flex
   > span
-    @apply font-sans font-normal text-xs lg:text-sm text-darker-blue-shade tracking-[0.14px]
+    @apply font-sans font-normal text-xs lg:text-sm text-darker-blue-shade tracking-[0.14px] inline-block
     span
+      @apply inline-block
       a
         @apply text-xs lg:text-sm transition-all duration-200 ease-in-out hover:text-darker-blue-shade inline-block text-[#B5B5B5]
     span.breadcrumb_last
-      @apply text-darker-blue-shade block md:inline
+      @apply text-darker-blue-shade inline-block
