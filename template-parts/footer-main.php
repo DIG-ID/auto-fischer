@@ -2,23 +2,23 @@
     <div class="footer-top-bar bg-blue-shade">
         <div class="theme-container theme-grid py-[3.25rem]">
             <div class="col-span-2 md:col-span-3 xl:col-span-6">
-                <p class="title-smaller text-white !font-normal"><?php echo get_field( 'footer_contact_text', 'option' ); ?></p>
+                <p class="title-smaller text-white !font-normal mb-6 md:mb-0"><?php echo get_field( 'footer_contact_text', 'option' ); ?></p>
             </div>
-            <div class="col-span-2 md:col-span-3 xl:col-span-3 text-right col-start-1 md:col-start-4 xl:col-start-10">
+            <div class="col-span-2 md:col-span-3 xl:col-span-3 md:text-right col-start-1 md:col-start-4 xl:col-start-10">
                 <a href="tel:<?php echo get_field( 'general_phone_number', 'option' ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white"><?php echo get_field( 'general_phone_number', 'option' ); ?></a>
             </div>
         </div>
     </div>
     <div class="footer-content bg-dark-blue-shade">
-        <div class="theme-container theme-grid pt-36 pb-32">
-            <div class="col-span-2 md:col-span-6 xl:col-span-4">
+        <div class="theme-container theme-grid pt-14 md:pt-20 xl:pt-36 pb-10 md:pb-32">
+            <div class="col-span-2 md:col-span-6 xl:col-span-4 mb-16 md:mb-0">
                 <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url" class="navbar-brand custom-logo-link max-w-[238px]"><?php do_action( 'theme_logo' ); ?></a>
             </div>
-            <div class="col-span-2 md:col-span-3 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-5">
+            <div class="col-span-1 md:col-span-3 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-5">
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Adresse', 'fischer' ) ?></h4>
                 <p class="text-body text-white !leading-[35px]"><?php echo get_field( 'general_address', 'option' ); ?></p>
             </div>
-            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-1 col-start-1 md:col-start-1 xl:col-start-7">
+            <div class="copy-menu col-span-1 md:col-span-6 xl:col-span-1 col-start-2 md:col-start-1 xl:col-start-7">
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Seiten', 'fischer' ) ?></h4>
 				<?php
 				wp_nav_menu(
@@ -32,7 +32,7 @@
 				);
 				?>
 			</div>
-            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-8 pt-[53px]">
+            <div class="copy-menu col-span-1 md:col-span-6 xl:col-span-2 col-start-2 md:col-start-1 xl:col-start-8 md:pt-[53px]">
 				<?php
 				wp_nav_menu(
 					array(
@@ -45,7 +45,7 @@
 				);
 				?>
 			</div>
-            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-11">
+            <div class="copy-menu col-span-2 md:col-span-6 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-11 mt-14 md:mt-0">
                 <h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Folgen Sie uns auf', 'fischer' ) ?></h4>
 								<?php do_action( 'socials' ); ?>
             </div>

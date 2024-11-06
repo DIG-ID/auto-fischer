@@ -1,6 +1,6 @@
-<section class="section-why-choose bg-white pb-32 relative overflow-hidden">
+<section class="section-buy-sell bg-white pb-10 md:pb-32 relative overflow-hidden">
     <div class="theme-container theme-grid">
-        <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-light-blue-shade rounded-2xl p-20 relative">
+        <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-light-blue-shade rounded-2xl py-12 px-8 md:p-20 mb-14 md:mb-8 xl:mb-0 relative">
             <h3 class="title-smaller"><?php echo get_field( 'buy_title' ); ?></h3>
             <p class="text-body max-w-[310px] py-7"><?php echo get_field( 'buy_text' ); ?></p>
             <?php
@@ -17,11 +17,11 @@
             <?php
             $buyImg = get_field( 'buy_icon' );
             if ( $buyImg ) :
-                echo wp_get_attachment_image( $buyImg, 'full', false, array( 'class' => 'w-[95px] object-cover md:absolute md:right-[60px] md:bottom-[60px]' ) );
+                echo wp_get_attachment_image( $buyImg, 'full', false, array( 'class' => 'w-[95px] object-cover md:absolute md:right-[60px] md:bottom-[60px] mt-10 md:mt-0' ) );
             endif;
             ?>
         </div>
-        <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-[#FFEDDE] rounded-2xl p-20 relative">
+        <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-[#FFEDDE] rounded-2xl py-12 px-8 md:p-20 relative">
             <h3 class="title-smaller"><?php echo get_field( 'sell_title' ); ?></h3>
             <p class="text-body max-w-[350px] py-7"><?php echo get_field( 'sell_text' ); ?></p>
             <?php
@@ -38,7 +38,7 @@
             <?php
             $buyImg = get_field( 'sell_icon' );
             if ( $buyImg ) :
-                echo wp_get_attachment_image( $buyImg, 'full', false, array( 'class' => 'w-[86px] object-cover md:absolute md:right-[60px] md:bottom-[60px]' ) );
+                echo wp_get_attachment_image( $buyImg, 'full', false, array( 'class' => 'w-[86px] object-cover md:absolute md:right-[60px] md:bottom-[60px] mt-10 md:mt-0' ) );
             endif;
             ?>
         </div>

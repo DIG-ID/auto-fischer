@@ -8,7 +8,27 @@ window.addEventListener("load", () => {
             lazy: {
                 loadOnTransitionStart: true,
             },
-            slidesPerView: 4,
+            breakpoints: {
+                768: {
+                    slidesPerView: 3, // Show all slides in 3 columns when viewport is less than 1024px
+                    grid: {
+                        rows: 2, // 2 rows for a grid layout
+                    },
+                    loop: false, // Disable looping for this layout
+                    spaceBetween: 16, // Adjust space between slides if needed
+                },
+                1024: {
+                    slidesPerView: 4, // Switch back to regular layout with 4 slides in view
+                    grid: {
+                        rows: 1,
+                    },
+                    spaceBetween: 24,
+                },
+            },
+            slidesPerView: 2, // Default view for larger screens
+            grid: {
+                rows: 3, // 2 rows for a grid layout
+            },
             spaceBetween: 24,
             speed: 800,
             loop: false,
@@ -20,7 +40,15 @@ window.addEventListener("load", () => {
             lazy: {
                 loadOnTransitionStart: true,
             },
-            slidesPerView: 3,
+            breakpoints: {
+                768: {
+                    slidesPerView: 1.5,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+            slidesPerView: 1,
             spaceBetween: 24,
             speed: 800,
             loop: false,

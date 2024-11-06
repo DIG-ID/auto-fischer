@@ -1,0 +1,183 @@
+<div class="wpcf7--custom-grid">
+    <div class="col-span-2 md:col-span-6">
+        <h2>Persönliche Informationen</h2>
+        <span class="title-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+        <span class="block relative">
+            [text* your-vorname id:your-vorname autocomplete:name]
+            <label for="your-vorname">Vorname</label>
+        </span>
+        <span class="block relative">
+            [email* your-email id:your-email autocomplete:email]
+            <label for="your-email">E-Mail</label>
+        </span>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+        <span class="block relative">
+            [text* your-nachname id:your-nachname autocomplete:surname]
+            <label for="your-nachname">Nachname</label>
+        </span>
+        <span class="block relative">
+            [tel* your-telefon id:your-telefon autocomplete:phone]
+            <label for="your-telefon">Telefon</label>
+        </span>
+    </div>
+    <div class="col-span-2 md:col-span-2"></div>
+</div><!-- block 01 end -->
+
+<div class="wpcf7--custom-grid">
+    <div class="col-span-2 md:col-span-6">
+        <h2>Fahrzeug Details</h2>
+        <span class="title-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+        <span class="block relative">
+            [text* your-mark-model id:your-mark-model]
+            <label for="your-mark-model">Marke & Modell</label>
+        </span>
+        <span class="block relative">
+            [text* your-typenschein id:your-typenschein]
+            <label for="your-typenschein">Typenschein</label>
+        </span>
+        <span class="block relative">
+            [text* your-antrieb id:your-antrieb]
+            <label for="your-antrieb">Antrieb</label>
+        </span>
+        <span class="block relative">
+            [text* your-zustand id:your-zustand]
+            <label for="your-zustand">Zustand</label>
+        </span>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+        <span class="block relative">
+            [text* your-inv id:your-inv placeholder "DD.MM.YYYY"]
+            <label for="your-inv">1. Inv.</label>
+        </span>
+        <span class="block relative">
+            [text* your-kraftstoff id:your-kraftstoff]
+            <label for="your-kraftstoff">Kraftstoff</label>
+        </span>
+        <span class="block relative">
+            [text* your-preisvorstellung id:your-preisvorstellung]
+            <label for="your-preisvorstellung">Preisvorstellung</label>
+        </span>
+        <span class="block relative">
+            [text* your-vin-chassisnummer id:your-vin-chassisnummer]
+            <label for="your-vin-chassisnummer">VIN / Chassisnummer</label>
+        </span>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+        <span class="block relative">
+            [text* your-getriebe id:your-getriebe]
+            <label for="your-getriebe">Getriebe</label>
+        </span>
+        <span class="block relative">
+            [text* your-laufleistung id:your-laufleistung]
+            <label for="your-laufleistung">Laufleistung</label>
+        </span>
+        <span class="block relative">
+            [text* your-letzter-service id:your-letzter-service placeholder "DD.MM.YYYY"]
+            <label for="your-letzter-service">Letzter Service</label>
+        </span>
+        <span class="block relative">
+            [text* your-mangel-schaden id:your-mangel-schaden]
+            <label for="your-mangel-schaden">Mängel / Schäden</label>
+        </span>
+    </div>
+</div><!-- block 02 end -->
+
+<div class="wpcf7--custom-grid">
+    <div class="col-span-2 md:col-span-6">
+        <h2>Media</h2>
+        <span class="title-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-6">
+        <label for="your-image-file" class="title-pre" style="position:relative;top:0;">Fotos Auto Aussen</label>
+        <span class="block relative">
+            <div id="image-preview" class="flex flex-wrap gap-4">
+                <div id="preview-slot-1" class="preview-slot flex"></div>
+                <div id="preview-slot-2" class="preview-slot hidden"></div>
+                <div id="preview-slot-3" class="preview-slot hidden"></div>
+                <div id="preview-slot-4" class="preview-slot hidden"></div>
+                <div id="preview-slot-5" class="preview-slot hidden"></div>
+                <div id="preview-slot-6" class="preview-slot hidden"></div>
+                <div id="preview-slot-7" class="preview-slot hidden"></div>
+                <div id="preview-slot-8" class="preview-slot hidden"></div>
+                <div id="preview-slot-9" class="preview-slot hidden"></div>
+                <div id="preview-slot-10" class="preview-slot hidden"></div>
+                <label class="file-upload-label flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1709 21.2502C16.5841 21.2502 16.1084 20.7745 16.1084 20.1877V3.12964C16.1084 2.54284 16.5841 2.06714 17.1709 2.06714C17.7577 2.06714 18.2334 2.54284 18.2334 3.12964V20.1877C18.2334 20.7745 17.7577 21.2502 17.1709 21.2502Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2903 8.02853C11.8745 7.61445 11.8731 6.94172 12.2872 6.52593L16.4182 2.37793C16.6176 2.17773 16.8884 2.06519 17.1711 2.06519C17.4535 2.06519 17.7245 2.17773 17.9239 2.37793L22.0549 6.52593C22.469 6.94172 22.4675 7.61445 22.0518 8.02853C21.636 8.44261 20.9633 8.44123 20.5492 8.02544L17.1711 4.63339L13.7929 8.02544C13.3788 8.44123 12.7061 8.44261 12.2903 8.02853Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.30446 13.7585C7.11982 12.6581 8.45278 12.108 10.9069 11.8818C11.4912 11.828 11.9212 11.3106 11.8673 10.7263C11.8135 10.142 11.2961 9.71192 10.7118 9.76579C8.09422 10.0071 5.97051 10.6399 4.59712 12.4933C3.2804 14.2703 2.8335 16.9475 2.8335 20.7405C2.8335 25.7694 3.62193 28.8614 6.20508 30.4481C7.43625 31.2044 8.96101 31.5386 10.7065 31.701C12.4451 31.8627 14.5337 31.8627 16.9554 31.8627H17.0449C19.4666 31.8627 21.5553 31.8627 23.2938 31.701C25.0393 31.5386 26.5641 31.2044 27.7953 30.4481C30.3785 28.8614 31.1668 25.7694 31.1668 20.7405C31.1668 16.9475 30.7199 14.2703 29.4032 12.4933C28.0298 10.6399 25.9062 10.0071 23.2885 9.76579C22.7042 9.71192 22.1869 10.142 22.133 10.7263C22.0791 11.3106 22.5092 11.828 23.0935 11.8818C25.5475 12.108 26.8806 12.6581 27.6959 13.7585C28.568 14.9353 29.0418 16.9826 29.0418 20.7405C29.0418 25.7714 28.194 27.7092 26.6829 28.6374C25.8671 29.1386 24.7302 29.4332 23.0969 29.5852C21.4676 29.7367 19.4754 29.7377 17.0002 29.7377C14.525 29.7377 12.5328 29.7367 10.9033 29.5852C9.27005 29.4332 8.13325 29.1386 7.31733 28.6374C5.80631 27.7092 4.9585 25.7714 4.9585 20.7405C4.9585 16.9826 5.43243 14.9353 6.30446 13.7585Z" fill="#050B20"/>
+                    </svg>
+                    <span class="text-body !font-medium text-darker-blue-shade mt-3">Upload</span>
+                    [file* your-image-file id:your-image-file limit:10mb filetypes:jpg|jpeg|png]
+                </label>
+            </div>
+        </span>
+        <p class="text-body mt-5">Min. 2 Bilder, Max. 10 Bilder, Max. Dateigrösse 1MB, Min. Dateidimension: 330x300 px. Geeignete Dateiformate: jpg & .png.</p>
+        <span class="form-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-6">
+        <label for="file-auto-innen" class="title-pre" style="position:relative;top:0;">Fotos Auto Innen</label>
+        <span class="block relative">
+            <div id="image-preview" class="flex flex-wrap gap-4">
+                <div id="preview-slot-1-innen" class="preview-slot flex"></div>
+                <div id="preview-slot-2-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-3-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-4-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-5-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-6-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-7-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-8-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-9-innen" class="preview-slot hidden"></div>
+                <div id="preview-slot-10-innen" class="preview-slot hidden"></div>
+                <label class="file-upload-label flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1709 21.2502C16.5841 21.2502 16.1084 20.7745 16.1084 20.1877V3.12964C16.1084 2.54284 16.5841 2.06714 17.1709 2.06714C17.7577 2.06714 18.2334 2.54284 18.2334 3.12964V20.1877C18.2334 20.7745 17.7577 21.2502 17.1709 21.2502Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2903 8.02853C11.8745 7.61445 11.8731 6.94172 12.2872 6.52593L16.4182 2.37793C16.6176 2.17773 16.8884 2.06519 17.1711 2.06519C17.4535 2.06519 17.7245 2.17773 17.9239 2.37793L22.0549 6.52593C22.469 6.94172 22.4675 7.61445 22.0518 8.02853C21.636 8.44261 20.9633 8.44123 20.5492 8.02544L17.1711 4.63339L13.7929 8.02544C13.3788 8.44123 12.7061 8.44261 12.2903 8.02853Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.30446 13.7585C7.11982 12.6581 8.45278 12.108 10.9069 11.8818C11.4912 11.828 11.9212 11.3106 11.8673 10.7263C11.8135 10.142 11.2961 9.71192 10.7118 9.76579C8.09422 10.0071 5.97051 10.6399 4.59712 12.4933C3.2804 14.2703 2.8335 16.9475 2.8335 20.7405C2.8335 25.7694 3.62193 28.8614 6.20508 30.4481C7.43625 31.2044 8.96101 31.5386 10.7065 31.701C12.4451 31.8627 14.5337 31.8627 16.9554 31.8627H17.0449C19.4666 31.8627 21.5553 31.8627 23.2938 31.701C25.0393 31.5386 26.5641 31.2044 27.7953 30.4481C30.3785 28.8614 31.1668 25.7694 31.1668 20.7405C31.1668 16.9475 30.7199 14.2703 29.4032 12.4933C28.0298 10.6399 25.9062 10.0071 23.2885 9.76579C22.7042 9.71192 22.1869 10.142 22.133 10.7263C22.0791 11.3106 22.5092 11.828 23.0935 11.8818C25.5475 12.108 26.8806 12.6581 27.6959 13.7585C28.568 14.9353 29.0418 16.9826 29.0418 20.7405C29.0418 25.7714 28.194 27.7092 26.6829 28.6374C25.8671 29.1386 24.7302 29.4332 23.0969 29.5852C21.4676 29.7367 19.4754 29.7377 17.0002 29.7377C14.525 29.7377 12.5328 29.7367 10.9033 29.5852C9.27005 29.4332 8.13325 29.1386 7.31733 28.6374C5.80631 27.7092 4.9585 25.7714 4.9585 20.7405C4.9585 16.9826 5.43243 14.9353 6.30446 13.7585Z" fill="#050B20"/>
+                    </svg>
+                    <span class="text-body !font-medium text-darker-blue-shade mt-3">Upload</span>
+                    [file* file-auto-innen id:file-auto-innen limit:10mb filetypes:jpg|jpeg|png]
+                </label>
+            </div>
+        </span>
+        <p class="text-body mt-5">Min. 2 Bilder, Max. 10 Bilder, Max. Dateigrösse 1MB, Min. Dateidimension: 330x300 px. Geeignete Dateiformate: jpg & .png.</p>
+        <span class="form-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-6">
+        <label for="file-fahrzeugausweis" class="title-pre" style="position:relative;top:0;">Fahrzeugausweis</label>
+        <span class="block relative">
+            <div id="image-preview" class="flex flex-wrap gap-4">
+                <div id="preview-slot-1-fahrzeugausweis" class="preview-slot hidden"></div>
+                <div id="preview-slot-2-fahrzeugausweis" class="preview-slot hidden"></div>
+                <div id="preview-slot-3-fahrzeugausweis" class="preview-slot hidden"></div>
+                <label class="file-upload-documents flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1709 21.2502C16.5841 21.2502 16.1084 20.7745 16.1084 20.1877V3.12964C16.1084 2.54284 16.5841 2.06714 17.1709 2.06714C17.7577 2.06714 18.2334 2.54284 18.2334 3.12964V20.1877C18.2334 20.7745 17.7577 21.2502 17.1709 21.2502Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2903 8.02853C11.8745 7.61445 11.8731 6.94172 12.2872 6.52593L16.4182 2.37793C16.6176 2.17773 16.8884 2.06519 17.1711 2.06519C17.4535 2.06519 17.7245 2.17773 17.9239 2.37793L22.0549 6.52593C22.469 6.94172 22.4675 7.61445 22.0518 8.02853C21.636 8.44261 20.9633 8.44123 20.5492 8.02544L17.1711 4.63339L13.7929 8.02544C13.3788 8.44123 12.7061 8.44261 12.2903 8.02853Z" fill="#050B20"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.30446 13.7585C7.11982 12.6581 8.45278 12.108 10.9069 11.8818C11.4912 11.828 11.9212 11.3106 11.8673 10.7263C11.8135 10.142 11.2961 9.71192 10.7118 9.76579C8.09422 10.0071 5.97051 10.6399 4.59712 12.4933C3.2804 14.2703 2.8335 16.9475 2.8335 20.7405C2.8335 25.7694 3.62193 28.8614 6.20508 30.4481C7.43625 31.2044 8.96101 31.5386 10.7065 31.701C12.4451 31.8627 14.5337 31.8627 16.9554 31.8627H17.0449C19.4666 31.8627 21.5553 31.8627 23.2938 31.701C25.0393 31.5386 26.5641 31.2044 27.7953 30.4481C30.3785 28.8614 31.1668 25.7694 31.1668 20.7405C31.1668 16.9475 30.7199 14.2703 29.4032 12.4933C28.0298 10.6399 25.9062 10.0071 23.2885 9.76579C22.7042 9.71192 22.1869 10.142 22.133 10.7263C22.0791 11.3106 22.5092 11.828 23.0935 11.8818C25.5475 12.108 26.8806 12.6581 27.6959 13.7585C28.568 14.9353 29.0418 16.9826 29.0418 20.7405C29.0418 25.7714 28.194 27.7092 26.6829 28.6374C25.8671 29.1386 24.7302 29.4332 23.0969 29.5852C21.4676 29.7367 19.4754 29.7377 17.0002 29.7377C14.525 29.7377 12.5328 29.7367 10.9033 29.5852C9.27005 29.4332 8.13325 29.1386 7.31733 28.6374C5.80631 27.7092 4.9585 25.7714 4.9585 20.7405C4.9585 16.9826 5.43243 14.9353 6.30446 13.7585Z" fill="#050B20"/>
+                    </svg>
+                    <span class="text-body !font-medium text-darker-blue-shade mt-3">Upload</span>
+                    [file* file-fahrzeugausweis id:file-fahrzeugausweis limit:10mb filetypes:jpg|jpeg|png]
+                </label>
+            </div>
+        </span>
+        <p class="text-body mt-5">Max. 3 Dateien, Maximale Dateigrösse 1 MB, Mindestgrösse 330x300 px. Geeignete Dateiformate: jpq und png.</p>
+        <span class="form-separator"></span>
+    </div>
+    <div class="col-span-2 md:col-span-6">
+        <span class="block relative">
+            [textarea your-kommentare id:your-kommentare 2x4]
+            <label for="your-kommentare">Kommentare</label>
+        </span>
+    </div>
+    <div class="col-span-2 md:col-span-6">
+        <div class="wpcf7--custom-grid-form-footer">
+            <p style="font-family: dm-sans;font-size: 20px;font-style: normal;font-weight: 700;line-height: 55px;color: #005AA9;">Bitte bestätigen Sie, dass alle Angaben korrekt sind.</p>[submit "Senden"]
+        </div>
+    </div><!-- block 03 end -->
+</div>

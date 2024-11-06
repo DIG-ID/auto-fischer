@@ -1,5 +1,5 @@
-<section class="section-contact bg-white pt-28 pb-0 relative overflow-hidden">
-    <div class="px-6 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
+<section class="section-contact bg-white pt-8 md:pt-20 xl:pt-28 pb-0 relative overflow-hidden px-6 xl:px-0">
+    <div class="xl:px-6 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
         <div class="col-span-2 md:col-span-6 xl:col-span-6">
             <?php
             $contactImg = get_field( 'contact_image' );
@@ -8,7 +8,7 @@
             endif;
             ?>
         </div>
-        <div class="col-span-2 md:col-span-6 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-8 flex flex-col justify-center">
+        <div class="col-span-2 md:col-span-6 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-8 flex flex-col justify-center px-7 xl:px-0 pt-10 md:pt-14 xl:pt-0 pb-14 md:pb-20 xl:pb-0">
             <h2 class="title-secondary text-light-blue-shade"><?php echo get_field( 'contact_title' ); ?></h2>
             <p class="text-body text-light-blue-shade my-10"><?php echo get_field( 'contact_text' ); ?></p>
             <?php

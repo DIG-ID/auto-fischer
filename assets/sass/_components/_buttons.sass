@@ -1,13 +1,10 @@
 .btn-main
-  @apply font-sans text-[15px] leading-[26px] font-medium py-[0.814rem] pl-[26px] pr-[50px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
+  @apply font-sans text-[15px] leading-[26px] font-medium pb-[0.714rem] pt-[0.914rem] pl-[16px] md:pl-[26px] pr-[36px] md:pr-[50px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative
   &::after
     content: ''
-    position: absolute
+    @apply absolute right-[15px] md:right-[20px] w-[14px] h-[14px]
     top: 50%
     transform: translateY(-50%)
-    right: 20px
-    width: 14px
-    height: 14px
     background-size: cover
     background-repeat: no-repeat
   &:focus

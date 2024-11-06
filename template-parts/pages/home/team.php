@@ -1,4 +1,4 @@
-<section class="section-team bg-white relative pt-40 pb-40 overflow-hidden">
+<section class="section-team bg-white relative pt-16 md:pt-20 xl:pt-40 pb-12 md:pb-20 xl:pb-40 overflow-hidden">
 	<div class="theme-container theme-grid">
 		<div class="col-span-2 md:col-span-3 xl:col-span-5">
 			<p class="title-secondary text-darker-blue-shade mb-10"><?php echo get_field( 'team_title' ); ?></p>
