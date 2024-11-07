@@ -1,4 +1,4 @@
-<section class="section-faq py-20 pb-40 relative overflow-hidden">
+<section class="section-form pt-10 pb-16 md:pt-20 md:pb-40 relative overflow-hidden">
     <div class="theme-container">
         <?php 
         $form_shortcode = get_field('form_shortcode'); 

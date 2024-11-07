@@ -10,7 +10,7 @@
   .form-separator
     @apply block w-full h-[1px] bg-[#E1E1E1]  my-8
   &-form-footer
-    @apply flex justify-end items-center gap-x-4
+    @apply flex justify-end items-center gap-x-4 flex-col md:flex-row
     a
       @apply font-sans font-bold text-xl text-blue-shade inline-block order-1
     .wpcf7-submit
@@ -57,3 +57,9 @@
         @apply mb-10
       .wpcf7-response-output
         @apply bg-orange-shade border-orange-shade text-white
+
+@media (max-width: 1023px)
+  .wpcf7--custom-grid
+    &-form-footer
+      p
+        line-height: 25px !important

@@ -1,6 +1,6 @@
-<section class="section-vehicles-info-1 bg-light-blue-shade py-40 relative overflow-hidden">
+<section class="section-vehicles-info-1 bg-light-blue-shade py-20 md:py-40 relative overflow-hidden">
     <div class="px-6 2xl:px-0 mx-auto w-full lg:max-w-[1440px] grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-6">
-        <div class="col-span-2 md:col-span-3 xl:col-span-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 py-24">
+        <div class="col-span-2 md:col-span-3 xl:col-span-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 py-24 order-2 md:order-1">
             <div class="col-span-1 md:col-span-1 xl:col-span-2">
                 <?php
                 $goodImg_1 = get_field( 'vehicles_info_1_image_1' );
@@ -26,8 +26,8 @@
                 ?>
             </div>
         </div>
-        <div class="col-span-2 md:col-span-3 xl:col-span-5 col-start-1 md:col-start-4 xl:col-start-8 flex flex-col justify-center">
-            <h2 class="title-secondary"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
+        <div class="col-span-2 md:col-span-3 xl:col-span-5 col-start-1 md:col-start-4 xl:col-start-8 flex flex-col justify-center order-1 md:order-2">
+            <h2 class="title-secondary !text-[40px] !leading-none"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
             <p class="text-body py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
             <?php
             if( have_rows('vehicles_info_1_info_list') ):
