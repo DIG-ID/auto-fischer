@@ -1,7 +1,5 @@
-<section class="section-gallery py-56">
+<section class="section-gallery py-56 hidden invisible xl:block xl:visible">
 	<div class="theme-container">
-
-
 		<div class="swiper gallerySwiper">
 			<?php
 			$images = get_field( 'gallery' );
@@ -18,5 +16,5 @@
 			endif;
 			?>
 		</div>
-		</div>
+	</div>
 </section>

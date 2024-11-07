@@ -4,7 +4,7 @@
 			<div class="grid grid-cols-3 py-6 md:py-8 xl:py-9">
 				<div class="col-span-1 flex justify-start items-center z-50">
 					<div class="site-branding text-white">
-						<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url" class="navbar-brand custom-logo-link max-w-[238px]"><?php do_action( 'theme_logo' ); ?></a>
+						<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url" class="navbar-brand custom-logo-link"><?php do_action( 'theme_logo' ); ?></a>
 					</div>
 				</div>
 

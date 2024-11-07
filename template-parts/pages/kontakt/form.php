@@ -1,9 +1,9 @@
-<section class="section-form bg-transparent pb-24">
+<section class="section-form bg-transparent pb-16 xl:pb-24">
 	<div class="theme-container theme-grid">
 		<div class="col-span-2 md:col-span-6 xl:col-span-6">
-			<h2 class="title-secondary !font-normal mb-8"><?php the_field( 'intro_subtitle' ); ?></h2>
-			<p class="text-body mb-12"><?php the_field( 'intro_description' ); ?></p>
-			<div class="contact-form-wrapper gap-x-7">
+			<h2 class="title-secondary !font-normal mb-7"><?php the_field( 'intro_subtitle' ); ?></h2>
+			<p class="text-body mb-7 xl:mb-12"><?php the_field( 'intro_description' ); ?></p>
+			<div class="contact-form-wrapper gap-x-7 mb-11 md:md-0">
 				<?php
 				$form = get_field( 'contact_form' );
 				if ( $form ) :
@@ -12,7 +12,7 @@
 				?>
 			</div>
 		</div>
-		<div class="col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 ">
+		<div class="col-span-2 md:col-span-5 xl:col-span-5 xl:col-start-8 ">
 			<div class="kontkact-box bg-white border border-[#E1E1E1] p-10 rounded-2xl">
 				<h2 class="title-smallest mb-8"><?php esc_html_e( 'Kontakt', 'auto-fischer' ); ?></h2>
 				<?php

@@ -189,7 +189,6 @@ add_action(
 	}
 );
 
-
 // Disable Attachment Pages.
 add_action(
 	'template_redirect',
