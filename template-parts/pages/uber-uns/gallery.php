@@ -1,4 +1,4 @@
-<section class="section-gallery py-24 md:pt-32 xl:py-56">
+<section class="section-gallery py-24 md:pt-32 xl:py-44 xl:pt-56">
 	<div class="theme-container">
 		<div class="swiper gallerySwiper">
 			<?php
