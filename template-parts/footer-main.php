@@ -5,7 +5,9 @@
                 <p class="title-smaller text-white !font-normal mb-6 md:mb-0 max-w-[260px] md:max-w-[300px] lg:max-w-none"><?php echo get_field( 'footer_contact_text', 'option' ); ?></p>
             </div>
             <div class="col-span-2 md:col-span-3 xl:col-span-3 md:text-right col-start-1 md:col-start-4 xl:col-start-10">
-                <a href="tel:<?php echo get_field( 'general_phone_number', 'option' ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white"><?php echo get_field( 'general_phone_number', 'option' ); ?></a>
+							<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', get_field( 'general_phone_number', 'option' ) ) ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white">
+								<?php echo get_field( 'general_phone_number', 'option' ); ?>
+							</a>
             </div>
         </div>
     </div>

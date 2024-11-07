@@ -1,5 +1,5 @@
 <section class="section-contact bg-white pt-8 md:pt-20 xl:pt-28 pb-0 relative overflow-hidden px-6 xl:px-0">
-    <div class="xl:px-6 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
+    <div class="xl:px-0 lg:px-0 mx-auto w-full lg:max-w-[1700px] theme-grid bg-dark-blue-shade rounded-2xl">
         <div class="col-span-2 md:col-span-6 xl:col-span-6">
             <?php
             $contactImg = get_field( 'contact_image' );

@@ -1,7 +1,7 @@
 <section class="section-reviews bg-[#F9FBFC] relative pt-16 md:pt-20 xl:pt-32 pb-28 overflow-hidden">
         <div class="theme-container theme-grid">
             <div class="col-span-2 md:col-span-3 xl:col-span-5">
-                <p class="title-secondary !text-[40px] text-darker-blue-shade mb-10"><?php echo get_field( 'reviews_title' ); ?></p>
+                <p class="title-secondary !text-[40px] text-darker-blue-shade max-w-[304px] md:max-w-[342px]  xl:max-w-full !leading-[45px] mb-10"><?php echo get_field( 'reviews_title' ); ?></p>
             </div>
             <div class="col-span-2 md:col-span-3 xl:col-span-3 col-start-1 md:col-start-4 xl:col-start-10 text-right">
                 <?php

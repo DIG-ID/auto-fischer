@@ -32,6 +32,10 @@ window.addEventListener("load", () => {
             spaceBetween: 24,
             speed: 800,
             loop: false,
+            navigation: {
+                nextEl: ".arrow-right",
+                prevEl: ".arrow-left",
+            },
         });
     }
 
@@ -56,7 +60,7 @@ window.addEventListener("load", () => {
                 el: ".pagination-info",
                 type: "custom",
                 renderCustom: function (swiper, current, total) {
-                    return `${current} of ${total}`;
+                    return `${current} von ${total}`;
                 },
             },
             navigation: {
@@ -68,11 +72,30 @@ window.addEventListener("load", () => {
 
     if (document.body.classList.contains("page-template-page-uber-uns")) {
         var gallerySwiper = new Swiper(".gallerySwiper", {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 24,
             loop: true,
             centeredSlides: true,
             grabCursor: true,
+            pagination: {
+                el: ".pagination-info",
+                type: "custom",
+                renderCustom: function (swiper, current, total) {
+                    return `${current} von ${total}`;
+                },
+            },
+            navigation: {
+                nextEl: ".arrow-right",
+                prevEl: ".arrow-left",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1.5,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
             /*effect: "coverflow",
             coverflowEffect: {
                 rotate: 0,

@@ -32,12 +32,12 @@
 				$team_query->the_post();
 				?>
 				<div class="swiper-slide">
-					<div class="team-member-card">
+					<div class="team-member-card mb-6 md:mb-12 xl:mb-0">
 						<?php
 						if ( has_post_thumbnail() ) :
 							the_post_thumbnail( 'full', array( 'class' => 'w-full h-auto object-cover rounded-xl' ) );
 						else :
-							echo '<div class="w-full h-[415px] bg-dark-blue-shade flex items-center justify-center rounded-xl"></div>';
+							echo '<div class="w-full h-[224px] md:h-[256px] xl:h-[415px] bg-dark-blue-shade flex items-center justify-center rounded-xl"></div>';
 						endif;
 						?>
 						<div class="mt-4 md:mt-6 xl:mt-7 text-left">
@@ -48,7 +48,14 @@
 				</div>
 				<?php
 			endwhile;
-			echo '</div></div>';
+			echo '
+			</div>
+				<!-- Pagination Controls -->
+				<div class="team-pagination xl:flex xl:visible items-center justify-start space-x-4 mt-8 hidden invisible">
+					<button class="arrow-left border border-darker-blue-shade py-[0.45rem] px-[1.55rem] rounded-xl"><</button>
+					<button class="arrow-right border border-darker-blue-shade py-[0.45rem] px-[1.55rem] rounded-xl">></button>
+				</div>
+			</div>';
 		endif;
 		wp_reset_postdata();
 		?>

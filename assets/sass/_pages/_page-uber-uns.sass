@@ -8,4 +8,22 @@
       @apply flex flex-col items-center justify-center transition-all duration-700 ease-in-out scale-100 opacity-95 max-w-full
 
     .swiper-slide-active
-      @apply scale-125 opacity-100 z-10
+      @apply scale-150 opacity-100 z-10
+
+
+@media ( max-width: 1024px )
+  .page-template-page-uber-uns
+    .gallerySwiper
+      .swiper-slide
+        @apply scale-75
+      .swiper-slide-active
+        @apply scale-100 opacity-100
+
+@media ( max-width: 768px )
+  .page-template-page-uber-uns
+    .gallerySwiper
+      @apply overflow-hidden
+      .swiper-slide
+        @apply scale-100 opacity-100
+      .swiper-slide-active
+        @apply scale-100
