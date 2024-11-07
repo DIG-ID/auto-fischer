@@ -1,7 +1,7 @@
-<section class="section-vehicles-info-1 bg-light-blue-shade py-20 md:py-40 relative overflow-hidden">
+<section class="section-vehicles-info-1 bg-light-blue-shade pb-0 pt-20 md:py-40 relative overflow-hidden">
     <div class="px-6 2xl:px-0 mx-auto w-full lg:max-w-[1440px] grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-6">
-        <div class="col-span-2 md:col-span-3 xl:col-span-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 py-24 order-2 md:order-1">
-            <div class="col-span-1 md:col-span-1 xl:col-span-2">
+        <div class="col-span-2 md:col-span-3 xl:col-span-6 md:grid md:grid-cols-3 xl:grid-cols-6 gap-6 py-24 order-2 md:order-1 auto-rows-max content-center">
+            <div class="w-[30%] md:w-full float-left md:float-none mr-[4%] md:mr-0 md:col-span-1 xl:col-span-2">
                 <?php
                 $goodImg_1 = get_field( 'vehicles_info_1_image_1' );
                 if ( $goodImg_1 ) :
@@ -9,7 +9,7 @@
                 endif;
                 ?>
             </div>
-            <div class="col-span-1 md:col-span-2 xl:col-span-4">
+            <div class="w-[64%] md:w-full float-left md:float-none md:col-span-2 xl:col-span-4">
                 <?php
                 $goodImg_2 = get_field( 'vehicles_info_1_image_2' );
                 if ( $goodImg_2 ) :
@@ -17,7 +17,7 @@
                 endif;
                 ?>
             </div>
-            <div class="col-span-2 md:col-span-3 xl:col-span-6">
+            <div class="w-full float-left md:float-none mt-4 md:mt-0 md:col-span-3 xl:col-span-6">
                 <?php
                 $goodImg_3 = get_field( 'vehicles_info_1_image_3' );
                 if ( $goodImg_3 ) :
@@ -28,7 +28,7 @@
         </div>
         <div class="col-span-2 md:col-span-3 xl:col-span-5 col-start-1 md:col-start-4 xl:col-start-8 flex flex-col justify-center order-1 md:order-2">
             <h2 class="title-secondary !text-[40px] !leading-none"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
-            <p class="text-body py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
+            <p class="text-body py-5 md:py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
             <?php
             if( have_rows('vehicles_info_1_info_list') ):
                 while( have_rows('vehicles_info_1_info_list') ) : the_row(); ?>
@@ -45,7 +45,7 @@
                 $link_title  = $button_good['title'];
                 $link_target = $button_good['target'] ? $button_good['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-blue max-w-[209px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-blue max-w-[209px] mt-10 mx-auto md:mx-0" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
@@ -53,11 +53,11 @@
     </div>
 </section>
 
-<section class="section-vehicles-info-2 bg-white py-40 relative overflow-hidden">
+<section class="section-vehicles-info-2 bg-white pb-0 pt-24 md:py-40 relative overflow-hidden">
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-3 xl:col-span-5 flex flex-col justify-center">
-            <h2 class="title-secondary"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
-            <p class="text-body py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
+            <h2 class="title-secondary !text-[40px] !leading-none"><?php echo get_field( 'vehicles_info_1_title' ); ?></h2>
+            <p class="text-body py-5 md:py-[59px] max-w-[460px]"><?php echo get_field( 'vehicles_info_1_description' ); ?></p>
             <?php
             if( have_rows('vehicles_info_2_info_list') ):
                 while( have_rows('vehicles_info_2_info_list') ) : the_row(); ?>
@@ -74,13 +74,13 @@
                 $link_title  = $button_good['title'];
                 $link_target = $button_good['target'] ? $button_good['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-orange max-w-[166px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-orange max-w-[166px] mt-10  mx-auto md:mx-0" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
         </div>
-        <div class="col-span-2 md:col-span-3 xl:col-span-6 col-start-1 md:col-start-4 xl:col-start-8 py-24 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
-            <div class="col-span-1 md:col-span-2 xl:col-span-4">
+        <div class="col-span-2 md:col-span-3 xl:col-span-6 col-start-1 md:col-start-4 xl:col-start-8 py-24 md:grid md:grid-cols-3 xl:grid-cols-6 gap-6 auto-rows-max content-center">
+            <div class="w-[64%] md:w-full mr-[4%] md:mr-0 float-left md:float-none col-span-1 md:col-span-2 xl:col-span-4">
                 <?php
                 $goodImg_2 = get_field( 'vehicles_info_2_image_1' );
                 if ( $goodImg_2 ) :
@@ -88,7 +88,7 @@
                 endif;
                 ?>
             </div>
-            <div class="col-span-1 md:col-span-1 xl:col-span-2">
+            <div class="w-[30%] md:w-full float-left md:float-none md:col-span-1 xl:col-span-2">
                 <?php
                 $goodImg_1 = get_field( 'vehicles_info_2_image_2' );
                 if ( $goodImg_1 ) :
@@ -97,7 +97,7 @@
                 ?>
             </div>
             
-            <div class="col-span-2 md:col-span-3 xl:col-span-6">
+            <div class="w-full float-left md:float-none mt-4 md:mt-0 md:col-span-3 xl:col-span-6">
                 <?php
                 $goodImg_3 = get_field( 'vehicles_info_2_image_3' );
                 if ( $goodImg_3 ) :
