@@ -25,7 +25,7 @@
 					</button>
 
 					<!-- Main Menu -->
-					<div id="main-menu-container" class="main-menu-container hidden lg:flex flex-col xl:flex-row xl:items-center absolute pt-40 lg:pt-0 px-6 lg:px-0 lg:relative top-0 lg:top-0 left-0 lg:left-auto w-full lg:w-auto h-[100vh] lg:h-auto bg-dark-blue-shade lg:bg-transparent z-40 lg:z-auto transition-transform duration-300 ease-in-out transform -translate-y-full lg:translate-y-0">
+					<div id="main-menu-container" class="main-menu-container opacity-0 lg:opacity-100 lg:flex flex-col xl:flex-row xl:items-center absolute pt-40 lg:pt-0 px-6 lg:px-0 lg:relative top-0 lg:top-0 left-0 lg:left-auto w-full lg:w-auto h-[100vh] lg:h-auto bg-dark-blue-shade lg:bg-transparent z-40 lg:z-auto transition-transform duration-300 ease-in-out transform -translate-y-full lg:translate-y-0">
 						<?php
 						wp_nav_menu(
 							array(
@@ -53,14 +53,12 @@
 	const closeIcon = document.getElementById('close-icon');
 
 	burgerToggle.addEventListener('click', () => {
-		// Toggle menu visibility with transition
-		menuContainer.classList.toggle('hidden');
-		menuContainer.classList.toggle('transform');
-		menuContainer.classList.toggle('-translate-y-full');
-		menuContainer.classList.toggle('translate-y-0');
-
-		// Toggle icons
-		burgerIcon.classList.toggle('hidden');
-		closeIcon.classList.toggle('hidden');
+	// Toggle menu visibility with transition
+	menuContainer.classList.toggle('open'); // Apply the open class for animation
+	
+	// Toggle icons
+	burgerIcon.classList.toggle('hidden');
+	closeIcon.classList.toggle('hidden');
 	});
+
 </script>
