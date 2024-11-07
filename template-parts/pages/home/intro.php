@@ -4,7 +4,7 @@
     if ( $heroimage ) :
         echo wp_get_attachment_image( $heroimage, 'full', false, array( 'class' => 'w-3/5 xl:w-1/2 object-cover absolute top-0 right-0 hidden md:block' ) );
     endif;
-    $heroimage_m = get_field( 'intro_image' );
+    $heroimage_m = get_field( 'intro_image_mobile' );
     if ( $heroimage_m ) :
         echo wp_get_attachment_image( $heroimage_m, 'full', false, array( 'class' => 'w-full object-cover relative md:hidden' ) );
     endif;

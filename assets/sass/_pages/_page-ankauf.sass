@@ -7,7 +7,13 @@
 
 .section-form
     .wpcf7 .wpcf7-form .wpcf7-form-control.wpcf7-submit
-        @apply btn-main btn-main--full-blue
+        @apply font-sans text-[15px] leading-[26px] font-medium pb-[0.714rem] pt-[0.914rem] pl-[26px] md:pl-[26px] pr-[26px] md:pr-[26px] text-center border rounded-xl whitespace-nowrap break-keep transition-all duration-300 ease-in-out inline-block relative bg-blue-shade
+        &:hover
+            @apply bg-dark-blue-shade text-white border-dark-blue-shade
+        &:focus
+            @apply text-white bg-blue-shade outline-blue-shade
+        &:active
+            @apply text-white bg-darker-blue-shade
     label.title-pre
         font-family: dm-sans, sans-serif
         font-size: 16px
