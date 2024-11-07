@@ -23,6 +23,15 @@
     &:active
       @apply text-dark-blue-shade bg-transparent
 
+  &--transparent-bluebg
+    @apply text-white border-white bg-transparent
+    &:hover
+      @apply bg-darker-blue-shade text-white border-darker-blue-shade
+    &:focus
+      @apply text-white bg-transparent outline-transparent
+    &:active
+      @apply text-white bg-transparent
+
   &--full-blue
     @apply text-white border-blue-shade bg-blue-shade
     &::after
