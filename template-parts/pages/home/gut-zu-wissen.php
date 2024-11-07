@@ -26,13 +26,13 @@
                 $link_title  = $button_good['title'];
                 $link_target = $button_good['target'] ? $button_good['target'] : '_self';
                 ?>
-                <a class="btn-main btn-main--full-blue max-w-[176px] mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="btn-main btn-main--full-blue max-w-[176px] mt-5 lg:mt-10" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 			<?php
 				endif;
 			?>
         </div>
     </div>
-    <div class="theme-container theme-grid">
+    <div class="theme-container theme-grid mt-16 lg:mt-0">
         <div class="col-span-1 md:col-span-3 xl:col-span-3 flex flex-col justify-center text-center py-14">
             <p class="font-sans text-[38px] leading-none font-bold text-orange-shade"><?php echo get_field( 'good_to_know_stats_1_value' ); ?></p>
             <p class="text-body !font-bold uppercase"><?php echo get_field( 'good_to_know_stats_1_text' ); ?></p>
