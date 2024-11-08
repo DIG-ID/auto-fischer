@@ -12,8 +12,8 @@
     <div class="theme-container theme-grid relative z-30">
         <div class="col-span-2 md:col-span-5 xl:col-span-6 pt-5 md:pt-0 mb-12">
             <?php do_action( 'breadcrumbs' ); ?>
-            <h1 class="title-secondary text-darker-blue-shade mb-14 mt-7 !text-[40px]"><?php echo get_field( 'intro_title' ); ?></h1>
-            <p class="title-secondary !font-normal mb-7 md:mb-16 max-w-none md:max-w-96 xl:max-w-[620px]"><?php echo get_field( 'intro_subtitle' ); ?></p>
+            <h1 class="title-secondary text-darker-blue-shade mb-14 mt-7 !text-[40px]"><?php the_field( 'intro_title' ); ?></h1>
+            <p class="title-secondary !font-normal mb-7 md:mb-16 max-w-none md:max-w-96 xl:max-w-[620px]"><?php the_field( 'intro_subtitle' ); ?></p>
             <?php
 				$button_1 = get_field( 'intro_button_1' );
 				if ( $button_1 ) :

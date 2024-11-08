@@ -6,10 +6,10 @@ function fischer_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-menu'      => __( 'Main Menu', 'fischer' ),
-			'footer-menu-left' => __( 'Footer Menu Left', 'fischer' ),
-			'footer-menu-right' => __( 'Footer Menu Right', 'fischer' ),
-			'copyright-menu' => __( 'Copyright Menu', 'fischer' ),
+			'main-menu'      => __( 'Main Menu', 'auto-fischer' ),
+			'footer-menu-left' => __( 'Footer Menu Left', 'auto-fischer' ),
+			'footer-menu-right' => __( 'Footer Menu Right', 'auto-fischer' ),
+			'copyright-menu' => __( 'Copyright Menu', 'auto-fischer' ),
 		)
 	);
 

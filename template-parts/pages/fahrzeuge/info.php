@@ -9,8 +9,8 @@
             ?>
         </div>
         <div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-4 xl:col-start-8 flex flex-col justify-center">
-            <h2 class="title-secondary mt-8 md:mt-0"><?php echo get_field( 'good_to_know_title' ); ?></h2>
-            <p class="text-body py-8 md:py-[59px] max-w-[440px]"><?php echo get_field( 'good_to_know_text' ); ?></p>
+            <h2 class="title-secondary mt-8 md:mt-0"><?php the_field( 'good_to_know_title' ); ?></h2>
+            <p class="text-body py-8 md:py-[59px] max-w-[440px]"><?php the_field( 'good_to_know_text' ); ?></p>
             <?php
             if( have_rows('good_to_know_list') ):
                 while( have_rows('good_to_know_list') ) : the_row(); ?>

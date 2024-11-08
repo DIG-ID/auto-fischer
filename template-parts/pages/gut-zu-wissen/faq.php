@@ -2,7 +2,7 @@
     <div class="theme-container theme-grid">
 
         <div class="col-span-2 md:col-span-6 xl:col-span-8 xl:col-start-3">
-            <h2 class="title-secondary text-center mb-12"><?php echo get_field( 'faq_title' ); ?></h2>
+            <h2 class="title-secondary text-center mb-12"><?php the_field( 'faq_title' ); ?></h2>
         </div>
         <div class="col-span-2 md:col-span-6 xl:col-span-8 xl:col-start-3">
             <?php if( have_rows('faq_list') ): ?>

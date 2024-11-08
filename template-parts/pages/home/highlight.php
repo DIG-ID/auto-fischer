@@ -7,8 +7,8 @@
     ?>
     <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 py-28 h-full">
         <div class="col-span-2 md:col-span-6 xl:col-span-12 flex flex-col text-center justify-end items-center">
-            <h2 class="title-secondary text-light-blue-shade"><?php echo get_field( 'highlight_title' ); ?></h2>
-            <p class="text-body text-light-blue-shade pt-7 pb-12"><?php echo get_field( 'highlight_text' ); ?></p>
+            <h2 class="title-secondary text-light-blue-shade"><?php the_field( 'highlight_title' ); ?></h2>
+            <p class="text-body text-light-blue-shade pt-7 pb-12"><?php the_field( 'highlight_text' ); ?></p>
             <?php
             $button_highlight = get_field( 'highlight_button' );
             if ( $button_highlight ) :

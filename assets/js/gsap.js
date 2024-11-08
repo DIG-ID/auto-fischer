@@ -27,4 +27,19 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
+// Scroll to top button.
+const scrollToTopBtn = document.getElementById('scrollToTop');
 
+// Track scroll position with Lenis
+lenis.on('scroll', ({ scroll }) => {
+	if (scroll > 400) {
+		gsap.to(scrollToTopBtn, { autoAlpha: 1, y: 0, duration: 0.6, });
+	} else {
+		gsap.to(scrollToTopBtn, { autoAlpha: 0, y: 64, duration: .3, });
+	}
+});
+
+scrollToTopBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	lenis.scrollTo(0); // Smooth scroll to top
+});

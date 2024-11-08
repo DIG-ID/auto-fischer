@@ -1,8 +1,8 @@
 <section class="section-buy-sell bg-white pb-10 md:pb-32 relative overflow-hidden">
     <div class="theme-container theme-grid">
         <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-light-blue-shade rounded-2xl py-12 px-8 md:p-20 mb-14 md:mb-8 xl:mb-0 relative">
-            <h3 class="title-smaller"><?php echo get_field( 'buy_title' ); ?></h3>
-            <p class="text-body max-w-[310px] py-7"><?php echo get_field( 'buy_text' ); ?></p>
+            <h3 class="title-smaller"><?php the_field( 'buy_title' ); ?></h3>
+            <p class="text-body max-w-[310px] py-7"><?php the_field( 'buy_text' ); ?></p>
             <?php
             $button_buy = get_field( 'buy_button' );
             if ( $button_buy ) :
@@ -22,8 +22,8 @@
             ?>
         </div>
         <div class="col-span-2 md:col-span-6 xl:col-span-6 bg-[#FFEDDE] rounded-2xl py-12 px-8 md:p-20 relative">
-            <h3 class="title-smaller"><?php echo get_field( 'sell_title' ); ?></h3>
-            <p class="text-body max-w-[350px] py-7"><?php echo get_field( 'sell_text' ); ?></p>
+            <h3 class="title-smaller"><?php the_field( 'sell_title' ); ?></h3>
+            <p class="text-body max-w-[350px] py-7"><?php the_field( 'sell_text' ); ?></p>
             <?php
             $button_sell = get_field( 'sell_button' );
             if ( $button_sell ) :
