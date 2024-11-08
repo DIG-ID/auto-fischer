@@ -67,6 +67,10 @@ window.addEventListener("load", () => {
                 nextEl: ".arrow-right",
                 prevEl: ".arrow-left",
             },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
         });
     }    
 
@@ -78,7 +82,7 @@ window.addEventListener("load", () => {
             centeredSlides: true,
             grabCursor: true,
             autoplay: {
-                delay: 2500,
+                delay: 4000,
                 disableOnInteraction: false,
             },
             pagination: {
