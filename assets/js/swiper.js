@@ -77,6 +77,10 @@ window.addEventListener("load", () => {
             loop: true,
             centeredSlides: true,
             grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: ".pagination-info",
                 type: "custom",
