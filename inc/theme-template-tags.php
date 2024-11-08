@@ -5,7 +5,7 @@
  */
 function theme_before_main_content() {
 	?>
-	<main id="main-content" class="main-content overflow-hidden mt-auto relative lg:static">
+	<main id="main-content" class="main-content overflow-hidden mt-auto relative lg:static pt-[82px] lg:pt-0">
 	<?php
 }
 
