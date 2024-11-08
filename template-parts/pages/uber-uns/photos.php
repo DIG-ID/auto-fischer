@@ -3,8 +3,8 @@
 		<div class="col-span-2 md:col-span-6 xl:col-span-7 grid grid-cols-7 gap-x-4 md:gap-x-6 xl:gap-x-8">
 			<div class="col-span-2 flex flex-col gap-4 md:gap-x-6  xl:gap-y-8">
 				<div class="bg-dark-blue-shade rounded-2xl h-full pl-3 md:pl-6 xl:pl-8 pt-5 md:pt-8 xl:pt-10">
-					<p class="font-sans font-medium text-orange-shade text-3xl md:text-5xl mb-2 md:mb-6 xl:mb-6">20</p>
-					<p class="font-smaller-exception font-sans font-bold text-white text-base md:text-3xl xl:text-3xl leading-[18px] md:leading-[45px] xl:leading-[2.813rem]"><?php printf( esc_html__( 'Jahre im%s Geschäft', 'auto-fischer' ), '<br>' ); ?></p>
+					<p class="font-sans font-medium text-orange-shade text-3xl md:text-5xl mb-2 md:mb-6 xl:mb-6">20+</p>
+					<p class="font-smaller-exception font-sans font-bold text-white text-base md:text-3xl xl:text-3xl leading-[18px] md:leading-[45px] xl:leading-[2.813rem]"><?php printf( esc_html__( 'Jahre%s Erfahrung', 'auto-fischer' ), '<br>' ); ?></p>
 				</div>
 				<?php
 				$img_01 = get_field( 'photos_image_1' );
