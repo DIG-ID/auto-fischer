@@ -3,13 +3,19 @@
         .menu-item
             @apply lg:text-light-blue-shade
 
-.home, .page-template-page-gut-zu-wissen
-    #header-main
-        @apply lg:absolute   
+.header-main, .navbar > .grid
+    @apply transition-all duration-300 ease-out
+.header-main.scrolled
+    @apply bg-white
+    .navbar > .grid
+        @apply py-6
+    #main-menu
+        .menu-item
+            @apply lg:text-dark-blue-shade
 
 #main-menu
     .menu-item
-        @apply font-sans text-[20px] lg:text-[15px] font-medium leading-[32px] lg:leading-[26px] text-light-blue-shade lg:text-dark-blue-shade px-5 lg:px-0 py-6 lg:py-0 mb-2 xl:mr-0 rounded-xl lg:rounded-none
+        @apply font-sans text-[20px] lg:text-[15px] font-medium leading-[32px] lg:leading-[26px] text-light-blue-shade lg:text-dark-blue-shade px-5 lg:px-0 py-6 lg:py-0 mb-2 xl:mr-0 rounded-xl lg:rounded-none transition-all duration-300 ease-in-out
         &.current_page_item
             @apply bg-[#ffffff1a] lg:bg-transparent
         &:hover, &:active

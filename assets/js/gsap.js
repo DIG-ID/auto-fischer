@@ -27,19 +27,32 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
-// Scroll to top button.
+// Scroll to top button & fixed header
 const scrollToTopBtn = document.getElementById('scrollToTop');
+const header = document.querySelector('header');
+const threshold = 0;
+const showScrollToTopThreshold = 400;
+
+// Initial styles for scroll-to-top button
+gsap.set(scrollToTopBtn, { autoAlpha: 0, y: 64 });
 
 // Track scroll position with Lenis
 lenis.on('scroll', ({ scroll }) => {
-	if (scroll > 400) {
-		gsap.to(scrollToTopBtn, { autoAlpha: 1, y: 0, duration: 0.6, });
-	} else {
-		gsap.to(scrollToTopBtn, { autoAlpha: 0, y: 64, duration: .3, });
-	}
+  // Toggle scroll-to-top button visibility and animation
+  const showScrollButton = scroll > showScrollToTopThreshold;
+  gsap.to(scrollToTopBtn, {
+    autoAlpha: showScrollButton ? 1 : 0,
+    y: showScrollButton ? 0 : 64,
+    duration: showScrollButton ? 0.6 : 0.3,
+    ease: 'power2.out'
+  });
+
+  // Toggle header class
+  header.classList.toggle('scrolled', scroll > threshold);
 });
 
+// Scroll-to-top button click event
 scrollToTopBtn.addEventListener('click', (e) => {
-	e.preventDefault();
-	lenis.scrollTo(0); // Smooth scroll to top
+  e.preventDefault();
+  lenis.scrollTo(0); // Smooth scroll to top
 });
