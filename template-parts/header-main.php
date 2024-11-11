@@ -1,4 +1,4 @@
-<header id="header-main" class="header-main w-full fixed lg:relative z-50" itemscope itemtype="http://schema.org/WebSite">
+<header id="header-main" class="header-main w-full fixed z-50" itemscope itemtype="http://schema.org/WebSite">
 	<section id="header-wrapper" class="header-wrapper bg-transparent">
 		<nav class="navbar relative theme-container bg-white lg:bg-transparent" role="navigation" aria-label="<?php esc_attr_e( 'Main menu', 'stricker' ); ?>">
 			<div class="grid grid-cols-3 py-6 md:py-8 xl:py-9">

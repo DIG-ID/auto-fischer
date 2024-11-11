@@ -8,7 +8,7 @@
 				<ul class="swiper-wrapper">
 					<?php foreach ( $images as $image_id ) : ?>
 						<li class="swiper-slide">
-							<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'max-w-full w-full object-cover' ) ); ?>
+							<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'max-w-full w-full object-cover rounded-2xl' ) ); ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>
