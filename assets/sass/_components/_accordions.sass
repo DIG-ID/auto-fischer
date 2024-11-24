@@ -1,0 +1,20 @@
+.faq-item
+    .faq-answer
+        @apply bg-[#F9FBFC] overflow-hidden transition-[max-height] duration-500 ease-in-out
+        max-height: 0 // Hidden by default
+        &.open
+            max-height: 500px // Adjust to max potential height or use a large enough value
+        &.hidden
+            @apply bg-white
+
+    .faq-question
+        @apply bg-[#F9FBFC]
+        &.q-closed
+            @apply bg-white
+
+.specs-item
+    .specs-text
+        @apply overflow-hidden transition-[max-height] duration-500 ease-in-out
+        max-height: 0
+        ul
+            @apply list-disc mb-8 pl-4

@@ -1,0 +1,26 @@
+.unser-highlight-template-default
+    .table-container table
+        width: 100%
+        border-collapse: collapse
+
+        th, td
+            padding: 10px
+            text-align: left
+            border-bottom: 1px solid #ddd
+
+        @media (max-width: 1279px)
+            display: block
+
+            tbody
+                display: grid
+                grid-template-columns: 1fr 1fr
+                gap: 10px
+
+            tr 
+                display: contents
+
+            td 
+                display: flex
+                flex-direction: column
+                padding: 15px
+                font-size: 14px

@@ -1,0 +1,39 @@
+.unser-highlight-template-default
+    .table-car-info
+        table
+            @apply block py-10 px-1 md:px-9 bg-[#F9FBFC] border border-[#E1E1E1] rounded-2xl
+            thead
+                th
+                    @apply text-left font-sans font-medium text-[26px] leading-[30px] pb-8 pl-0
+            tbody
+                tr
+                    @apply border-b border-[#E1E1E1]
+                    td
+                        @apply font-sans font-normal text-[15px] pb-[10px] pt-3 pr-4 pl-0 leading-[18px]
+                        &:nth-child(2)
+                            @apply pr-16
+
+    .schedule-sidebar
+        table
+            @apply block pl-12
+            tbody
+                tr
+                    td
+                        @apply pr-12
+
+    .highlights-slider
+        .swiper-slide img
+            max-height: 566px
+
+    .thumbnail-slider
+        .swiper-pagination
+            position: static
+            margin: 0 auto
+            padding: 20px 0
+
+        .swiper-pagination-bullet
+            background-color: #000
+            opacity: 0.6
+
+        .swiper-pagination-bullet-active
+            opacity: 1

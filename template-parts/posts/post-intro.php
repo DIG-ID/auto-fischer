@@ -1,18 +1,51 @@
-<div class="section-post-intro bg-blue-shade-5 text-blue-shade-2">
-	<div class="theme-container">
-		<div class="theme-grid">
-			<div class="col-span-2 lg:col-span-8  invisible fade-in--noscroll">
-				<?php
-				if ( has_post_thumbnail() ) :
-					the_post_thumbnail( 'full', array( 'class' => 'w-full object-cover h-[251px] lg:h-[565px]' ) );
-				else :
-					?><span class="w-full h-[251px] lg:h-[565px] bg-blue-shade-1 text-blue-shade-2 flex justify-center items-center rounded-[12px] font-poppins text-xs text-center">no featured image</span><?php
-				endif;
-				?>
+<div class="section-post-intro pt-20">
+	<div class="theme-container theme-grid">
+			<div class="col-span-2 md:col-span-6 xl:col-span-12 pb-8">
+				<?php do_action( 'breadcrumbs' ); ?>
 			</div>
-			<div class="col-span-2 lg:col-span-4 invisible hidden lg:block lg:visible fade-in--noscroll">
-				<?php get_template_part( 'template-parts/posts/post-related' ); ?>
-			</div>
-		</div>
+			<?php 
+			// Get the gallery field from ACF
+			$gallery = get_field('gallery');
+			if ($gallery): 
+			?>
+				<!-- Slider Section -->
+				<div class="col-span-2 md:col-span-6 xl:col-span-8">
+					<div class="swiper highlights-slider">
+						<div class="swiper-wrapper max-h-[566px]">
+							<?php foreach ($gallery as $image_id): 
+								// Get image URL and alt text
+								$image_url = wp_get_attachment_image_src($image_id, 'highlights-slider')[0];
+								$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+							?>
+								<div class="swiper-slide">
+									<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="w-full h-auto rounded-2xl">
+								</div>
+							<?php endforeach; ?>
+						</div>
+						<!-- Optional Navigation -->
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+
+				<div class="col-span-2 md:col-span-6 xl:col-span-4 hidden xl:block">
+					<div class="swiper thumbnail-slider">
+						<div class="swiper-wrapper">
+							<?php foreach ($gallery as $image_id): 
+								// Get image URL and alt text
+								$image_url = wp_get_attachment_image_src($image_id, 'highlights-slider-thumbs')[0];
+								$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+							?>
+								<div class="swiper-slide">
+									<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="w-full h-auto rounded-lg">
+								</div>
+							<?php endforeach; ?>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+
+
+			<?php endif; ?>
 	</div>
 </div>

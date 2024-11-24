@@ -27,6 +27,10 @@ function fischer_theme_setup() {
 
 	add_image_size( 'long-term-image', 975, 650, array( 'center', 'center' ) );
 
+	add_image_size( 'highlights-slider', 950, 566, array( 'center', 'center' ) );
+
+	add_image_size( 'highlights-slider-thumbs', 245, 186, array( 'center', 'center' ) );
+
 }
 
 add_action( 'after_setup_theme', 'fischer_theme_setup' );

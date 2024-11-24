@@ -33,6 +33,67 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        // Accordion in Car Highlights
+        if (document.body.classList.contains("unser-highlight-template-default")) {
+            const faqQuestions = document.querySelectorAll('.specs-title');
+        
+            faqQuestions.forEach(question => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.icon-plus img'); // Select the <img> inside .icon-plus
+        
+                // Ensure pre-opened state respects max-height
+                if (answer.classList.contains('open')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px'; // Set max-height to its content height
+                }
+        
+                question.addEventListener('click', function () {
+                    const isOpen = answer.classList.contains('open');
+        
+                    // Close all other answers
+                    document.querySelectorAll('.specs-text').forEach(el => {
+                        if (el !== answer) {
+                            el.style.maxHeight = el.scrollHeight + 'px'; // Set current height for smooth transition
+                            setTimeout(() => (el.style.maxHeight = '0px'), 10); // Trigger transition to 0
+                            el.classList.remove('open');
+                            el.previousElementSibling.classList.add('q-closed');
+                        }
+                    });
+        
+                    document.querySelectorAll('.icon-plus img').forEach(img => {
+                        if (img !== icon) {
+                            img.src = '/wp-content/themes/auto-fischer/assets/images/arrow-down-sign.svg';
+                        }
+                    });
+        
+                    // Toggle the current answer
+                    if (!isOpen) {
+                        question.classList.remove('q-closed');
+                        answer.classList.add('open');
+                        icon.src = '/wp-content/themes/auto-fischer/assets/images/arrow-up-sign.svg';
+        
+                        // Dynamically set max-height for smooth opening
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+        
+                        // Optional: Reset to fit-content after animation
+                        setTimeout(() => {
+                            answer.style.maxHeight = 'fit-content';
+                        }, 500); // Match transition duration in your CSS
+                    } else {
+                        question.classList.add('q-closed');
+                        answer.classList.remove('open');
+                        icon.src = '/wp-content/themes/auto-fischer/assets/images/arrow-down-sign.svg';
+        
+                        // Set max-height to current height before transitioning to 0
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        setTimeout(() => (answer.style.maxHeight = '0px'), 10); // Smoothly transition to 0
+                    }
+                });
+            });
+        }
+        
+         
+        
+
         if (document.body.classList.contains("page-template-page-ankauf")) {
             // Configuration for each file input and its corresponding preview slots
             const fileInputs = [

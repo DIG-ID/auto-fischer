@@ -56,3 +56,71 @@ scrollToTopBtn.addEventListener('click', (e) => {
   e.preventDefault();
   lenis.scrollTo(0); // Smooth scroll to top
 });
+
+if (document.body.classList.contains("unser-highlight-template-default")) {
+	//sticky sidebar for car highlights
+	// Create a GSAP Context
+	let context = gsap.context(() => {
+		if (window.matchMedia("(min-width: 1280px)").matches) {
+			const sidebar = document.querySelector('#sticky-sidebar');
+			const sidebarContainer = sidebar?.parentElement; // Parent container of the sidebar
+	
+			if (sidebar && sidebarContainer) {
+				gsap.to(sidebar, {
+					scrollTrigger: {
+						trigger: sidebar,
+						start: 'top top+=100', // 100px gap from the top
+						end: () => {
+							// Dynamically calculate the end with a 320px offset
+							const containerBottom = sidebarContainer.getBoundingClientRect().bottom + window.scrollY;
+							return `${containerBottom - window.innerHeight - 660}px top`; 
+						},
+						scrub: true, // Smooth sticky behavior
+						pin: true, // Makes the sidebar sticky
+						anticipatePin: 1, // For a smooth experience
+					},
+				});
+	
+				// Listen for changes in the accordion to refresh ScrollTrigger
+				const accordionItems = document.querySelectorAll('.specs-item');
+	
+				accordionItems.forEach(item => {
+					const toggleButton = item.querySelector('.specs-title');
+	
+					toggleButton.addEventListener('click', () => {
+						// Refresh ScrollTrigger after accordion toggle
+						setTimeout(() => {
+							ScrollTrigger.refresh();
+						}, 300); // Add a slight delay to ensure height changes are applied
+					});
+				});
+			}
+		}
+	});
+	
+	
+
+
+	// Cleanup on resize
+	window.addEventListener('resize', () => {
+		context.revert(); // Remove all animations and ScrollTriggers
+		context = gsap.context(() => {
+			if (window.matchMedia("(min-width: 1280px)").matches) {
+				const sidebar = document.querySelector('#sticky-sidebar');
+
+				if (sidebar) {
+					gsap.to(sidebar, {
+						scrollTrigger: {
+							trigger: sidebar,
+							start: 'top top+=100', // Adds 100px gap from the top
+							end: 'bottom+=500 top', // Sticky ends after 500px scroll or as needed
+							scrub: true, // Smooth sticky behavior
+							pin: true, // Makes the sidebar sticky
+							anticipatePin: 1, // For smooth experience
+						},
+					});
+				}
+			}
+		});
+	});
+}
