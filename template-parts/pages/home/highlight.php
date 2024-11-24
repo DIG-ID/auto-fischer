@@ -1,4 +1,4 @@
-<section class="section-highlight relative overflow-hidden max-h-[94vh] mt-40">
+<section class="section-highlight relative overflow-hidden max-h-[94vh] mt-40 hidden">
     <?php
     $args = array(
         'post_type'      => 'unser-highlight',
