@@ -144,8 +144,6 @@ function my_console_log(...$data) {
 	});
 } 
 
-
-
 if ( is_page_template( 'page-templates/page-ankauf.php' ) ) :
 	/**
 	 * Optimize and validate Contact Form 7 uploaded images.
@@ -155,58 +153,59 @@ if ( is_page_template( 'page-templates/page-ankauf.php' ) ) :
 	 * @return WPCF7_Validation
 	 */
 	function fischer_theme_optimize_and_validate_uploaded_image( $result, $tag ) {
-			$name = $tag['name']; // Field name
+		$name = $tag['name']; // Field name
 
-			// Target specific file upload fields
-			$allowed_fields = ['your-image-file', 'file-auto-innen'];
-			if (in_array($name, $allowed_fields)) {
-				$uploaded_file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
+		// Target specific file upload fields
+		$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
+		if ( in_array( $name, $allowed_fields ) ) {
+			$uploaded_file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
 
-				if ( $uploaded_file && $uploaded_file['error'] === UPLOAD_ERR_OK ) {
-						$image_types = [ 'image/jpeg', 'image/png' ];
+			if ( $uploaded_file && $uploaded_file['error'] === UPLOAD_ERR_OK ) {
+				$image_types = [ 'image/jpeg', 'image/png' ];
 
-						// Check file type
-						if ( in_array( $uploaded_file['type'], $image_types ) ) {
-								$file_path = $uploaded_file['tmp_name'];
-								$image     = wp_get_image_editor( $file_path );
+				// Check file type
+				if ( in_array( $uploaded_file['type'], $image_types ) ) {
+					$file_path = $uploaded_file['tmp_name'];
+					$image     = wp_get_image_editor( $file_path );
 
-								if ( ! is_wp_error( $image ) ) {
-										// Resize image to 330x300
-										$image->resize( 330, 300, true );
+					if ( ! is_wp_error( $image ) ) {
+						// Resize image to 330x300
+						$image->resize( 330, 300, true );
 
-										// Compress image
-										$image->set_quality( 85 );
-										$image->save( $file_path );
+						// Compress image
+						$image->set_quality( 85 );
+						$image->save( $file_path );
 
-										// Check if file size exceeds 1MB
-										if ( filesize( $file_path ) > 1048576 ) {
-												// Further reduce quality
-												$image->set_quality( 70 );
-												$image->save( $file_path );
-										}
-								} else {
-										$result->invalidate( $tag, 'The uploaded image could not be processed. Please try again with a different image.' );
-								}
-						} else {
-								$result->invalidate( $tag, 'Only JPEG and PNG image formats are allowed.' );
+						// Check if file size exceeds 1MB
+						if ( filesize( $file_path ) > 1048576 ) {
+							// Further reduce quality
+							$image->set_quality( 70 );
+							$image->save( $file_path );
 						}
-				} elseif ( $uploaded_file ) {
-						// Handle upload errors
-						$error_messages = [
-								UPLOAD_ERR_INI_SIZE   => 'The uploaded file exceeds the server\'s upload size limit.',
-								UPLOAD_ERR_FORM_SIZE  => 'The uploaded file exceeds the form\'s allowed size limit.',
-								UPLOAD_ERR_PARTIAL    => 'The file was only partially uploaded. Please try again.',
-								UPLOAD_ERR_NO_FILE    => 'No file was uploaded.',
-								UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder on the server.',
-								UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
-								UPLOAD_ERR_EXTENSION  => 'A PHP extension stopped the file upload.',
-						];
-
-						$error_message = $error_messages[$uploaded_file['error']] ?? 'An unknown error occurred during the file upload.';
-						$result->invalidate( $tag, $error_message );
+					} else {
+						$result->invalidate( $tag, sprintf( 'The uploaded image for field "%s" could not be processed. Please try again with a different image.', $name ) );
+					}
+				} else {
+					$result->invalidate( $tag, sprintf( 'The uploaded file for field "%s" must be a JPEG or PNG image.', $name ) );
 				}
+			} elseif ( $uploaded_file ) {
+				// Handle upload errors
+				$error_messages = [
+					UPLOAD_ERR_INI_SIZE   => 'The uploaded file exceeds the server\'s upload size limit.',
+					UPLOAD_ERR_FORM_SIZE  => 'The uploaded file exceeds the form\'s allowed size limit.',
+					UPLOAD_ERR_PARTIAL    => 'The file was only partially uploaded. Please try again.',
+					UPLOAD_ERR_NO_FILE    => 'No file was uploaded.',
+					UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder on the server.',
+					UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
+					UPLOAD_ERR_EXTENSION  => 'A PHP extension stopped the file upload.',
+				];
+
+				$error_message = $error_messages[$uploaded_file['error']] ?? 'An unknown error occurred during the file upload.';
+				$result->invalidate( $tag, sprintf( 'Error for field "%s": %s', $name, $error_message ) );
 			}
-			return $result;
+		}
+
+		return $result;
 	}
 
 	add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
