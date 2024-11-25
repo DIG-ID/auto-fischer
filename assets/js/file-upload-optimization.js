@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const fileInputs = document.querySelectorAll('input[type="file"]'); // Multiple file inputs
+    const fileInputs = document.querySelectorAll('input[type="file"][multiple]'); // Multiple file inputs
 
     fileInputs.forEach(function (fileInput) {
         fileInput.addEventListener('change', function (event) {
@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
             progressText.textContent = '0%';  // Set the progress text to 0%
             feedbackElement.textContent = '';  // Clear previous feedback
             feedbackElement.style.color = ''; // Clear feedback text color
+
+            const formData = new FormData();  // Create FormData object
 
             Array.from(files).forEach((file) => {
                 if (file.type.includes('image')) {
@@ -65,10 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             canvas.toBlob(function (blob) {
                                 const optimizedFile = new File([blob], file.name, { type: file.type });
-                                const dataTransfer = new DataTransfer();
-                                dataTransfer.items.add(optimizedFile);
-                                fileInput.files = dataTransfer.files;
-
+                                formData.append(fileInput.name, optimizedFile);  // Add each file to FormData
                             }, file.type, 0.85);
                         };
                         img.src = reader.result;
@@ -81,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     clearInterval(progressInterval);  // Stop the progress bar update
                 }
             });
+
+            // Send the form data after processing all files (optional, depending on your form submission method)
+            // Use AJAX or standard form submission to send the files
+
         });
     });
 });
