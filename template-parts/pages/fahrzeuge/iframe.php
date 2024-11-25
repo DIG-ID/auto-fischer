@@ -2,7 +2,7 @@
     <div class="theme-container theme-grid mb-28">
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
 
-            <div data-embedded-src="//www.autoscout24.ch/de/hci/list?design=269&filter=268" class="embedded-content-area" style="min-height: 100dvh;"></div>
+            <div data-embedded-src="//www.autoscout24.ch/de/hci/list?design=269&filter=268" class="embedded-content-area min-h-dvh xl:min-h-0"></div>
 
             <!-- <iframe class="w-full" src="https://www.autoscout24.ch/de/hci/list?design=269&filter=268" frameborder="0"></iframe> -->
 
