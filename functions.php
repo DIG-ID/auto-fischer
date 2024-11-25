@@ -156,106 +156,87 @@ function my_console_log(...$data) {
  * @param array $tag
  * @return WPCF7_Validation
  */
-function fischer_theme_optimize_and_validate_uploaded_images($result, $tag) {
+function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 	$name = $tag['name']; // Field name
 
-	// Allowed fields and total size limit (5MB per field)
+	// Allowed file upload fields
 	$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
-	$max_total_size = 5 * 1024 * 1024; // 5MB in bytes
-
-	if (in_array($name, $allowed_fields)) {
-			$uploaded_files = isset($_FILES[$name]) ? $_FILES[$name] : null;
-
-			if ($uploaded_files && is_array($uploaded_files['name'])) {
-					$valid_files = [];
+	if ( in_array( $name, $allowed_fields ) ) {
+			if ( isset( $_FILES[$name] ) && is_array( $_FILES[$name]['name'] ) ) {
+					$uploaded_files = $_FILES[$name]; // All files in this field
+					$uploaded_paths = [];
+					$max_total_size = 5 * 1024 * 1024; // 5MB total size for all files in this field
 					$total_size = 0;
 
-					foreach ($uploaded_files['tmp_name'] as $index => $tmp_name) {
-							$file_name = $uploaded_files['name'][$index];
-							$file_type = $uploaded_files['type'][$index];
-							$file_error = $uploaded_files['error'][$index];
-							$file_tmp = $tmp_name;
+					foreach ( $uploaded_files['name'] as $index => $filename ) {
+							if ( $uploaded_files['error'][$index] === UPLOAD_ERR_OK ) {
+									$file_type = $uploaded_files['type'][$index];
+									$file_tmp = $uploaded_files['tmp_name'][$index];
+									$file_size = $uploaded_files['size'][$index];
+									$total_size += $file_size;
 
-							if ($file_error === UPLOAD_ERR_OK) {
+									// Check if total size exceeds the limit
+									if ( $total_size > $max_total_size ) {
+											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von 5 MB.' );
+											return $result;
+									}
+
 									// Validate file type
-									$allowed_types = ['image/jpeg', 'image/png'];
-									if (!in_array($file_type, $allowed_types)) {
-											$result->invalidate($tag, sprintf(__('The file "%s" is not a valid image type. Only JPEG and PNG are allowed.', 'auto-fischer'), $file_name));
-											continue;
+									if ( ! in_array( $file_type, ['image/jpeg', 'image/png'] ) ) {
+											$result->invalidate( $tag, 'Nur JPEG- und PNG-Bildformate sind erlaubt.' );
+											return $result;
 									}
 
 									// Resize and optimize image
-									$image = wp_get_image_editor($file_tmp);
-									if (!is_wp_error($image)) {
-											$image->resize(720, 480, true); // Resize to 720x480px
-											$image->set_quality(85); // Set initial quality to 85%
-											$image->save($file_tmp);
+									$image = wp_get_image_editor( $file_tmp );
+									if ( ! is_wp_error( $image ) ) {
+											$image->resize( 720, 480, true );
+											$image->set_quality( 85 );
+											$image->save( $file_tmp );
 
-											// Further reduce quality if the file is too large (>1MB)
-											if (filesize($file_tmp) > 1048576) {
-													$image->set_quality(70);
-													$image->save($file_tmp);
+											// Further reduce quality if file size exceeds 1MB
+											if ( filesize( $file_tmp ) > 1048576 ) {
+													$image->set_quality( 70 );
+													$image->save( $file_tmp );
 											}
 
-											// Add optimized file size to total size
-											$file_size = filesize($file_tmp);
-											$total_size += $file_size;
-
-											// Check total size limit for the field
-											if ($total_size > $max_total_size) {
-													$result->invalidate($tag, __('The total size of all uploaded files exceeds 5MB. Please reduce the size of your files.', 'auto-fischer'));
-													break;
-											}
-
-											// Collect valid files
-											$valid_files[] = [
-													'tmp_name' => $file_tmp,
-													'name' => $file_name,
-													'type' => $file_type,
-													'size' => $file_size,
-											];
+											$uploaded_paths[] = $file_tmp; // Store the optimized file path
 									} else {
-											$result->invalidate($tag, sprintf(__('The file "%s" could not be processed. Please try again.', 'auto-fischer'), $file_name));
+											$result->invalidate( $tag, 'Ein Bild konnte nicht verarbeitet werden. Bitte versuchen Sie es erneut.' );
+											return $result;
 									}
 							} else {
-									// Handle upload errors
 									$error_messages = [
-											UPLOAD_ERR_INI_SIZE   => __('The uploaded file exceeds the server\'s upload size limit.', 'auto-fischer'),
-											UPLOAD_ERR_FORM_SIZE  => __('The uploaded file exceeds the form\'s allowed size limit.', 'auto-fischer'),
-											UPLOAD_ERR_PARTIAL    => __('The file was only partially uploaded. Please try again.', 'auto-fischer'),
-											UPLOAD_ERR_NO_FILE    => __('No file was uploaded.', 'auto-fischer'),
-											UPLOAD_ERR_NO_TMP_DIR => __('Missing a temporary folder on the server.', 'auto-fischer'),
-											UPLOAD_ERR_CANT_WRITE => __('Failed to write file to disk.', 'auto-fischer'),
-											UPLOAD_ERR_EXTENSION  => __('A PHP extension stopped the file upload.', 'auto-fischer'),
+											UPLOAD_ERR_INI_SIZE   => 'Die hochgeladene Datei überschreitet das Server-Upload-Limit.',
+											UPLOAD_ERR_FORM_SIZE  => 'Die hochgeladene Datei überschreitet das zulässige Formulargröße-Limit.',
+											UPLOAD_ERR_PARTIAL    => 'Die Datei wurde nur teilweise hochgeladen. Bitte versuchen Sie es erneut.',
+											UPLOAD_ERR_NO_FILE    => 'Es wurde keine Datei hochgeladen.',
+											UPLOAD_ERR_NO_TMP_DIR => 'Es fehlt ein temporärer Ordner auf dem Server.',
+											UPLOAD_ERR_CANT_WRITE => 'Fehler beim Schreiben der Datei auf die Festplatte.',
+											UPLOAD_ERR_EXTENSION  => 'Eine PHP-Erweiterung hat den Datei-Upload gestoppt.',
 									];
-									$error_message = $error_messages[$file_error] ?? __('An unknown error occurred during the file upload.', 'auto-fischer');
-									$result->invalidate($tag, sprintf(__('Error with file "%s": %s', 'auto-fischer'), $file_name, $error_message));
+									$result->invalidate( $tag, $error_messages[$uploaded_files['error'][$index]] ?? 'Ein unbekannter Fehler ist aufgetreten.' );
+									return $result;
 							}
 					}
 
-					// If no valid files remain after processing, invalidate the field
-					if (empty($valid_files)) {
-							$result->invalidate($tag, __('No valid files were uploaded.', 'auto-fischer'));
-					} else {
-							// Rebuild the $_FILES array with valid files only
-							$_FILES[$name]['tmp_name'] = array_column($valid_files, 'tmp_name');
-							$_FILES[$name]['name'] = array_column($valid_files, 'name');
-							$_FILES[$name]['type'] = array_column($valid_files, 'type');
-							$_FILES[$name]['size'] = array_column($valid_files, 'size');
-
-							// Clean up unused temporary files
-							register_shutdown_function(function () use ($valid_files) {
-									foreach ($valid_files as $file) {
-											if (file_exists($file['tmp_name'])) {
-													unlink($file['tmp_name']);
-											}
-									}
-							});
+					// Attach all processed files to the email
+					foreach ( $uploaded_paths as $path ) {
+							wpcf7_add_file( $tag->name, $path );
 					}
+
+					// Clean up temporary files after sending email
+					register_shutdown_function( function () use ( $uploaded_paths ) {
+							foreach ( $uploaded_paths as $path ) {
+									if ( file_exists( $path ) ) {
+											unlink( $path ); // Delete temporary files
+									}
+							}
+					});
 			}
 	}
 
 	return $result;
 }
-add_filter('wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2);
-add_filter('wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2);
+add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2 );
+add_filter( 'wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2 );
