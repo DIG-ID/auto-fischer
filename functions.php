@@ -165,7 +165,7 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 			if ( isset( $_FILES[$name] ) && is_array( $_FILES[$name]['name'] ) ) {
 					$uploaded_files = $_FILES[$name]; // All files in this field
 					$uploaded_paths = [];
-					$max_total_size = 5 * 1024 * 1024; // 5MB total size for all files in this field
+					$max_total_size = 10 * 1024 * 1024; // 10MB total size for all files in this field
 					$total_size = 0;
 
 					foreach ( $uploaded_files['name'] as $index => $filename ) {

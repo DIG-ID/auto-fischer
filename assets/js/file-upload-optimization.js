@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const fileInputs = document.querySelectorAll('input[type="file"]'); // Multiple file inputs
-    const maxTotalSize = 5 * 1024 * 1024; // 5MB
+    const maxTotalSize = 10 * 1024 * 1024;
 
     fileInputs.forEach(function (fileInput) {
         fileInput.addEventListener('change', function (event) {
