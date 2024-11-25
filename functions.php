@@ -149,56 +149,45 @@ function my_console_log(...$data) {
 
 
 
-/**
- * Validate and optimize Contact Form 7 uploaded images before submission.
- *
- * @param WPCF7_Validation $result
- * @param array $tag
- * @return WPCF7_Validation
- */
 function fischer_theme_optimize_and_validate_uploaded_image( $result, $tag ) {
-	$name = $tag['name']; // Get the field name
-
-	// Define allowed file fields (multiple fields)
-	$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
+	$name = $tag['name']; // Field name
 	
+	// Define allowed file upload fields
+	$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
 	if ( in_array( $name, $allowed_fields ) ) {
 			$uploaded_file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
 
 			if ( $uploaded_file && $uploaded_file['error'] === UPLOAD_ERR_OK ) {
-					$image_types = ['image/jpeg', 'image/png'];
+					$image_types = [ 'image/jpeg', 'image/png' ];
 
-					// Validate file type (only JPEG or PNG)
+					// Check file type
 					if ( in_array( $uploaded_file['type'], $image_types ) ) {
-							// Check the file size (e.g., ensure it’s less than 2MB)
-							$max_size = 2 * 1024 * 1024; // 2MB
-							if ( $uploaded_file['size'] > $max_size ) {
-									$result->invalidate( $tag, 'The uploaded file is too large. The maximum size is 2MB.' );
-							}
-
-							// Further optimization (if needed)
-							// Resize and compress only if necessary (optional)
 							$file_path = $uploaded_file['tmp_name'];
 							$image = wp_get_image_editor( $file_path );
 
 							if ( ! is_wp_error( $image ) ) {
-									// Optionally, resize the image further if needed (e.g., max width of 330px, max height of 300px)
+									// Resize image if necessary (330x300px)
 									$image->resize( 330, 300, true );
-
-									// Compress image (if not already compressed sufficiently by JS)
 									$image->set_quality( 85 );
 									$image->save( $file_path );
 
-									// Check if file size exceeds the limit (e.g., 2MB) and compress further if needed
-									if ( filesize( $file_path ) > $max_size ) {
-											// Reduce quality further to ensure the file size is smaller than the limit
+									// Check if file size exceeds 1MB and further reduce quality
+									if ( filesize( $file_path ) > 1048576 ) {
 											$image->set_quality( 70 );
 											$image->save( $file_path );
 									}
+									
+									// Handle file deletion after processing (clean up)
+									register_shutdown_function( function () use ( $file_path ) {
+											if ( file_exists( $file_path ) ) {
+													unlink( $file_path ); // Delete temporary file after processing
+											}
+									});
+							} else {
+									$result->invalidate( $tag, 'The uploaded image could not be processed. Please try again with a different image.' );
 							}
-
 					} else {
-							$result->invalidate( $tag, 'Invalid file type. Only JPEG and PNG images are allowed.' );
+							$result->invalidate( $tag, 'Only JPEG and PNG image formats are allowed.' );
 					}
 			} elseif ( $uploaded_file ) {
 					// Handle upload errors
@@ -219,8 +208,6 @@ function fischer_theme_optimize_and_validate_uploaded_image( $result, $tag ) {
 
 	return $result;
 }
-
-// Apply the validation to multiple file upload fields
 add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
 add_filter( 'wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
 
