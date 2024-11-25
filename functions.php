@@ -144,7 +144,10 @@ function my_console_log(...$data) {
 	});
 } 
 
+
+add_action('wp', function() {
 if ( is_page_template( 'page-templates/page-ankauf.php' ) ) :
+	echo '<h1>YES YES YES</h1>';
 	/**
 	 * Optimize and validate Contact Form 7 uploaded images.
 	 *
@@ -210,4 +213,8 @@ if ( is_page_template( 'page-templates/page-ankauf.php' ) ) :
 
 	add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
 	add_filter( 'wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
+else :
+
+	echo '<h1>NO NO NO!</h1>';
 endif;
+});
