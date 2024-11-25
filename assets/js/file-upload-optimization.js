@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const fileInputs = document.querySelectorAll('input[type="file"]'); // Multiple file inputs
+    const maxTotalSize = 5 * 1024 * 1024; // 5MB
 
     fileInputs.forEach(function (fileInput) {
         fileInput.addEventListener('change', function (event) {
@@ -7,26 +8,30 @@ document.addEventListener('DOMContentLoaded', function () {
             const progressBar = document.querySelector(`#progress-bar-${fileInput.id}`);
             const progressText = document.querySelector(`#progress-text-${fileInput.id}`);
             const progressContainer = document.querySelector(`#progress-container-${fileInput.id}`);
+
             const files = event.target.files;
+            let totalProcessedSize = 0; // Track total size of processed files
 
-            // Show progress bar with fade-in effect
-            progressContainer.style.display = 'block';
-            progressContainer.style.opacity = '0';
-            setTimeout(() => {
-                progressContainer.style.opacity = '1';
-            }, 100);
+            feedbackElement.textContent = '';
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+            progressContainer.style.opacity = 0;
 
-            // Process each file
+            const processedFiles = []; // To store processed files
+
             Array.from(files).forEach((file, index) => {
                 if (file.type.includes('image')) {
                     const reader = new FileReader();
+
                     reader.onload = function () {
                         const img = new Image();
                         img.onload = function () {
                             const canvas = document.createElement('canvas');
                             const ctx = canvas.getContext('2d');
-                            const maxWidth = 330, maxHeight = 300;
-                            let width = img.width, height = img.height;
+                            const maxWidth = 720,
+                                maxHeight = 480;
+                            let width = img.width,
+                                height = img.height;
 
                             if (width > height && width > maxWidth) {
                                 height = Math.round(height * (maxWidth / width));
@@ -40,36 +45,62 @@ document.addEventListener('DOMContentLoaded', function () {
                             canvas.height = height;
                             ctx.drawImage(img, 0, 0, width, height);
 
-                            // Updating progress (just for simulation, you can adjust as per actual image processing)
-                            let progress = 0;
-                            const interval = setInterval(() => {
-                                if (progress < 90) {
-                                    progress += 5;
-                                    progressBar.style.width = `${progress}%`;
-                                    progressText.textContent = `${progress}%`;
-                                } else {
-                                    clearInterval(interval);
-                                    progressBar.style.width = '100%';
-                                    progressText.textContent = '100%';
-                                    canvas.toBlob(function (blob) {
-                                        const optimizedFile = new File([blob], file.name, { type: file.type });
-                                        const dataTransfer = new DataTransfer();
-                                        dataTransfer.items.add(optimizedFile);
-                                        fileInput.files = dataTransfer.files;
+                            canvas.toBlob(
+                                function (blob) {
+                                    if (!blob) return;
 
-                                        feedbackElement.textContent = 'File optimized successfully!';
+                                    const processedSize = blob.size;
+
+                                    // Update total size
+                                    totalProcessedSize += processedSize;
+
+                                    if (totalProcessedSize > maxTotalSize) {
+                                        feedbackElement.textContent =
+                                            'The total size of all uploaded files exceeds 5MB.';
+                                        feedbackElement.style.color = 'red';
+                                        progressBar.style.width = '0%';
+                                        progressText.textContent = '0%';
+                                        return;
+                                    }
+
+                                    // Add processed file
+                                    processedFiles.push(
+                                        new File([blob], file.name, { type: file.type })
+                                    );
+
+                                    // Update progress bar
+                                    const progress =
+                                        Math.min((processedFiles.length / files.length) * 100, 100);
+                                    progressBar.style.width = `${progress}%`;
+                                    progressText.textContent = `${Math.round(progress)}%`;
+
+                                    // Show progress bar when process starts
+                                    if (progressContainer.style.opacity === '0') {
+                                        progressContainer.style.opacity = '1';
+                                    }
+
+                                    // Replace original input files with processed files when done
+                                    if (processedFiles.length === files.length) {
+                                        const dataTransfer = new DataTransfer();
+                                        processedFiles.forEach((processedFile) =>
+                                            dataTransfer.items.add(processedFile)
+                                        );
+                                        fileInput.files = dataTransfer.files;
+                                        feedbackElement.textContent =
+                                            'All files successfully processed!';
                                         feedbackElement.style.color = 'green';
-                                    }, file.type, 0.85);
-                                }
-                            }, 100);
+                                    }
+                                },
+                                file.type,
+                                0.85
+                            );
                         };
                         img.src = reader.result;
                     };
                     reader.readAsDataURL(file);
                 } else {
-                    feedbackElement.textContent = 'Only images allowed.';
+                    feedbackElement.textContent = 'Only image files are allowed.';
                     feedbackElement.style.color = 'red';
-                    progressContainer.style.display = 'none';
                 }
             });
         });
