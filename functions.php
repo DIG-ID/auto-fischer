@@ -94,6 +94,9 @@ function fischer_theme_enqueue_styles() {
 		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), $theme_version, true );
 		wp_enqueue_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0&callback=initMap', array(), $theme_version, true );
 	endif;
+	if ( is_page_template( 'page-templates/page-ankauf.php' ) ) { // Adjust condition to your specific template
+		wp_enqueue_script( 'file-upload-optimization', get_template_directory_uri() . '/assets/js/file-upload-optimization.js', array(), null, true );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'fischer_theme_enqueue_styles' );
@@ -147,69 +150,77 @@ function my_console_log(...$data) {
 
 
 /**
- * Optimize and validate Contact Form 7 uploaded images.
+ * Validate and optimize Contact Form 7 uploaded images before submission.
  *
  * @param WPCF7_Validation $result
  * @param array $tag
  * @return WPCF7_Validation
  */
 function fischer_theme_optimize_and_validate_uploaded_image( $result, $tag ) {
+	$name = $tag['name']; // Get the field name
 
-	$name = $tag['name']; // Field name
-
-	// Target specific file upload fields
+	// Define allowed file fields (multiple fields)
 	$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
+	
 	if ( in_array( $name, $allowed_fields ) ) {
-		$uploaded_file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
+			$uploaded_file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
 
-		if ( $uploaded_file && $uploaded_file['error'] === UPLOAD_ERR_OK ) {
-			$image_types = [ 'image/jpeg', 'image/png' ];
+			if ( $uploaded_file && $uploaded_file['error'] === UPLOAD_ERR_OK ) {
+					$image_types = ['image/jpeg', 'image/png'];
 
-			// Check file type
-			if ( in_array( $uploaded_file['type'], $image_types ) ) {
-				$file_path = $uploaded_file['tmp_name'];
-				$image     = wp_get_image_editor( $file_path );
+					// Validate file type (only JPEG or PNG)
+					if ( in_array( $uploaded_file['type'], $image_types ) ) {
+							// Check the file size (e.g., ensure it’s less than 2MB)
+							$max_size = 2 * 1024 * 1024; // 2MB
+							if ( $uploaded_file['size'] > $max_size ) {
+									$result->invalidate( $tag, 'The uploaded file is too large. The maximum size is 2MB.' );
+							}
 
-				if ( ! is_wp_error( $image ) ) {
-					// Resize image to 330x300
-					$image->resize( 330, 300, true );
+							// Further optimization (if needed)
+							// Resize and compress only if necessary (optional)
+							$file_path = $uploaded_file['tmp_name'];
+							$image = wp_get_image_editor( $file_path );
 
-					// Compress image
-					$image->set_quality( 85 );
-					$image->save( $file_path );
+							if ( ! is_wp_error( $image ) ) {
+									// Optionally, resize the image further if needed (e.g., max width of 330px, max height of 300px)
+									$image->resize( 330, 300, true );
 
-					// Check if file size exceeds 1MB
-					if ( filesize( $file_path ) > 1048576 ) {
-						// Further reduce quality
-						$image->set_quality( 70 );
-						$image->save( $file_path );
+									// Compress image (if not already compressed sufficiently by JS)
+									$image->set_quality( 85 );
+									$image->save( $file_path );
+
+									// Check if file size exceeds the limit (e.g., 2MB) and compress further if needed
+									if ( filesize( $file_path ) > $max_size ) {
+											// Reduce quality further to ensure the file size is smaller than the limit
+											$image->set_quality( 70 );
+											$image->save( $file_path );
+									}
+							}
+
+					} else {
+							$result->invalidate( $tag, 'Invalid file type. Only JPEG and PNG images are allowed.' );
 					}
-				} else {
-					$result->invalidate( $tag, sprintf( 'The uploaded image for field "%s" could not be processed. Please try again with a different image.', $name ) );
-				}
-			} else {
-				$result->invalidate( $tag, sprintf( 'The uploaded file for field "%s" must be a JPEG or PNG image.', $name ) );
-			}
-		} elseif ( $uploaded_file ) {
-			// Handle upload errors
-			$error_messages = [
-				UPLOAD_ERR_INI_SIZE   => 'The uploaded file exceeds the server\'s upload size limit.',
-				UPLOAD_ERR_FORM_SIZE  => 'The uploaded file exceeds the form\'s allowed size limit.',
-				UPLOAD_ERR_PARTIAL    => 'The file was only partially uploaded. Please try again.',
-				UPLOAD_ERR_NO_FILE    => 'No file was uploaded.',
-				UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder on the server.',
-				UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
-				UPLOAD_ERR_EXTENSION  => 'A PHP extension stopped the file upload.',
-			];
+			} elseif ( $uploaded_file ) {
+					// Handle upload errors
+					$error_messages = [
+							UPLOAD_ERR_INI_SIZE   => 'The uploaded file exceeds the server\'s upload size limit.',
+							UPLOAD_ERR_FORM_SIZE  => 'The uploaded file exceeds the form\'s allowed size limit.',
+							UPLOAD_ERR_PARTIAL    => 'The file was only partially uploaded. Please try again.',
+							UPLOAD_ERR_NO_FILE    => 'No file was uploaded.',
+							UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder on the server.',
+							UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
+							UPLOAD_ERR_EXTENSION  => 'A PHP extension stopped the file upload.',
+					];
 
-			$error_message = $error_messages[$uploaded_file['error']] ?? 'An unknown error occurred during the file upload.';
-			$result->invalidate( $tag, sprintf( 'Error for field "%s": %s', $name, $error_message ) );
-		}
+					$error_message = $error_messages[$uploaded_file['error']] ?? 'An unknown error occurred during the file upload.';
+					$result->invalidate( $tag, $error_message );
+			}
 	}
 
 	return $result;
-
 }
 
+// Apply the validation to multiple file upload fields
 add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
 add_filter( 'wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_image', 20, 2 );
+

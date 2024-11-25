@@ -1,3 +1,44 @@
+/* Style for the progress container */
+.progress-container
+    width: 100%
+    background-color: #f3f3f3
+    border-radius: 8px
+    margin-top: 10px
+    height: 20px
+    display: none
+    opacity: 0
+    transition: opacity 0.5s ease
+
+/* Style for the progress bar itself */
+.progress-bar
+    height: 100%
+    width: 0%
+    background-color: #4caf50
+    border-radius: 8px
+    transition: width 0.3s ease
+
+/* Style for the progress percentage text */
+.progress-container span
+    display: block
+    margin-top: 5px
+    text-align: center
+    font-size: 14px
+    color: #333
+
+/* Feedback text style */
+.file-feedback
+    margin-top: 10px
+    font-size: 14px
+    color: #333
+
+.file-feedback.success
+    color: green
+
+.file-feedback.error
+    color: red
+
+    
+    
 /* Hide the actual file input */
 .wpcf7-form-control.wpcf7-file, .file-upload-label .wpcf7-form-control-wrap, .file-upload-documents .wpcf7-form-control-wrap
     display: none !important
