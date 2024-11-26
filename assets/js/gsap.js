@@ -1,25 +1,71 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from 'lenis';
+import Lenis from "lenis";
 
-// GSAP horizontal scroll effect (this will still run on the about page)
+// GSAP horizontal scroll effect
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize Lenis only if it's NOT the about page
+// Initialize Lenis
 const lenis = new Lenis({
-	duration: 1.1,
-	smooth: true,
-	//easing: easeOutExpo(),
+    duration: 1.1,
+    smooth: true,
+    //easing: easeOutExpo(),
 });
 
 function raf(time) {
-	lenis.raf(time);
-	requestAnimationFrame(raf);
+    lenis.raf(time);
+    requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
 
 // GSAP ScrollTrigger integration with Lenis
-lenis.on('scroll', ScrollTrigger.update);
+lenis.on("scroll", ScrollTrigger.update);
+
+// Disable Lenis for .thumbnails-container when hovering
+const thumbnailsContainer = document.querySelector('.thumbnails-container');
+let isHoveringThumbnails = false;
+
+if (thumbnailsContainer) {
+    thumbnailsContainer.addEventListener('mouseenter', () => {
+        // Disable smooth scrolling but keep the native scrollbar
+        isHoveringThumbnails = true;
+
+        // Disable Lenis' smooth scrolling
+        lenis.stop();
+
+        // Make sure the native scrollbar is visible and usable
+        document.body.style.overflow = 'scroll'; // Force the browser scrollbar to remain visible
+
+        // Optionally, disable Lenis on touch devices as well
+        document.body.style.overflowY = 'scroll'; // This ensures vertical scrolling is still available
+    });
+
+    thumbnailsContainer.addEventListener('mouseleave', () => {
+        // Re-enable smooth scrolling when leaving the thumbnails container
+        isHoveringThumbnails = false;
+
+        // Restart Lenis smooth scrolling
+        lenis.start();
+
+        // Restore the default page scroll behavior from Lenis
+        document.body.style.overflow = ''; // Let Lenis control the scrolling again
+        document.body.style.overflowY = ''; // Reset vertical overflow to default
+    });
+
+    // Optional: Handle touch events on mobile devices
+    thumbnailsContainer.addEventListener('touchstart', () => {
+        lenis.stop();
+        document.body.style.overflow = 'scroll'; // Ensure scrollbar is visible on touch
+        document.body.style.overflowY = 'scroll';
+    });
+
+    thumbnailsContainer.addEventListener('touchend', () => {
+        lenis.start();
+        document.body.style.overflow = ''; // Restore Lenis control on scroll
+        document.body.style.overflowY = ''; // Reset vertical overflow to default
+    });
+}
+
 
 gsap.ticker.add((time) => {
 	lenis.raf(time * 1000);

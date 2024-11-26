@@ -139,7 +139,7 @@ window.addEventListener("load", () => {
         });
     }    
 
-    if (document.body.classList.contains("unser-highlight-template-default")) {
+    if (document.body.classList.contains("unser-highlight-template-default-alternative")) {
         
         // Thumbnail slider
         const thumbnailSlider = new Swiper('.thumbnail-slider', {
@@ -173,7 +173,7 @@ window.addEventListener("load", () => {
 
     }
     
-    if (document.body.classList.contains("unser-highlight-template-default-alternative")) {
+    if (document.body.classList.contains("unser-highlight-template-default")) {
         const mainSlider = new Swiper('.highlights-slider', {
             slidesPerView: 1,
             spaceBetween: 10,
