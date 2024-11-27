@@ -124,22 +124,26 @@ document.addEventListener('DOMContentLoaded', function () {
                                     processedFiles.push(new File([blob], file.name, { type: file.type }));
 
                                     // Add preview for each image
-                                    addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, files.length);
-                                    imageCount++; // Increment image count for this field
-
-                                    // Find the file input field for your form
-                                    const fileInput = input; // Use the current file input
+                                    if (imageCount < maxImages) {
+                                        addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, files.length);
+                                        imageCount++; // Increment image count for this field
+                                    }
 
                                     // Create a new DataTransfer object
                                     const dataTransfer = new DataTransfer();
 
-                                    // Add each processed file to the DataTransfer object
+                                    // Add the existing files from the input (preserving old files)
+                                    for (let i = 0; i < input.files.length; i++) {
+                                        dataTransfer.items.add(input.files[i]);
+                                    }
+
+                                    // Add the new processed files
                                     processedFiles.forEach(file => {
                                         dataTransfer.items.add(file);
                                     });
 
-                                    // Update the file input with the processed files
-                                    fileInput.files = dataTransfer.files;
+                                    // Update the file input with the new list of files
+                                    input.files = dataTransfer.files;
 
                                     // Update progress bar
                                     const progress = Math.min((imageCount / files.length) * 100, 100);
@@ -185,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
         deleteIcon.alt = 'Delete Image';
         deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
         deleteIcon.addEventListener('click', () => {
-            // Decrement image count when deleted
+            // Decrease image count and handle the file removal
             imageCount--;
 
             // Update progress bar after deletion
