@@ -150,7 +150,7 @@ function my_console_log(...$data) {
 
 
 /**
- * Optimize and validate Contact Form 7 uploaded images before submitting.
+ * Validate Contact Form 7 uploaded images before submitting.
  *
  * @param WPCF7_Validation $result
  * @param array $tag
@@ -167,6 +167,9 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 					$uploaded_paths = [];
 					$max_total_size = 10 * 1024 * 1024; // 10MB total size for all files in this field
 					$total_size = 0;
+					$min_images = 2; // Minimum images required
+					$max_images = 10; // Maximum images allowed
+					$valid_image_count = 0;
 
 					foreach ( $uploaded_files['name'] as $index => $filename ) {
 							if ( $uploaded_files['error'][$index] === UPLOAD_ERR_OK ) {
@@ -177,7 +180,7 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 
 									// Check if total size exceeds the limit
 									if ( $total_size > $max_total_size ) {
-											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von 5 MB.' );
+											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von 10 MB.' );
 											return $result;
 									}
 
@@ -201,11 +204,13 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 											}
 
 											$uploaded_paths[] = $file_tmp; // Store the optimized file path
+											$valid_image_count++; // Increment the valid image count
 									} else {
 											$result->invalidate( $tag, 'Ein Bild konnte nicht verarbeitet werden. Bitte versuchen Sie es erneut.' );
 											return $result;
 									}
 							} else {
+									// Handle file upload errors
 									$error_messages = [
 											UPLOAD_ERR_INI_SIZE   => 'Die hochgeladene Datei überschreitet das Server-Upload-Limit.',
 											UPLOAD_ERR_FORM_SIZE  => 'Die hochgeladene Datei überschreitet das zulässige Formulargröße-Limit.',
@@ -218,6 +223,15 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 									$result->invalidate( $tag, $error_messages[$uploaded_files['error'][$index]] ?? 'Ein unbekannter Fehler ist aufgetreten.' );
 									return $result;
 							}
+					}
+
+					// Check if the number of images is within the allowed range
+					if ( $valid_image_count < $min_images ) {
+							$result->invalidate( $tag, 'Sie müssen mindestens 2 Bilder hochladen.' );
+							return $result;
+					} elseif ( $valid_image_count > $max_images ) {
+							$result->invalidate( $tag, 'Sie können maximal 10 Bilder hochladen.' );
+							return $result;
 					}
 
 					// Attach all processed files to the email

@@ -1,108 +1,200 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const fileInputs = document.querySelectorAll('input[type="file"]'); // Multiple file inputs
-    const maxTotalSize = 10 * 1024 * 1024;
+    const maxTotalSizeInput1 = 10 * 1024 * 1024; // 10MB
+    const maxTotalSizeInput2 = 10 * 1024 * 1024; // 10MB
+    const maxTotalSizeInput3 = 5 * 1024 * 1024;  // 5MB
+    const minImagesInput1 = 2, maxImagesInput1 = 10;
+    const minImagesInput2 = 2, maxImagesInput2 = 10;
+    const minImagesInput3 = 1, maxImagesInput3 = 5;
 
-    fileInputs.forEach(function (fileInput) {
-        fileInput.addEventListener('change', function (event) {
-            const feedbackElement = document.querySelector(`#${fileInput.id}-feedback`);
-            const progressBar = document.querySelector(`#progress-bar-${fileInput.id}`);
-            const progressText = document.querySelector(`#progress-text-${fileInput.id}`);
-            const progressContainer = document.querySelector(`#progress-container-${fileInput.id}`);
+    const fileInputs = [
+        {
+            input: document.querySelector('input[name="your-image-file"]'), 
+            previewSlots: [
+                document.getElementById('preview-slot-1'),
+                document.getElementById('preview-slot-2'),
+                document.getElementById('preview-slot-3'),
+                document.getElementById('preview-slot-4'),
+                document.getElementById('preview-slot-5'),
+                document.getElementById('preview-slot-6'),
+                document.getElementById('preview-slot-7'),
+                document.getElementById('preview-slot-8'),
+                document.getElementById('preview-slot-9'),
+                document.getElementById('preview-slot-10')
+            ],
+            maxTotalSize: maxTotalSizeInput1,
+            feedbackElement: document.querySelector('#progress-container-your-image-file'),
+            progressBar: document.querySelector('#progress-bar-your-image-file'),
+            progressText: document.querySelector('#progress-text-your-image-file'),
+            progressContainer: document.querySelector('#progress-container-your-image-file')
+        },
+        {
+            input: document.querySelector('input[name="file-auto-innen"]'),
+            previewSlots: [
+                document.getElementById('preview-slot-1-innen'),
+                document.getElementById('preview-slot-2-innen'),
+                document.getElementById('preview-slot-3-innen'),
+                document.getElementById('preview-slot-4-innen'),
+                document.getElementById('preview-slot-5-innen'),
+                document.getElementById('preview-slot-6-innen'),
+                document.getElementById('preview-slot-7-innen'),
+                document.getElementById('preview-slot-8-innen'),
+                document.getElementById('preview-slot-9-innen'),
+                document.getElementById('preview-slot-10-innen')
+            ],
+            maxTotalSize: maxTotalSizeInput2,
+            feedbackElement: document.querySelector('#file-auto-innen-feedback'),
+            progressBar: document.querySelector('#progress-bar-file-auto-innen'),
+            progressText: document.querySelector('#progress-text-file-auto-innen'),
+            progressContainer: document.querySelector('#progress-container-file-auto-innen')
+        },
+        {
+            input: document.querySelector('input[name="file-fahrzeugausweis"]'),
+            previewSlots: [
+                document.getElementById('preview-slot-1-fahrzeugausweis'),
+                document.getElementById('preview-slot-2-fahrzeugausweis'),
+                document.getElementById('preview-slot-3-fahrzeugausweis')
+            ],
+            maxTotalSize: maxTotalSizeInput3,
+            feedbackElement: document.querySelector('#file-fahrzeugausweis-feedback'),
+            progressBar: document.querySelector('#progress-bar-file-fahrzeugausweis'),
+            progressText: document.querySelector('#progress-text-file-fahrzeugausweis'),
+            progressContainer: document.querySelector('#progress-container-file-fahrzeugausweis')
+        }
+    ];
 
-            const files = event.target.files;
-            let totalProcessedSize = 0; // Track total size of processed files
+    let imageCount = 0; // Store the count of images added
 
-            feedbackElement.textContent = '';
-            progressBar.style.width = '0%';
-            progressText.textContent = '0%';
-            progressContainer.style.opacity = 0;
+    fileInputs.forEach(({ input, previewSlots, maxTotalSize, feedbackElement, progressBar, progressText, progressContainer }) => {
+        if (input) {
+            input.addEventListener('change', function (event) {
+                const files = Array.from(input.files);
+                let totalProcessedSize = 0;
+                let processedFiles = [];
+                
+                feedbackElement.textContent = '';
+                progressBar.style.width = '0%';
+                progressText.textContent = '0%';
+                progressContainer.style.opacity = 0;
 
-            const processedFiles = []; // To store processed files
+                // Check for valid file types, resolution, and size
+                files.forEach((file) => {
+                    if (file.type === 'image/jpeg' || file.type === 'image/png') {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            const img = new Image();
+                            img.onload = function () {
+                                const canvas = document.createElement('canvas');
+                                const ctx = canvas.getContext('2d');
+                                const maxWidth = 720, maxHeight = 480;
+                                let width = img.width, height = img.height;
 
-            Array.from(files).forEach((file, index) => {
-                if (file.type.includes('image')) {
-                    const reader = new FileReader();
+                                // Resize image if necessary
+                                if (width > maxWidth || height > maxHeight) {
+                                    const ratio = Math.min(maxWidth / width, maxHeight / height);
+                                    width = Math.round(width * ratio);
+                                    height = Math.round(height * ratio);
+                                }
+                                canvas.width = width;
+                                canvas.height = height;
+                                ctx.drawImage(img, 0, 0, width, height);
 
-                    reader.onload = function () {
-                        const img = new Image();
-                        img.onload = function () {
-                            const canvas = document.createElement('canvas');
-                            const ctx = canvas.getContext('2d');
-                            const maxWidth = 720,
-                                maxHeight = 480;
-                            let width = img.width,
-                                height = img.height;
-
-                            if (width > height && width > maxWidth) {
-                                height = Math.round(height * (maxWidth / width));
-                                width = maxWidth;
-                            } else if (height > maxHeight) {
-                                width = Math.round(width * (maxHeight / height));
-                                height = maxHeight;
-                            }
-
-                            canvas.width = width;
-                            canvas.height = height;
-                            ctx.drawImage(img, 0, 0, width, height);
-
-                            canvas.toBlob(
-                                function (blob) {
+                                // Convert image to blob
+                                canvas.toBlob(function (blob) {
                                     if (!blob) return;
 
                                     const processedSize = blob.size;
-
-                                    // Update total size
                                     totalProcessedSize += processedSize;
 
+                                    // Check total size
                                     if (totalProcessedSize > maxTotalSize) {
-                                        feedbackElement.textContent =
-                                            'The total size of all uploaded files exceeds 5MB.';
+                                        feedbackElement.textContent = 'A soma do tamanho das imagens excedeu o limite permitido.';
                                         feedbackElement.style.color = 'red';
                                         progressBar.style.width = '0%';
                                         progressText.textContent = '0%';
                                         return;
                                     }
 
-                                    // Add processed file
-                                    processedFiles.push(
-                                        new File([blob], file.name, { type: file.type })
-                                    );
+                                    processedFiles.push(new File([blob], file.name, { type: file.type }));
+
+                                    // Add preview for each image
+                                    addPreview(blob, previewSlots, imageCount);
+                                    imageCount++;
 
                                     // Update progress bar
-                                    const progress =
-                                        Math.min((processedFiles.length / files.length) * 100, 100);
+                                    const progress = Math.min((imageCount / files.length) * 100, 100);
                                     progressBar.style.width = `${progress}%`;
                                     progressText.textContent = `${Math.round(progress)}%`;
 
-                                    // Show progress bar when process starts
+                                    // Show progress bar
                                     if (progressContainer.style.opacity === '0') {
                                         progressContainer.style.opacity = '1';
                                     }
 
-                                    // Replace original input files with processed files when done
-                                    if (processedFiles.length === files.length) {
-                                        const dataTransfer = new DataTransfer();
-                                        processedFiles.forEach((processedFile) =>
-                                            dataTransfer.items.add(processedFile)
-                                        );
-                                        fileInput.files = dataTransfer.files;
-                                        feedbackElement.textContent =
-                                            'All files successfully processed!';
-                                        feedbackElement.style.color = 'green';
-                                    }
-                                },
-                                file.type,
-                                0.85
-                            );
+                                    // Handle success or error messages for number of images
+                                    feedbackElement.textContent = `Carregando ${imageCount} de ${files.length} imagens...`;
+                                }, file.type, 0.85);
+                            };
+                            img.src = e.target.result;
                         };
-                        img.src = reader.result;
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    feedbackElement.textContent = 'Only image files are allowed.';
-                    feedbackElement.style.color = 'red';
-                }
+                        reader.readAsDataURL(file);
+                    } else {
+                        feedbackElement.textContent = 'Por favor, adicione apenas arquivos de imagem (JPG, PNG).';
+                        feedbackElement.style.color = 'red';
+                    }
+                });
             });
-        });
+        }
     });
+
+    // Form submission validation (only check number of images at form submit)
+    document.querySelector('form').addEventListener('submit', function(event) {
+        let validForm = true;
+
+        fileInputs.forEach(({ input, minImages, maxImages, feedbackElement }) => {
+            const files = input.files;
+
+            // Check if the number of images is within the allowed range
+            if (files.length < minImages) {
+                feedbackElement.textContent = `Você deve carregar pelo menos ${minImages} imagens.`;
+                feedbackElement.style.color = 'red';
+                validForm = false;
+            } else if (files.length > maxImages) {
+                feedbackElement.textContent = `Você pode adicionar no máximo ${maxImages} imagens.`;
+                feedbackElement.style.color = 'red';
+                validForm = false;
+            }
+        });
+
+        if (!validForm) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+
+    // Helper function to add preview and remove option
+    function addPreview(blob, previewSlots, index) {
+        const previewSlot = previewSlots[index];
+        if (!previewSlot) return;
+
+        const img = document.createElement('img');
+        const deleteIcon = document.createElement('img');
+
+        // Create preview image
+        img.src = URL.createObjectURL(blob);
+        img.alt = 'Preview Image';
+        img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
+
+        // Create delete icon
+        deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
+        deleteIcon.alt = 'Delete Image';
+        deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
+        deleteIcon.addEventListener('click', () => {
+            previewSlot.innerHTML = ''; // Clear slot
+        });
+
+        // Append preview and delete icon
+        previewSlot.appendChild(img);
+        previewSlot.appendChild(deleteIcon);
+        previewSlot.classList.remove('hidden');
+        previewSlot.classList.add('flex');
+    }
 });

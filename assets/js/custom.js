@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
          
         
 
-        if (document.body.classList.contains("page-template-page-ankauf")) {
+     /*   if (document.body.classList.contains("page-template-page-ankauf")) {
             // Configuration for each file input and its corresponding preview slots
             const fileInputs = [
                 {
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.warn("File input not found for selector.");
                 }
             });
-        }
+        } */
 
     }, false);
 });
