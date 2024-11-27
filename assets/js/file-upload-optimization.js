@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const fileInputs = [
         {
-            input: document.querySelector('input[name="your-image-file"]'), 
+            input: document.querySelector('input[name="your-image-file"]'),
             previewSlots: [
                 document.getElementById('preview-slot-1'),
                 document.getElementById('preview-slot-2'),
@@ -22,10 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('preview-slot-10')
             ],
             maxTotalSize: maxTotalSizeInput1,
-            feedbackElement: document.querySelector('#progress-container-your-image-file'),
+            minImages: minImagesInput1,
+            maxImages: maxImagesInput1,
+            feedbackElement: document.querySelector('#your-image-file-feedback'),
             progressBar: document.querySelector('#progress-bar-your-image-file'),
             progressText: document.querySelector('#progress-text-your-image-file'),
-            progressContainer: document.querySelector('#progress-container-your-image-file')
+            progressContainer: document.querySelector('#progress-container-your-image-file'),
+            imageCount: 0  // Counter for this input field
         },
         {
             input: document.querySelector('input[name="file-auto-innen"]'),
@@ -42,10 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('preview-slot-10-innen')
             ],
             maxTotalSize: maxTotalSizeInput2,
+            minImages: minImagesInput2,
+            maxImages: maxImagesInput2,
             feedbackElement: document.querySelector('#file-auto-innen-feedback'),
             progressBar: document.querySelector('#progress-bar-file-auto-innen'),
             progressText: document.querySelector('#progress-text-file-auto-innen'),
-            progressContainer: document.querySelector('#progress-container-file-auto-innen')
+            progressContainer: document.querySelector('#progress-container-file-auto-innen'),
+            imageCount: 0  // Counter for this input field
         },
         {
             input: document.querySelector('input[name="file-fahrzeugausweis"]'),
@@ -55,22 +61,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('preview-slot-3-fahrzeugausweis')
             ],
             maxTotalSize: maxTotalSizeInput3,
+            minImages: minImagesInput3,
+            maxImages: maxImagesInput3,
             feedbackElement: document.querySelector('#file-fahrzeugausweis-feedback'),
             progressBar: document.querySelector('#progress-bar-file-fahrzeugausweis'),
             progressText: document.querySelector('#progress-text-file-fahrzeugausweis'),
-            progressContainer: document.querySelector('#progress-container-file-fahrzeugausweis')
+            progressContainer: document.querySelector('#progress-container-file-fahrzeugausweis'),
+            imageCount: 0  // Counter for this input field
         }
     ];
 
-    let imageCount = 0; // Store the count of images added
-
-    fileInputs.forEach(({ input, previewSlots, maxTotalSize, feedbackElement, progressBar, progressText, progressContainer }) => {
+    fileInputs.forEach(({ input, previewSlots, maxTotalSize, minImages, maxImages, feedbackElement, progressBar, progressText, progressContainer, imageCount }) => {
         if (input) {
             input.addEventListener('change', function (event) {
                 const files = Array.from(input.files);
                 let totalProcessedSize = 0;
                 let processedFiles = [];
-                
+
                 feedbackElement.textContent = '';
                 progressBar.style.width = '0%';
                 progressText.textContent = '0%';
@@ -118,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                     // Add preview for each image
                                     addPreview(blob, previewSlots, imageCount);
-                                    imageCount++;
+                                    imageCount++; // Increment image count for this field
 
                                     // Update progress bar
                                     const progress = Math.min((imageCount / files.length) * 100, 100);
@@ -150,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('form').addEventListener('submit', function(event) {
         let validForm = true;
 
-        fileInputs.forEach(({ input, minImages, maxImages, feedbackElement }) => {
+        fileInputs.forEach(({ input, minImages, maxImages, feedbackElement, imageCount }) => {
             const files = input.files;
 
             // Check if the number of images is within the allowed range
@@ -170,31 +177,64 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Helper function to add preview and remove option
-    function addPreview(blob, previewSlots, index) {
-        const previewSlot = previewSlots[index];
-        if (!previewSlot) return;
+// Helper function to add preview and remove option
+function addPreview(blob, previewSlots, index, imageCount, progressBar, progressText, filesLength) {
+    const previewSlot = previewSlots[index];
+    if (!previewSlot) return;
 
-        const img = document.createElement('img');
-        const deleteIcon = document.createElement('img');
+    const img = document.createElement('img');
+    const deleteIcon = document.createElement('img');
 
-        // Create preview image
-        img.src = URL.createObjectURL(blob);
-        img.alt = 'Preview Image';
-        img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
+    // Create preview image
+    img.src = URL.createObjectURL(blob);
+    img.alt = 'Preview Image';
+    img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
 
-        // Create delete icon
-        deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
-        deleteIcon.alt = 'Delete Image';
-        deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
-        deleteIcon.addEventListener('click', () => {
-            previewSlot.innerHTML = ''; // Clear slot
-        });
+    // Create delete icon
+    deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
+    deleteIcon.alt = 'Delete Image';
+    deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
+    deleteIcon.addEventListener('click', () => {
+        // Esconde o slot de preview
+        previewSlot.classList.add('hidden');
+        previewSlot.innerHTML = ''; // Limpa o conteúdo do slot
+        imageCount--; // Decrementa a contagem de imagens
 
-        // Append preview and delete icon
-        previewSlot.appendChild(img);
-        previewSlot.appendChild(deleteIcon);
-        previewSlot.classList.remove('hidden');
-        previewSlot.classList.add('flex');
+        // Recalcular o progresso baseado no número atual de imagens
+        const progress = Math.min((imageCount / filesLength) * 100, 100); // Agora usa o número total de imagens
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+        if (progressText) {
+            progressText.textContent = `${Math.round(progress)}%`;
+        }
+
+        // Atualiza a mensagem de feedback conforme necessário
+        if (imageCount === 0) {
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+            if (progressText) {
+                progressText.textContent = '0%';
+            }
+        }
+    });
+
+    // Append preview and delete icon
+    previewSlot.appendChild(img);
+    previewSlot.appendChild(deleteIcon);
+    previewSlot.classList.remove('hidden');
+    previewSlot.classList.add('flex');
+
+    // Atualiza o progresso
+    const progress = Math.min((imageCount / filesLength) * 100, 100); // Atualize o progresso de acordo com a contagem atual de imagens
+    if (progressBar) {
+        progressBar.style.width = `${progress}%`;
     }
+    if (progressText) {
+        progressText.textContent = `${Math.round(progress)}%`;
+    }
+}
+
+
 });
