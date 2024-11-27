@@ -159,16 +159,35 @@ function my_console_log(...$data) {
 function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 	$name = $tag['name']; // Field name
 
-	// Allowed file upload fields
-	$allowed_fields = ['your-image-file', 'file-auto-innen', 'file-fahrzeugausweis'];
-	if ( in_array( $name, $allowed_fields ) ) {
+	// Setup configuration for each field
+	$upload_fields_config = [
+			'your-image-file' => [
+					'max_total_size' => 10 * 1024 * 1024, // 10MB
+					'min_images'     => 2,
+					'max_images'     => 10,
+			],
+			'file-auto-innen' => [
+					'max_total_size' => 10 * 1024 * 1024, // 10MB
+					'min_images'     => 2,
+					'max_images'     => 10,
+			],
+			'file-fahrzeugausweis' => [
+					'max_total_size' => 5 * 1024 * 1024,  // 5MB
+					'min_images'     => 1,
+					'max_images'     => 3,
+			],
+	];
+
+	if ( isset( $upload_fields_config[$name] ) ) {
+			$field_config = $upload_fields_config[$name];
+			$max_total_size = $field_config['max_total_size'];
+			$min_images = $field_config['min_images'];
+			$max_images = $field_config['max_images'];
+
 			if ( isset( $_FILES[$name] ) && is_array( $_FILES[$name]['name'] ) ) {
 					$uploaded_files = $_FILES[$name]; // All files in this field
 					$uploaded_paths = [];
-					$max_total_size = 10 * 1024 * 1024; // 10MB total size for all files in this field
 					$total_size = 0;
-					$min_images = 2; // Minimum images required
-					$max_images = 10; // Maximum images allowed
 					$valid_image_count = 0;
 
 					foreach ( $uploaded_files['name'] as $index => $filename ) {
@@ -180,11 +199,11 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 
 									// Check if total size exceeds the limit
 									if ( $total_size > $max_total_size ) {
-											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von 10 MB.' );
+											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von ' . ($max_total_size / (1024 * 1024)) . ' MB.' );
 											return $result;
 									}
 
-									// Validate file type
+									// Validate file type (JPEG, PNG)
 									if ( ! in_array( $file_type, ['image/jpeg', 'image/png'] ) ) {
 											$result->invalidate( $tag, 'Nur JPEG- und PNG-Bildformate sind erlaubt.' );
 											return $result;
@@ -227,10 +246,10 @@ function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
 
 					// Check if the number of images is within the allowed range
 					if ( $valid_image_count < $min_images ) {
-							$result->invalidate( $tag, 'Sie müssen mindestens 2 Bilder hochladen.' );
+							$result->invalidate( $tag, 'Sie müssen mindestens ' . $min_images . ' Bilder hochladen.' );
 							return $result;
 					} elseif ( $valid_image_count > $max_images ) {
-							$result->invalidate( $tag, 'Sie können maximal 10 Bilder hochladen.' );
+							$result->invalidate( $tag, 'Sie können maximal ' . $max_images . ' Bilder hochladen.' );
 							return $result;
 					}
 

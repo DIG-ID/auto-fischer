@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     processedFiles.push(new File([blob], file.name, { type: file.type }));
 
                                     // Add preview for each image
-                                    addPreview(blob, previewSlots, imageCount);
+                                    addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, files.length);
                                     imageCount++; // Increment image count for this field
 
                                     // Update progress bar
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     }
 
                                     // Handle success or error messages for number of images
-                                    feedbackElement.textContent = `Carregando ${imageCount} de ${files.length} imagens...`;
+                                    feedbackElement.textContent = `Carregando ${imageCount} de ${maxImages} imagens...`;
                                 }, file.type, 0.85);
                             };
                             img.src = e.target.result;
@@ -153,88 +153,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Form submission validation (only check number of images at form submit)
-    document.querySelector('form').addEventListener('submit', function(event) {
-        let validForm = true;
+    // Helper function to add preview and remove option
+    function addPreview(blob, previewSlots, index, imageCount, progressBar, progressText, filesLength) {
+        const previewSlot = previewSlots[index];
+        if (!previewSlot) return;
 
-        fileInputs.forEach(({ input, minImages, maxImages, feedbackElement, imageCount }) => {
-            const files = input.files;
+        const img = document.createElement('img');
+        const deleteIcon = document.createElement('img');
 
-            // Check if the number of images is within the allowed range
-            if (files.length < minImages) {
-                feedbackElement.textContent = `Você deve carregar pelo menos ${minImages} imagens.`;
-                feedbackElement.style.color = 'red';
-                validForm = false;
-            } else if (files.length > maxImages) {
-                feedbackElement.textContent = `Você pode adicionar no máximo ${maxImages} imagens.`;
-                feedbackElement.style.color = 'red';
-                validForm = false;
-            }
+        // Create preview image
+        img.src = URL.createObjectURL(blob);
+        img.alt = 'Preview Image';
+        img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
+
+        // Create delete icon
+        deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
+        deleteIcon.alt = 'Delete Image';
+        deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
+        deleteIcon.addEventListener('click', () => {
+            // Decrement image count when deleted
+            imageCount--;
+
+            // Update progress bar after deletion
+            const progress = Math.min((imageCount / filesLength) * 100, 100);
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${Math.round(progress)}%`;
+
+            // Hide preview
+            previewSlot.classList.add('hidden');
+            previewSlot.innerHTML = ''; // Clear content
         });
 
-        if (!validForm) {
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-    });
-
-// Helper function to add preview and remove option
-function addPreview(blob, previewSlots, index, imageCount, progressBar, progressText, filesLength) {
-    const previewSlot = previewSlots[index];
-    if (!previewSlot) return;
-
-    const img = document.createElement('img');
-    const deleteIcon = document.createElement('img');
-
-    // Create preview image
-    img.src = URL.createObjectURL(blob);
-    img.alt = 'Preview Image';
-    img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
-
-    // Create delete icon
-    deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
-    deleteIcon.alt = 'Delete Image';
-    deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
-    deleteIcon.addEventListener('click', () => {
-        // Esconde o slot de preview
-        previewSlot.classList.add('hidden');
-        previewSlot.innerHTML = ''; // Limpa o conteúdo do slot
-        imageCount--; // Decrementa a contagem de imagens
-
-        // Recalcular o progresso baseado no número atual de imagens
-        const progress = Math.min((imageCount / filesLength) * 100, 100); // Agora usa o número total de imagens
-        if (progressBar) {
-            progressBar.style.width = `${progress}%`;
-        }
-        if (progressText) {
-            progressText.textContent = `${Math.round(progress)}%`;
-        }
-
-        // Atualiza a mensagem de feedback conforme necessário
-        if (imageCount === 0) {
-            if (progressBar) {
-                progressBar.style.width = '0%';
-            }
-            if (progressText) {
-                progressText.textContent = '0%';
-            }
-        }
-    });
-
-    // Append preview and delete icon
-    previewSlot.appendChild(img);
-    previewSlot.appendChild(deleteIcon);
-    previewSlot.classList.remove('hidden');
-    previewSlot.classList.add('flex');
-
-    // Atualiza o progresso
-    const progress = Math.min((imageCount / filesLength) * 100, 100); // Atualize o progresso de acordo com a contagem atual de imagens
-    if (progressBar) {
-        progressBar.style.width = `${progress}%`;
+        // Append preview and delete icon
+        previewSlot.appendChild(img);
+        previewSlot.appendChild(deleteIcon);
+        previewSlot.classList.remove('hidden');
+        previewSlot.classList.add('flex');
     }
-    if (progressText) {
-        progressText.textContent = `${Math.round(progress)}%`;
-    }
-}
-
-
 });
