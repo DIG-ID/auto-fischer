@@ -127,6 +127,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                     addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, files.length);
                                     imageCount++; // Increment image count for this field
 
+                                    // Find the file input field for your form
+                                    const fileInput = input; // Use the current file input
+
+                                    // Create a new DataTransfer object
+                                    const dataTransfer = new DataTransfer();
+
+                                    // Add each processed file to the DataTransfer object
+                                    processedFiles.forEach(file => {
+                                        dataTransfer.items.add(file);
+                                    });
+
+                                    // Update the file input with the processed files
+                                    fileInput.files = dataTransfer.files;
+
                                     // Update progress bar
                                     const progress = Math.min((imageCount / files.length) * 100, 100);
                                     progressBar.style.width = `${progress}%`;
