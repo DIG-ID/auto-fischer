@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
             progressBar: document.querySelector('#progress-bar-your-image-file'),
             progressText: document.querySelector('#progress-text-your-image-file'),
             progressContainer: document.querySelector('#progress-container-your-image-file'),
-            imageCount: 0  // Counter for this input field
+            imageCount: 0, // Counter for this input field
+            dataTransfer: new DataTransfer() // Tracks appended files
         },
         {
             input: document.querySelector('input[name="file-auto-innen"]'),
@@ -51,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
             progressBar: document.querySelector('#progress-bar-file-auto-innen'),
             progressText: document.querySelector('#progress-text-file-auto-innen'),
             progressContainer: document.querySelector('#progress-container-file-auto-innen'),
-            imageCount: 0  // Counter for this input field
+            imageCount: 0,
+            dataTransfer: new DataTransfer()
         },
         {
             input: document.querySelector('input[name="file-fahrzeugausweis"]'),
@@ -67,24 +69,23 @@ document.addEventListener('DOMContentLoaded', function () {
             progressBar: document.querySelector('#progress-bar-file-fahrzeugausweis'),
             progressText: document.querySelector('#progress-text-file-fahrzeugausweis'),
             progressContainer: document.querySelector('#progress-container-file-fahrzeugausweis'),
-            imageCount: 0  // Counter for this input field
+            imageCount: 0,
+            dataTransfer: new DataTransfer()
         }
     ];
 
-    fileInputs.forEach(({ input, previewSlots, maxTotalSize, minImages, maxImages, feedbackElement, progressBar, progressText, progressContainer, imageCount }) => {
+    fileInputs.forEach(({ input, previewSlots, maxTotalSize, minImages, maxImages, feedbackElement, progressBar, progressText, progressContainer, imageCount, dataTransfer }) => {
         if (input) {
             input.addEventListener('change', function (event) {
-                const files = Array.from(input.files);
-                let totalProcessedSize = 0;
-                let processedFiles = [];
+                const newFiles = Array.from(input.files);
+                let totalProcessedSize = Array.from(dataTransfer.files).reduce((sum, file) => sum + file.size, 0);
 
                 feedbackElement.textContent = '';
                 progressBar.style.width = '0%';
                 progressText.textContent = '0%';
                 progressContainer.style.opacity = 0;
 
-                // Check for valid file types, resolution, and size
-                files.forEach((file) => {
+                newFiles.forEach((file) => {
                     if (file.type === 'image/jpeg' || file.type === 'image/png') {
                         const reader = new FileReader();
                         reader.onload = function (e) {
@@ -95,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 const maxWidth = 720, maxHeight = 480;
                                 let width = img.width, height = img.height;
 
-                                // Resize image if necessary
                                 if (width > maxWidth || height > maxHeight) {
                                     const ratio = Math.min(maxWidth / width, maxHeight / height);
                                     width = Math.round(width * ratio);
@@ -105,65 +105,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                 canvas.height = height;
                                 ctx.drawImage(img, 0, 0, width, height);
 
-                                // Convert image to blob
                                 canvas.toBlob(function (blob) {
                                     if (!blob) return;
 
                                     const processedSize = blob.size;
                                     totalProcessedSize += processedSize;
 
-                                    // Check total size
                                     if (totalProcessedSize > maxTotalSize) {
-                                        feedbackElement.textContent = 'A soma do tamanho das imagens excedeu o limite permitido.';
+                                        feedbackElement.textContent = 'The total size of images exceeds the allowed limit.';
                                         feedbackElement.style.color = 'red';
-                                        progressBar.style.width = '0%';
-                                        progressText.textContent = '0%';
                                         return;
                                     }
 
-                                    processedFiles.push(new File([blob], file.name, { type: file.type }));
+                                    dataTransfer.items.add(new File([blob], file.name, { type: file.type }));
 
-                                    // Add preview for each image
-                                    if (imageCount < maxImages) {
-                                        addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, files.length);
-                                        imageCount++; // Increment image count for this field
-                                    }
+                                    addPreview(blob, previewSlots, imageCount, maxImages, progressBar, progressText, dataTransfer.files.length);
+                                    imageCount++;
 
-                                    // Create a new DataTransfer object
-                                    const dataTransfer = new DataTransfer();
-
-                                    // Add the existing files from the input (preserving old files)
-                                    for (let i = 0; i < input.files.length; i++) {
-                                        dataTransfer.items.add(input.files[i]);
-                                    }
-
-                                    // Add the new processed files
-                                    processedFiles.forEach(file => {
-                                        dataTransfer.items.add(file);
-                                    });
-
-                                    // Update the file input with the new list of files
                                     input.files = dataTransfer.files;
 
-                                    // Update progress bar
-                                    const progress = Math.min((imageCount / files.length) * 100, 100);
+                                    const progress = Math.min((imageCount / maxImages) * 100, 100);
                                     progressBar.style.width = `${progress}%`;
                                     progressText.textContent = `${Math.round(progress)}%`;
 
-                                    // Show progress bar
                                     if (progressContainer.style.opacity === '0') {
                                         progressContainer.style.opacity = '1';
                                     }
 
-                                    // Handle success or error messages for number of images
-                                    feedbackElement.textContent = `Carregando ${imageCount} de ${maxImages} imagens...`;
+                                    feedbackElement.textContent = `Uploading ${imageCount} of ${maxImages} images...`;
                                 }, file.type, 0.85);
                             };
                             img.src = e.target.result;
                         };
                         reader.readAsDataURL(file);
                     } else {
-                        feedbackElement.textContent = 'Por favor, adicione apenas arquivos de imagem (JPG, PNG).';
+                        feedbackElement.textContent = 'Please upload only image files (JPG, PNG).';
                         feedbackElement.style.color = 'red';
                     }
                 });
@@ -172,37 +148,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Helper function to add preview and remove option
-    function addPreview(blob, previewSlots, index, imageCount, progressBar, progressText, filesLength) {
+    function addPreview(blob, previewSlots, index, maxImages, progressBar, progressText, filesLength) {
         const previewSlot = previewSlots[index];
         if (!previewSlot) return;
 
         const img = document.createElement('img');
         const deleteIcon = document.createElement('img');
 
-        // Create preview image
         img.src = URL.createObjectURL(blob);
         img.alt = 'Preview Image';
         img.classList.add('max-w-full', 'h-auto', 'rounded', 'border', 'shadow-lg');
 
-        // Create delete icon
         deleteIcon.src = '/wp-content/themes/auto-fischer/assets/images/delete.svg';
         deleteIcon.alt = 'Delete Image';
         deleteIcon.classList.add('cursor-pointer', 'absolute', 'top-0', 'right-0');
         deleteIcon.addEventListener('click', () => {
-            // Decrease image count and handle the file removal
-            imageCount--;
-
-            // Update progress bar after deletion
-            const progress = Math.min((imageCount / filesLength) * 100, 100);
-            progressBar.style.width = `${progress}%`;
-            progressText.textContent = `${Math.round(progress)}%`;
-
-            // Hide preview
+            previewSlot.innerHTML = ''; // Clear slot
             previewSlot.classList.add('hidden');
-            previewSlot.innerHTML = ''; // Clear content
         });
 
-        // Append preview and delete icon
         previewSlot.appendChild(img);
         previewSlot.appendChild(deleteIcon);
         previewSlot.classList.remove('hidden');

@@ -94,9 +94,9 @@ function fischer_theme_enqueue_styles() {
 		wp_enqueue_script( 'google-map-settings', get_stylesheet_directory_uri() . '/assets/js/google-maps.js', array( 'jquery' ), $theme_version, true );
 		wp_enqueue_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCB2RShyxiN7xPsQy1QI_SbqXXjW5p08S0&callback=initMap', array(), $theme_version, true );
 	endif;
-	if ( is_page_template( 'page-templates/page-ankauf.php' ) ) { // Adjust condition to your specific template
-		wp_enqueue_script( 'file-upload-optimization', get_template_directory_uri() . '/assets/js/file-upload-optimization.js', array(), null, true );
-}
+	if ( is_page_template( 'page-templates/page-ankauf.php' ) ) :
+		//wp_enqueue_script( 'cf7-multifile-upload', get_template_directory_uri() . '/assets/js/cf7/cf7-multifile-upload.js', array(), $theme_version, true );
+	endif;
 }
 
 add_action( 'wp_enqueue_scripts', 'fischer_theme_enqueue_styles' );
@@ -140,6 +140,9 @@ require get_template_directory() . '/inc/theme-admin-settings.php';
 // The theme custom menu walker settings.
 require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 
+// The theme custom menu walker settings.
+//require get_template_directory() . '/inc/cf7-multifile-upload.php';
+
 function my_console_log(...$data) {
 	$json = json_encode($data);
 	add_action('shutdown', function() use ($json) {
@@ -148,128 +151,3 @@ function my_console_log(...$data) {
 } 
 
 
-
-/**
- * Validate Contact Form 7 uploaded images before submitting.
- *
- * @param WPCF7_Validation $result
- * @param array $tag
- * @return WPCF7_Validation
- */
-function fischer_theme_optimize_and_validate_uploaded_images( $result, $tag ) {
-	$name = $tag['name']; // Field name
-
-	// Setup configuration for each field
-	$upload_fields_config = [
-			'your-image-file' => [
-					'max_total_size' => 10 * 1024 * 1024, // 10MB
-					'min_images'     => 2,
-					'max_images'     => 10,
-			],
-			'file-auto-innen' => [
-					'max_total_size' => 10 * 1024 * 1024, // 10MB
-					'min_images'     => 2,
-					'max_images'     => 10,
-			],
-			'file-fahrzeugausweis' => [
-					'max_total_size' => 5 * 1024 * 1024,  // 5MB
-					'min_images'     => 1,
-					'max_images'     => 3,
-			],
-	];
-
-	if ( isset( $upload_fields_config[$name] ) ) {
-			$field_config = $upload_fields_config[$name];
-			$max_total_size = $field_config['max_total_size'];
-			$min_images = $field_config['min_images'];
-			$max_images = $field_config['max_images'];
-
-			if ( isset( $_FILES[$name] ) && is_array( $_FILES[$name]['name'] ) ) {
-					$uploaded_files = $_FILES[$name]; // All files in this field
-					$uploaded_paths = [];
-					$total_size = 0;
-					$valid_image_count = 0;
-
-					foreach ( $uploaded_files['name'] as $index => $filename ) {
-							if ( $uploaded_files['error'][$index] === UPLOAD_ERR_OK ) {
-									$file_type = $uploaded_files['type'][$index];
-									$file_tmp = $uploaded_files['tmp_name'][$index];
-									$file_size = $uploaded_files['size'][$index];
-									$total_size += $file_size;
-
-									// Check if total size exceeds the limit
-									if ( $total_size > $max_total_size ) {
-											$result->invalidate( $tag, 'Die Gesamtgröße der hochgeladenen Dateien überschreitet das Limit von ' . ($max_total_size / (1024 * 1024)) . ' MB.' );
-											return $result;
-									}
-
-									// Validate file type (JPEG, PNG)
-									if ( ! in_array( $file_type, ['image/jpeg', 'image/png'] ) ) {
-											$result->invalidate( $tag, 'Nur JPEG- und PNG-Bildformate sind erlaubt.' );
-											return $result;
-									}
-
-									// Resize and optimize image
-									$image = wp_get_image_editor( $file_tmp );
-									if ( ! is_wp_error( $image ) ) {
-											$image->resize( 720, 480, true );
-											$image->set_quality( 85 );
-											$image->save( $file_tmp );
-
-											// Further reduce quality if file size exceeds 1MB
-											if ( filesize( $file_tmp ) > 1048576 ) {
-													$image->set_quality( 70 );
-													$image->save( $file_tmp );
-											}
-
-											$uploaded_paths[] = $file_tmp; // Store the optimized file path
-											$valid_image_count++; // Increment the valid image count
-									} else {
-											$result->invalidate( $tag, 'Ein Bild konnte nicht verarbeitet werden. Bitte versuchen Sie es erneut.' );
-											return $result;
-									}
-							} else {
-									// Handle file upload errors
-									$error_messages = [
-											UPLOAD_ERR_INI_SIZE   => 'Die hochgeladene Datei überschreitet das Server-Upload-Limit.',
-											UPLOAD_ERR_FORM_SIZE  => 'Die hochgeladene Datei überschreitet das zulässige Formulargröße-Limit.',
-											UPLOAD_ERR_PARTIAL    => 'Die Datei wurde nur teilweise hochgeladen. Bitte versuchen Sie es erneut.',
-											UPLOAD_ERR_NO_FILE    => 'Es wurde keine Datei hochgeladen.',
-											UPLOAD_ERR_NO_TMP_DIR => 'Es fehlt ein temporärer Ordner auf dem Server.',
-											UPLOAD_ERR_CANT_WRITE => 'Fehler beim Schreiben der Datei auf die Festplatte.',
-											UPLOAD_ERR_EXTENSION  => 'Eine PHP-Erweiterung hat den Datei-Upload gestoppt.',
-									];
-									$result->invalidate( $tag, $error_messages[$uploaded_files['error'][$index]] ?? 'Ein unbekannter Fehler ist aufgetreten.' );
-									return $result;
-							}
-					}
-
-					// Check if the number of images is within the allowed range
-					if ( $valid_image_count < $min_images ) {
-							$result->invalidate( $tag, 'Sie müssen mindestens ' . $min_images . ' Bilder hochladen.' );
-							return $result;
-					} elseif ( $valid_image_count > $max_images ) {
-							$result->invalidate( $tag, 'Sie können maximal ' . $max_images . ' Bilder hochladen.' );
-							return $result;
-					}
-
-					// Attach all processed files to the email
-					foreach ( $uploaded_paths as $path ) {
-							wpcf7_add_file( $tag->name, $path );
-					}
-
-					// Clean up temporary files after sending email
-					register_shutdown_function( function () use ( $uploaded_paths ) {
-							foreach ( $uploaded_paths as $path ) {
-									if ( file_exists( $path ) ) {
-											unlink( $path ); // Delete temporary files
-									}
-							}
-					});
-			}
-	}
-
-	return $result;
-}
-add_filter( 'wpcf7_validate_file', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2 );
-add_filter( 'wpcf7_validate_file*', 'fischer_theme_optimize_and_validate_uploaded_images', 20, 2 );
