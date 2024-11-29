@@ -23,7 +23,12 @@
 
     .highlights-slider
         .swiper-slide img
-            max-height: 566px
+            max-height: 556px
+        .swiper-button-next, .swiper-button-prev
+            @apply w-[60px] h-[40px] rounded-[30px]
+            background-color: rgba(255, 255, 255, 0.20)
+            &::after
+                font-size: 12px !important
 
     .thumbnail-slider
         .swiper-pagination
@@ -38,6 +43,10 @@
         .swiper-pagination-bullet-active
             opacity: 1
 
+    .thumbnails-container
+        .swiper-slide-thumbnail
+            @apply min-h-[189px]
+
 .scrollbar-hidden::-webkit-scrollbar
     display: none
 
@@ -46,3 +55,15 @@
     scrollbar-width: none
     overflow-y: auto
     touch-action: pan-y
+
+.swiper-slide-thumbnail img.active
+    border: 0px solid #F48123
+    border-radius: 16px
+    transform: scale(0.984)
+    transition: all 0.3s ease
+
+.thumbnails-container
+    overflow-x: auto
+    overflow-y: hidden
+    scroll-behavior: smooth
+    max-width: 100%

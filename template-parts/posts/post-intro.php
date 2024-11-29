@@ -1,5 +1,5 @@
 <div class="section-post-intro pt-20">
-	<div class="theme-container theme-grid">
+	<div class="theme-container grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-[10px]">
 			<div class="col-span-2 md:col-span-6 xl:col-span-12 pb-8">
 				<?php do_action( 'breadcrumbs' ); ?>
 			</div>
@@ -29,8 +29,8 @@
 				</div>
 
 				<!-- Thumbnails Section -->
-				<div class="col-span-2 md:col-span-6 xl:col-span-4 hidden xl:block max-h-[566px] overflow-hidden">
-					<div class="thumbnails-container grid grid-cols-2 gap-3 max-h-[566px] overflow-y-auto scrollbar-hidden">
+				<div class="col-span-2 md:col-span-6 xl:col-span-4 hidden xl:block max-h-[556px] overflow-hidden">
+					<div class="thumbnails-container grid grid-cols-2 gap-x-[10px] max-h-[556px] overflow-y-auto scrollbar-hidden">
 						<?php 
 						$min_slots = 6; // Set the minimum number of thumbnails to display
 						$gallery_count = count($gallery); // Number of images in the gallery
@@ -46,7 +46,7 @@
 						?>
 							<div class="swiper-slide-thumbnail relative w-full" style="padding-top: 75%;"> <!-- 4:3 aspect ratio -->
 								<img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($thumbnail_alt); ?>" 
-									class="absolute inset-0 w-full h-full object-cover cursor-pointer rounded-2xl"
+									class="absolute inset-0 w-full object-cover cursor-pointer rounded-2xl"
 									data-swiper-slide-index="<?php echo $index; ?>">
 							</div>
 						<?php endforeach; ?>
@@ -57,8 +57,9 @@
 						while ($slot_count < $min_slots): 
 							$slot_count++;
 						?>
-							<div class="swiper-slide-thumbnail relative w-full bg-gray-200 flex items-center justify-center rounded-2xl" style="padding-top: 75%;"> <!-- 4:3 aspect ratio -->
-								<span class="absolute inset-0 flex items-center justify-center text-gray-500">No Image</span>
+							<div class="swiper-slide-thumbnail thumbnail-placeholder relative w-full" style="padding-top: 75%;"> <!-- 4:3 aspect ratio -->
+								<img class=" hidden absolute inset-0 w-full object-cover rounded-2xl" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/image-placeholder-highlights.jpg" alt="" title="" />
+								<span class=" absolute inset-0 flex items-center justify-center text-gray-500"><img class="absolute inset-0 w-full object-cover rounded-2xl" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/image-placeholder-highlights.jpg" alt="" title="" /></span>
 							</div>
 						<?php endwhile; ?>
 					</div>

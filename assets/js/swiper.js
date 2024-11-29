@@ -177,21 +177,61 @@ window.addEventListener("load", () => {
         const mainSlider = new Swiper('.highlights-slider', {
             slidesPerView: 1,
             spaceBetween: 10,
+            effect: 'fade',
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            on: {
+                slideChange: function () {
+                    // Update the active thumbnail on slide change
+                    updateActiveThumbnail(mainSlider.activeIndex);
+                },
+            },
         });
-
-        // Thumbnails functionality
+    
+        const thumbnailsContainer = document.querySelector('.thumbnails-container'); // Thumbnail container
         const thumbnails = document.querySelectorAll('.swiper-slide-thumbnail img');
-
+    
+        // Add click event to thumbnails
         thumbnails.forEach((thumbnail, index) => {
             thumbnail.addEventListener('click', () => {
-                mainSlider.slideTo(index);
+                mainSlider.slideTo(index); // Navigate to the corresponding slide
             });
         });
+    
+        // Function to update the active thumbnail and scroll into view
+        function updateActiveThumbnail(activeIndex) {
+            thumbnails.forEach((thumbnail, index) => {
+                // Add 'active' class to the current thumbnail and remove from others
+                if (index === activeIndex) {
+                    thumbnail.classList.add('active');
+                    thumbnail.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center',
+                    });
+                } else {
+                    thumbnail.classList.remove('active');
+                }
+            });
+        }
+    
+        // Prevent page scrolling when interacting with the thumbnails container
+        thumbnailsContainer.addEventListener('wheel', (event) => {
+            event.preventDefault(); // Stop the page from scrolling
+            thumbnailsContainer.scrollBy({
+                top: 0,
+                left: event.deltaY, // Horizontal scroll only
+                behavior: 'smooth',
+            });
+        });
+    
+        // Set the initial active thumbnail
+        updateActiveThumbnail(mainSlider.activeIndex);
     }
+    
+    
     
 
 }, false);
