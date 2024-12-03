@@ -57,9 +57,12 @@
                         while ( $highlight_query->have_posts() ) :
                             $highlight_query->the_post();
                             ?>
-                            <div class="swiper-slide w-auto px-4 border-b-2 border-blue-shade">
+                            <div class="swiper-slide w-auto px-1 border-b-2 pb-6 border-blue-shade cursor-pointer">
                                 <span class="swiper-thumbnail-title text-white inline-block">
                                     <?php the_title(); ?>
+                                </span>
+                                <span class="font-sans text-[15px] xl:text-[20px] font-light text-white hidden xl:inline-block">
+                                    <?php the_field( 'info_model' ); ?>
                                 </span>
                             </div>
                         <?php

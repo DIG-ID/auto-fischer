@@ -21,8 +21,9 @@
 
         .swiper-slide
             display: flex
-            justify-content: center
-            align-items: center
+            flex-direction: column
+            justify-content: flex-start
+            align-items: flex-start
 
             &-thumb-active
                 border-color: #F48123
@@ -30,7 +31,7 @@
                 border-color: #F48123
 
             .swiper-thumbnail-title
-                @apply font-sans text-[20px] xl:text-[30px] text-white pb-5 cursor-pointer
+                @apply font-sans text-[20px] xl:text-[30px] text-white pb-0 cursor-pointer
                 transition: color 0.3s ease, border-color 0.3s ease
 
             

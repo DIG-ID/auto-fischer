@@ -50,7 +50,7 @@ window.addEventListener("load", () => {
                     spaceBetween: 16,
                 },
                 1024: {
-                    slidesPerView: 5,
+                    slidesPerView: 4.4,
                     spaceBetween: 24,
                 },
             },
