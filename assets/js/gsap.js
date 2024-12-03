@@ -123,7 +123,6 @@ if (document.body.classList.contains("unser-highlight-template-default")) {
 						},
 						scrub: true, // Smooth sticky behavior
 						pin: true, // Makes the sidebar sticky
-						anticipatePin: 1, // For a smooth experience
 					},
 				});
 	

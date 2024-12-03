@@ -39,36 +39,60 @@ window.addEventListener("load", () => {
             },
         });
 
+        // Main Swiper
+        // Initialize Thumbnail Swiper
+        var thumbnailsSwiper = new Swiper(".swiper-thumbnails", {
+            slidesPerView: 2,
+            spaceBetween: 28,
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 24,
+                },
+            },
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true, // Make thumbnails clickable
+        });
+
+        // Initialize Main Swiper
         var highlightsSwiper = new Swiper(".highlights-swiper", {
-            
             slidesPerView: 1,
             spaceBetween: 10,
+            effect: 'coverflow',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
             loop: true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
             thumbs: {
-                swiper: {
-                    el: ".swiper-thumbnails",
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 16, // Adjust space between slides if needed
-                        },
-                        1024: {
-                            slidesPerView: 5,
-                            spaceBetween: 24,
-                        },
-                    },
-                    slidesPerView: 2,
-                    spaceBetween: 28,
-                    freeMode: true,
-                    watchSlidesVisibility: true,
-                    watchSlidesProgress: true,
-                },
+                swiper: thumbnailsSwiper, // Link thumbnails to main swiper
             },
         });
+
+        // Add Event Listener to Ensure Thumbnails Work Properly
+        thumbnailsSwiper.on("click", function (swiper) {
+            const clickedIndex = swiper.clickedIndex;
+            if (typeof clickedIndex !== "undefined" && clickedIndex !== null) {
+                highlightsSwiper.slideTo(clickedIndex); // Change the main slider to the clicked thumbnail
+            }
+        });
+
+
+
+
         
         
     }

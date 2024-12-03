@@ -13,8 +13,8 @@
 		</div>
 		<div class="col-span-2 md:col-span-6 xl:col-span-3 border-b border-[#E1E1E1] py-6">
 			<p class="text-body mb-6"><?php esc_html_e( 'Brühlstrasse 1, 4107 Ettingen', 'fischer' ); ?></p>
-			<p class="text-body xl:pl-12"><span class="font-medium"><?php esc_html_e( 'Geschäft', 'fischer' ); ?></span><a href="tel:<?php the_field( 'general_phone_number', 'option' ); ?>"><?php the_field( 'general_phone_number', 'option' ); ?></a></p>
-			<p class="text-body mb-7 xl:pl-12"><span class="font-medium"><?php esc_html_e( 'Mail', 'fischer' ); ?></span><a href="mailto:<?php the_field( 'general_email', 'option' ); ?>"><?php the_field( 'general_email', 'option' ); ?></a></p>
+			<p class="text-body xl:pl-12"><span class="font-medium"><?php esc_html_e( 'Geschäft: ', 'fischer' ); ?></span><a href="tel:<?php the_field( 'general_phone_number', 'option' ); ?>"><?php the_field( 'general_phone_number', 'option' ); ?></a></p>
+			<p class="text-body mb-7 xl:pl-12"><span class="font-medium"><?php esc_html_e( 'Mail: ', 'fischer' ); ?></span><a href="mailto:<?php the_field( 'general_email', 'option' ); ?>"><?php the_field( 'general_email', 'option' ); ?></a></p>
 			<div class="schedule-sidebar">
 				<p class="text-body !font-bold mb-6"><?php esc_html_e( 'Öffnungszeiten', 'fischer' ); ?></p>
 				<?php
