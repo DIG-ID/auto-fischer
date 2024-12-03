@@ -67,3 +67,74 @@
 			<?php endif; ?>
 	</div>
 </div>
+
+
+
+// Working without drag/touch
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const thumbnailContainer = document.querySelector('.thumbnails-container');
+
+    if (thumbnailContainer) {
+        // Disable page scroll while hovering over the thumbnails
+        let isHoveringThumbnails = false;
+
+        // Prevent page scroll when hovering over the container
+        thumbnailContainer.addEventListener('mouseenter', () => {
+            isHoveringThumbnails = true;
+        });
+
+        thumbnailContainer.addEventListener('mouseleave', () => {
+            isHoveringThumbnails = false;
+        });
+
+        // Handle wheel events
+        document.addEventListener('wheel', (event) => {
+            if (isHoveringThumbnails) {
+                const scrollTop = thumbnailContainer.scrollTop;
+                const scrollHeight = thumbnailContainer.scrollHeight;
+                const offsetHeight = thumbnailContainer.offsetHeight;
+                const isAtTop = scrollTop === 0;
+                const isAtBottom = scrollTop + offsetHeight >= scrollHeight;
+
+                // Allow scrolling the thumbnails but block page scroll
+                if (
+                    (event.deltaY < 0 && !isAtTop) || // Scrolling up and not at the top
+                    (event.deltaY > 0 && !isAtBottom) // Scrolling down and not at the bottom
+                ) {
+                    event.preventDefault(); // Prevent page scroll
+
+                    // Adjust the scroll speed (increase the scroll distance by a factor of 2 here)
+                    thumbnailContainer.scrollBy({
+                        top: event.deltaY * 2, // Multiply the deltaY to make scrolling faster
+                        behavior: 'smooth',
+                    });
+                }
+            }
+        });
+
+        // Handle touch scrolling (mobile)
+        let touchStartY = 0;
+
+        thumbnailContainer.addEventListener('touchstart', (event) => {
+            touchStartY = event.touches[0].clientY;
+        });
+
+        thumbnailContainer.addEventListener('touchmove', (event) => {
+            if (isHoveringThumbnails) {
+                const touchMoveY = event.touches[0].clientY;
+                const deltaY = touchStartY - touchMoveY;
+                thumbnailContainer.scrollBy({
+                    top: deltaY * 2, // Multiply the deltaY to make scrolling faster on touch devices as well
+                    behavior: 'smooth',
+                });
+                touchStartY = touchMoveY;
+                event.preventDefault(); // Prevent page scroll on touch devices
+            }
+        });
+    }
+});
+
+
+
+</script>

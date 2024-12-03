@@ -40,6 +40,7 @@ window.addEventListener("load", () => {
         });
 
         var highlightsSwiper = new Swiper(".highlights-swiper", {
+            
             slidesPerView: 1,
             spaceBetween: 10,
             loop: true,
@@ -50,7 +51,17 @@ window.addEventListener("load", () => {
             thumbs: {
                 swiper: {
                     el: ".swiper-thumbnails",
-                    slidesPerView: 5,
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 16, // Adjust space between slides if needed
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                            spaceBetween: 24,
+                        },
+                    },
+                    slidesPerView: 2,
                     spaceBetween: 28,
                     freeMode: true,
                     watchSlidesVisibility: true,

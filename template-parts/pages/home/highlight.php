@@ -1,8 +1,8 @@
-<section class="section-highlight relative overflow-hidden max-h-[94vh] mt-40 hidden">
+<section class="section-highlight relative overflow-hidden max-h-[94vh] mt-40">
     <?php
     $args = array(
         'post_type'      => 'unser-highlight',
-        'post_status'    => 'published',
+        'post_status'    => 'publish',
         'order'          => 'ASC',
         'orderby'        => 'date',
         'posts_per_page' => -1,
@@ -22,7 +22,7 @@
                     <div class="swiper-slide relative">
                         <!-- Background image -->
                         <div class="relative inset-0">
-                            <img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover">
+                            <img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-h-[600px] md:min-h-[728px] min-w-[430px] md:min-w-[743px] lg:w-[1920px] lg:h-[850px]">
                         </div>
                         <!-- Content -->
                         <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 pt-28 pb-[60px] h-full">
@@ -34,7 +34,7 @@
                                     <div class="swiper-button-prev cursor-pointer"></div>
                                     <!-- Button -->
                                     <a class="btn-main btn-main--full-blue-darkbg max-w-[210px]" href="<?php the_permalink(); ?>">
-                                        <?php _e( 'Read More', 'textdomain' ); ?>
+                                        <?php _e( 'Mehr erfahren', 'textdomain' ); ?>
                                     </a>
                                     <!-- Next Arrow -->
                                     <div class="swiper-button-next cursor-pointer"></div>
@@ -49,23 +49,25 @@
             ?>
         </div>
         <!-- Thumbnails -->
-        <div class="swiper swiper-thumbnails absolute top-[74px] right-0 flex gap-2">
-            <div class="swiper-wrapper justify-end">
-                <?php
-                if ( $highlight_query->have_posts() ) :
-                    while ( $highlight_query->have_posts() ) :
-                        $highlight_query->the_post();
-                        ?>
-                        <div class="swiper-slide w-auto px-4 border-b-2 border-blue-shade">
-                            <span class="swiper-thumbnail-title text-white inline-block">
-                                <?php the_title(); ?>
-                            </span>
-                        </div>
+        <div class="absolute top-[74px] right-0 flex gap-2 w-full">
+            <div class="swiper swiper-thumbnails">
+                <div class="swiper-wrapper">
                     <?php
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
+                    if ( $highlight_query->have_posts() ) :
+                        while ( $highlight_query->have_posts() ) :
+                            $highlight_query->the_post();
+                            ?>
+                            <div class="swiper-slide w-auto px-4 border-b-2 border-blue-shade">
+                                <span class="swiper-thumbnail-title text-white inline-block">
+                                    <?php the_title(); ?>
+                                </span>
+                            </div>
+                        <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
+                </div>
             </div>
         </div>
     </div>
