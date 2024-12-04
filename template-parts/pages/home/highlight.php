@@ -27,8 +27,8 @@
                         <!-- Content -->
                         <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 pt-28 pb-[60px] h-full">
                             <div class="col-span-2 md:col-span-6 xl:col-span-12 flex flex-col text-center justify-end items-center relative">
-                                <h2 class="title-secondary text-light-blue-shade"><?php the_title(); ?></h2>
-                                <p class="text-body text-light-blue-shade pt-5 pb-7"><?php echo get_field( 'info_model' ); ?></p>
+                                <h2 class="title-secondary text-light-blue-shade"><?php esc_html_e( 'Unsere Highglights' ); ?></h2>
+                                <p class="text-body text-light-blue-shade pt-5 pb-7"><?php esc_html_e( 'Entdecken Sie unsere aktuellen Highlight-Fahrzeuge.' ); ?></p>
                                 <div class="flex items-center justify-center gap-4 relative">
                                     <!-- Previous Arrow -->
                                     <div class="swiper-button-prev cursor-pointer"></div>
