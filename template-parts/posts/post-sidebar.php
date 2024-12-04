@@ -4,7 +4,7 @@
 			<h4 class="title-pre mb-1"><?php esc_html_e( 'Preis', 'fischer' ); ?></h4>
 			<h2 class="font-sans text-[40px] leading-[45px] font-bold text-orange-shade mb-3"><?php the_field( 'price' ); ?></h2>
 			<a href="tel:<?php the_field( 'general_phone_number', 'option' ); ?>" class="btn-main btn-main--full-blue w-full"><?php esc_html_e( 'Kontaktieren Sie uns', 'fischer' ); ?></a>
-			<a class="btn-main btn-main--transparent max-w-[210px] mx-auto !block mt-3 mb-4" href="/ankauf/"><?php esc_html_e( 'zu allen Fahrzeugen', 'fischer' ); ?></a>
+			<a class="btn-main btn-main--transparent max-w-[210px] mx-auto !block mt-3 mb-4" href="/unsere-fahrzeuge/"><?php esc_html_e( 'zu allen Fahrzeugen', 'fischer' ); ?></a>
 		</div>
 		<div class="col-span-2 md:col-span-6 xl:col-span-3 border-y border-[#E1E1E1] pt-6 pb-4">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/auto-fischer-logo.svg" alt="" title="" class="max-w-[120px]" />
