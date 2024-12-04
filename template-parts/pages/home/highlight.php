@@ -1,4 +1,4 @@
-<section class="section-highlight relative overflow-hidden max-h-[94vh] mt-40">
+<section class="section-highlight relative overflow-hidden mt-40">
     <?php
     $args = array(
         'post_type'      => 'unser-highlight',
@@ -22,7 +22,7 @@
                     <div class="swiper-slide relative">
                         <!-- Background image -->
                         <div class="relative inset-0">
-                            <img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-h-[600px] md:min-h-[728px] min-w-[430px] md:min-w-[743px] lg:w-[1920px] lg:h-[850px]">
+                            <img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-h-[600px] md:min-h-[728px] min-w-[430px] md:min-w-[743px] lg:w-[1920px] lg:h-[850px] max-h-[94vh]">
                         </div>
                         <!-- Content -->
                         <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 pt-28 pb-[60px] h-full">
