@@ -21,11 +21,11 @@
                     ?>
                     <div class="swiper-slide relative">
                         <!-- Background image -->
-                        <div class="relative inset-0">
+                        <div class="relative inset-0 z-10">
                             <img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-h-[600px] md:min-h-[728px] min-w-[430px] md:min-w-[743px] lg:w-[1920px] lg:h-[850px] max-h-[94vh]">
                         </div>
                         <!-- Content -->
-                        <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 pt-28 pb-[60px] h-full">
+                        <div class="theme-container theme-grid absolute top-0 left-1/2 -translate-x-1/2 pt-28 pb-[60px] h-full z-20">
                             <div class="col-span-2 md:col-span-6 xl:col-span-12 flex flex-col text-center justify-end items-center relative">
                                 <h2 class="title-secondary text-light-blue-shade"><?php esc_html_e( 'Unsere Highglights' ); ?></h2>
                                 <p class="text-body text-light-blue-shade pt-5 pb-7"><?php esc_html_e( 'Entdecken Sie unsere aktuellen Highlight-Fahrzeuge.' ); ?></p>

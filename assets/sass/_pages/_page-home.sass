@@ -11,6 +11,32 @@
             display: flex
             align-items: center
             justify-content: center
+            & > div.relative::before
+                content: ""
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 33%
+                pointer-events: none
+                background: rgb(0,22,41)
+                background: -moz-linear-gradient(180deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                background: -webkit-linear-gradient(180deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                background: linear-gradient(180deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                z-index: 9
+            & > div.relative::after
+                content: ""
+                position: absolute
+                bottom: 0
+                left: 0
+                width: 100%
+                height: 33%
+                pointer-events: none
+                background: rgb(0,22,41)
+                background: -moz-linear-gradient(0deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                background: -webkit-linear-gradient(0deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                background: linear-gradient(0deg, rgba(0,22,41,1) 0%, rgba(0,22,41,0) 100%)
+                z-index: 9
 
     .swiper-thumbnails
         min-width: 75%
