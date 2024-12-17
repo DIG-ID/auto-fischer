@@ -43,19 +43,19 @@ window.addEventListener("load", () => {
         // Initialize Thumbnail Swiper
         var thumbnailsSwiper = new Swiper(".swiper-thumbnails", {
             slidesPerView: 2,
-            spaceBetween: 28,
+            //spaceBetween: 28,
             breakpoints: {
                 768: {
                     slidesPerView: 3,
-                    spaceBetween: 16,
+                    //spaceBetween: 16,
                 },
                 1024: {
                     slidesPerView: 3.4,
-                    spaceBetween: 24,
+                    //spaceBetween: 24,
                 },
                 1600: {
                     slidesPerView: 4.4,
-                    spaceBetween: 24,
+                    //spaceBetween: 24,
                 },
             },
             freeMode: true,
@@ -68,7 +68,7 @@ window.addEventListener("load", () => {
         var highlightsSwiper = new Swiper(".highlights-swiper", {
             slidesPerView: 1,
             spaceBetween: 10,
-            effect: 'coverflow',
+            effect: 'fade',
             coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
