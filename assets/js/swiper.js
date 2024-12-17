@@ -68,7 +68,7 @@ window.addEventListener("load", () => {
         var highlightsSwiper = new Swiper(".highlights-swiper", {
             slidesPerView: 1,
             spaceBetween: 10,
-            effect: 'fade',
+            effect: 'coverflow',
             coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
