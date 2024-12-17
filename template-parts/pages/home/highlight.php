@@ -28,7 +28,7 @@
 					<div class="swiper-slide relative">
 						<!-- Background image -->
 						<div class="relative inset-0 z-10">
-							<img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-w-[430px] md:min-w-[743px] lg:w-[1920px] min-h-[361px] max-h-[361px] md:max-h-[616px] md:min-h-[616px] lg:min-h-[850px] lg:max-h-[850px]">
+							<img src="<?php echo $highlightImg; ?>" alt="" class="w-full h-full object-cover min-w-full md:min-w-[743px] lg:w-[1920px] min-h-[361px] max-h-[361px] md:max-h-[616px] md:min-h-[616px] lg:min-h-[850px] lg:max-h-[850px]">
 						</div>
 						<!-- Content -->
 						<div class="theme-container theme-grid absolute bottom-0 left-1/2 -translate-x-1/2 pb-4 md:pb-10 lg:pb-[60px] z-20">
