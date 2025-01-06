@@ -68,14 +68,6 @@ window.addEventListener("load", () => {
         var highlightsSwiper = new Swiper(".highlights-swiper", {
             slidesPerView: 1,
             spaceBetween: 10,
-            effect: 'coverflow',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
             loop: true,
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -84,6 +76,7 @@ window.addEventListener("load", () => {
             thumbs: {
                 swiper: thumbnailsSwiper, // Link thumbnails to main swiper
             },
+            speed: 800,
         });
 
         // Add Event Listener to Ensure Thumbnails Work Properly
