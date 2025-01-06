@@ -67,7 +67,7 @@ window.addEventListener("load", () => {
         // Initialize Main Swiper
         var highlightsSwiper = new Swiper(".highlights-swiper", {
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 0,
             loop: true,
             navigation: {
                 nextEl: ".swiper-button-next",
