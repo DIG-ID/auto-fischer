@@ -32,7 +32,7 @@
 						<?php
 						if( have_rows('vehicles_info_1_info_list') ):
 								while( have_rows('vehicles_info_1_info_list') ) : the_row(); ?>
-								<p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
+								<p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" class="min-w-[25px]" alt="List Arrow" title="List Arrow" /></span><?php echo get_sub_field( 'title' ); ?></p>
 								<p class="text-body ml-3 pl-[25px] [&:not(:last-of-type)]:border-l border-black pt-2 pb-8"><?php echo get_sub_field( 'text' ); ?></p>
 						<?php
 								endwhile;
@@ -61,7 +61,7 @@
 						<?php
 						if( have_rows('vehicles_info_2_info_list') ):
 								while( have_rows('vehicles_info_2_info_list') ) : the_row(); ?>
-								<p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" alt="List Arrow" title="List Arrow" /></span><?php the_sub_field( 'title' ); ?></p>
+								<p class="title-smallest flex items-center"><span class="mr-3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/checkmark-green.svg" class="min-w-[25px]" alt="List Arrow" title="List Arrow" /></span><?php the_sub_field( 'title' ); ?></p>
 								<p class="text-body ml-3 pl-[25px] [&:not(:last-of-type)]:border-l border-black pt-2 pb-8"><?php the_sub_field( 'text' ); ?></p>
 						<?php
 								endwhile;
