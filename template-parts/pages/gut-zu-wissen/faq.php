@@ -11,13 +11,13 @@
                         $question = get_sub_field('question');
                         $answer = get_sub_field('answer');
                     ?>
-                        <div class="faq-item">
-                            <button class="faq-question q-closed w-full text-left pt-10 pb-4 px-10 title-smallest !font-medium transition rounded-t-2xl outline-none relative">
+                        <div class="faq-item border-b border-[#E1E1E1]">
+                            <button class="faq-question q-closed w-full text-left pt-5 xl:pt-10 pb-4 px-0 title-smallest !font-medium transition rounded-t-2xl outline-none relative">
                                 <?php echo esc_html($question); ?>
                                 <span class="icon-plus float-right absolute lg:relative right-2 top-1/2 -translate-y-1/2 lg:transform-none text-[30px]">+</span>
                             </button>
-                            <div class="faq-answer <?php echo !is_admin() ? 'faq-closed' : ''; ?> px-10 text-body rounded-b-2xl">
-                                <span class="inline-block pb-10 pr-5"><?php echo wp_kses_post($answer); ?></span>
+                            <div class="faq-answer <?php echo !is_admin() ? 'faq-closed' : ''; ?> pl-0 pr-5 text-body rounded-b-2xl">
+                                <span class="inline-block pb-4 pr-5"><?php echo wp_kses_post($answer); ?></span>
                             </div>
                         </div>
                     <?php endwhile; ?>
