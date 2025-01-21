@@ -41,7 +41,7 @@
 						endif;
 						?>
 						<div class="mt-4 md:mt-6 xl:mt-7 text-left">
-							<h3 class="title-smallest mb-3"><?php the_title(); ?></h3>
+							<h3 class="title-smallest xl:mb-3"><?php the_title(); ?></h3>
 							<p class="text-body"><?php the_field( 'role' ); ?></p>
 						</div>
 					</div>

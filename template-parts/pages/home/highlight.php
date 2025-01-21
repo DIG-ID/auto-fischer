@@ -66,7 +66,7 @@
 								<span class="swiper-thumbnail-title text-white block">
 									<?php the_title(); ?>
 								</span>
-								<span class="font-sans text-xs md:text-sm xl:text-xl font-light text-white inline-block text-nowrap">
+								<span class="font-sans text-xs md:text-xs xl:text-lg font-light text-white inline-block text-nowrap">
 									<?php the_field( 'info_model' ); ?>
 								</span>
 							</div>
