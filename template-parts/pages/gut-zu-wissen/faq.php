@@ -12,7 +12,7 @@
                         $answer = get_sub_field('answer');
                     ?>
                         <div class="faq-item border-b border-[#E1E1E1]">
-                            <button class="faq-question q-closed w-full text-left pt-5 xl:pt-10 pb-4 px-0 title-smallest !font-medium transition rounded-t-2xl outline-none relative">
+                            <button class="faq-question q-closed w-full text-left pt-5 xl:pt-10 pb-4 pl-0 pr-7 xl:px-0 title-smallest !font-medium transition rounded-t-2xl outline-none relative">
                                 <?php echo esc_html($question); ?>
                                 <span class="icon-plus float-right absolute lg:relative right-2 top-1/2 -translate-y-1/2 lg:transform-none text-[30px]">+</span>
                             </button>
