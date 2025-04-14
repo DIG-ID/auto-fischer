@@ -1,4 +1,6 @@
 <section class="section-intro bg-transparent relative overflow-hidden">
+    <?php
+    /*
     <div class="theme-container theme-grid mb-28">
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
 
@@ -10,6 +12,8 @@
 
         </div>
     </div>
+        */
+    ?>
     <div class="theme-container theme-grid mb-28">
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
 
