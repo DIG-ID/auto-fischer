@@ -3,7 +3,7 @@
         <?php
         $featureImg_1 = get_field( 'why_choose_feature_1_icon' );
         if ( $featureImg_1 ) :
-            echo wp_get_attachment_image( $featureImg_1, 'full', false, array( 'class' => 'w-[57px] object-cover ' ) );
+            echo wp_get_attachment_image( $featureImg_1, 'full', false, array( 'class' => 'w-[57px] object-cover', 'loading' => 'lazy' ) );
         endif;
         ?>
     </div>
@@ -15,7 +15,7 @@
         <?php
         $featureImg_2 = get_field( 'why_choose_feature_2_icon' );
         if ( $featureImg_2 ) :
-            echo wp_get_attachment_image( $featureImg_2, 'full', false, array( 'class' => 'w-[71px] object-cover ' ) );
+            echo wp_get_attachment_image( $featureImg_2, 'full', false, array( 'class' => 'w-[71px] object-cover', 'loading' => 'lazy' ) );
         endif;
         ?>
     </div>
@@ -27,7 +27,7 @@
         <?php
         $featureImg_3 = get_field( 'why_choose_feature_3_icon' );
         if ( $featureImg_3 ) :
-            echo wp_get_attachment_image( $featureImg_3, 'full', false, array( 'class' => 'w-[65px] object-cover ' ) );
+            echo wp_get_attachment_image( $featureImg_3, 'full', false, array( 'class' => 'w-[65px] object-cover', 'loading' => 'lazy' ) );
         endif;
         ?>
     </div>
@@ -39,7 +39,7 @@
         <?php
         $featureImg_4 = get_field( 'why_choose_feature_4_icon' );
         if ( $featureImg_4 ) :
-            echo wp_get_attachment_image( $featureImg_4, 'full', false, array( 'class' => 'w-[65px] object-cover ' ) );
+            echo wp_get_attachment_image( $featureImg_4, 'full', false, array( 'class' => 'w-[65px] object-cover', 'loading' => 'lazy' ) );
         endif;
         ?>
     </div>
