@@ -4,7 +4,11 @@
         <?php
             $heroimage = get_field( 'intro_image' );
             if ( $heroimage ) :
-                echo wp_get_attachment_image( $heroimage, 'full', false, array( 'class' => 'object-cover w-full' ) );
+                echo wp_get_attachment_image( $heroimage, 'full', false, array(
+                    'class'         => 'object-cover w-full',
+                    'fetchpriority' => 'high',
+                    'loading'       => 'eager',
+                ) );
             endif;
         ?>
         <?php 
@@ -19,7 +23,11 @@
     <?php
     $heroimage_m = get_field( 'intro_image_mobile' );
     if ( $heroimage_m ) :
-        echo wp_get_attachment_image( $heroimage_m, 'full', false, array( 'class' => 'w-full object-cover relative md:hidden' ) );
+        echo wp_get_attachment_image( $heroimage_m, 'full', false, array(
+            'class'         => 'w-full object-cover relative md:hidden',
+            'fetchpriority' => 'high',
+            'loading'       => 'eager',
+        ) );
     endif;
     ?>
     <?php 

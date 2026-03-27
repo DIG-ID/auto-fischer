@@ -71,6 +71,51 @@ function add_adobe_fonts() {
 }
 add_action( 'wp_enqueue_scripts', 'add_adobe_fonts' );
 
+/**
+ * Preconnect to Adobe Fonts domains to reduce font load latency.
+ */
+function fischer_resource_hints( $urls, $relation_type ) {
+    if ( 'preconnect' === $relation_type ) {
+        $urls[] = array( 'href' => 'https://use.typekit.net', 'crossorigin' => 'anonymous' );
+        $urls[] = array( 'href' => 'https://p.typekit.net', 'crossorigin' => 'anonymous' );
+    }
+    return $urls;
+}
+add_filter( 'wp_resource_hints', 'fischer_resource_hints', 10, 2 );
+
+/**
+ * Remove WordPress bloat from <head>.
+ */
+function fischer_cleanup_wp_head() {
+    remove_action( 'wp_head', 'rsd_link' );
+    remove_action( 'wp_head', 'wlwmanifest_link' );
+    remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+    remove_action( 'wp_head', 'wp_generator' );
+    remove_action( 'wp_head', 'rest_output_link_wp_head' );
+    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+    // Remove emoji
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+}
+add_action( 'init', 'fischer_cleanup_wp_head' );
+
+/**
+ * Dequeue unused WordPress scripts and styles.
+ */
+function fischer_dequeue_unused() {
+    // Block editor CSS (not using Gutenberg on front end)
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'classic-theme-styles' );
+    wp_dequeue_style( 'global-styles' );
+    // Embed script
+    wp_dequeue_script( 'wp-embed' );
+}
+add_action( 'wp_enqueue_scripts', 'fischer_dequeue_unused', 100 );
+
 
 /**
  * Enqueue styles and scripts

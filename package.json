@@ -9,14 +9,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^3.0.2",
-    "browser-sync-webpack-plugin": "^2.3.0",
+    "autoprefixer": "^10.4.21",
+    "baseline-browser-mapping": "^2.8.32",
+    "browser-sync": "^3.0.4",
+    "browser-sync-webpack-plugin": "^2.4.0",
     "jquery": "^3.7.1",
     "laravel-mix": "^6.0.49",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.77.6",
     "sass-loader": "^12.1.0",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
