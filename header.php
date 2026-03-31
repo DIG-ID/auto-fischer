@@ -10,6 +10,7 @@
 	</head>
 
 	<body <?php body_class( 'relative' ); ?>>
+		<a class="skip-link" href="#main-content"><?php esc_html_e( 'Skip to main content', 'auto-fischer' ); ?></a>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWQW9557" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->

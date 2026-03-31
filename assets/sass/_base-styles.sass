@@ -30,6 +30,16 @@ body
   height: auto
   color: $darker-blue-shade
 
+.skip-link
+  @apply hidden lg:inline-flex font-sans text-[15px] font-medium bg-blue-shade text-white px-4 py-2 rounded transition-all duration-300 ease-in-out
+  position: absolute
+  top: -100%
+  left: 0
+  z-index: 9999
+  padding-left: 1.5rem
+  &:focus
+    top: 1rem
+
 
 html.lenis,
 html.lenis body
