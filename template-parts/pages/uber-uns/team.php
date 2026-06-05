@@ -7,6 +7,7 @@
 		</div>
 	</div>
 	<div class="theme-container theme-grid">
+		<div class="col-span-2 md:col-span-6 xl:col-span-9 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-9 gap-x-6">
 		<?php
 		$team_args = array(
 			'post_type'   => 'team',
@@ -16,12 +17,8 @@
 		);
 		$team_query = new WP_Query( $team_args );
 		if ( $team_query->have_posts() ) :
-			$i = 0;
 			while ( $team_query->have_posts() ) :
 				$team_query->the_post();
-				if ( 3 === $i  ) :
-					echo '<div class="team-member-card col-span-3 hidden invisible xl:block xl:visible"></div>';
-				endif;
 				?>
 				<div class="team-member-card col-span-1 md:col-span-2 xl:col-span-3 mb-6 md:mb-10 xl:mb-16">
 					<?php
@@ -37,10 +34,10 @@
 					</div>
 				</div>
 				<?php
-				$i++;
 			endwhile;
 		endif;
 		wp_reset_postdata();
 		?>
+		</div>
 	</div>
 </section>
