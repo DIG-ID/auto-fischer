@@ -10,7 +10,7 @@
 		<?php
 		$team_args = array(
 			'post_type'   => 'team',
-			'post_status' => 'published',
+			'post_status' => 'publish',
 			'order'       => 'DESC',
 			'orderby'     => 'date',
 		);
