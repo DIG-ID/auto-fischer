@@ -17,7 +17,7 @@
     <div class="theme-container theme-grid mb-28">
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
 
-            <?php echo do_shortcode('[as24ci_archive]'); ?>
+            <?php echo do_shortcode( get_field( 'cars_shortcode' ) ); ?>
 
             <?php /*
             <div class="hci-container" data-config-id="2849" data-language="de" data-entry-point="search"></div>
