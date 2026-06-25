@@ -1,5 +1,11 @@
 <section class="section-intro bg-transparent relative overflow-hidden">
-    <?php the_content(); ?>
+    <?php
+    global $post;
+    $saved_post = $post;
+    the_content();
+    $post = $saved_post;
+    setup_postdata( $post );
+    ?>
     <?php
     /*
     <div class="theme-container theme-grid mb-28">
