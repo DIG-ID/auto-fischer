@@ -1,4 +1,5 @@
 <section class="section-intro bg-transparent relative overflow-hidden">
+    <?php the_content(); ?>
     <?php
     /*
     <div class="theme-container theme-grid mb-28">
@@ -17,7 +18,7 @@
     <div class="theme-container theme-grid mb-28">
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
 
-            <?php the_content(); ?>
+            
 
             <?php if ( get_field( 'cars_shortcode' ) ) : ?>
                 <?php echo do_shortcode( get_field( 'cars_shortcode' ) ); ?>
