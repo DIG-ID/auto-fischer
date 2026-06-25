@@ -1,4 +1,4 @@
-<section class="section-intro bg-transparent relative overflow-hidden">
+<section id="section-cars" class="section-cars bg-transparent relative overflow-hidden">
     <?php
     global $post;
     $saved_post = $post;
