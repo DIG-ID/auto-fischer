@@ -56,7 +56,7 @@
 		<div class="footer-copyright bg-dark-blue-shade">
 				<div class="theme-container theme-grid py-8">
 						<div class="col-span-2 md:col-span-6 xl:col-span-6 order-2 md:order-1 pl-2 md:pl-0 mt-1 md:mt-0">
-								<p class="text-body text-white"><?php esc_html_e( '© 2024 auto-fischer.ch All rights reserved.', 'auto-fischer' ) ?>
+								<p class="text-body text-white"><?php printf( esc_html__( '© %s auto-fischer.ch All rights reserved.', 'auto-fischer' ), esc_html( date( 'Y' ) ) ); ?>
 						</div>
 						<div class="copy-menu col-span-2 md:col-span-6 xl:col-span-3 col-start-1 md:col-start-1 xl:col-start-10 order-1 md:order-2">
 				<?php
