@@ -1,4 +1,4 @@
-<section class="section-form py-32 bg-light-blue-shade">
+<section id="form" class="section-form py-32 bg-light-blue-shade">
 	<div class="theme-container">
 		<div class="theme-grid mb-16">
 			<div class="col-span-12">

@@ -1,4 +1,4 @@
-<section class="section-why-us py-32">
+<section id="why-us" class="section-why-us py-32">
 	<div class="theme-container">
 		<div class="theme-grid mb-8 md:mb-16">
 			<div class="col-span-12">

@@ -21,6 +21,14 @@
       @apply flex justify-start items-center gap-x-4
   &-row
     @apply col-span-2 md:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-x-7
+  &-legend
+    @apply font-sans text-[13px] text-[#818181] tracking-wide mb-5 px-2
+  &-upload
+    .cf7-mf-container
+      .cf7-mf-content-wrapper
+        @apply bg-transparent p-0
+      .cf7-mf-drag-drop-zone
+        @apply bg-[#F9FBFC] border border-dashed border-darker-blue-shade rounded-lg font-sans font-medium text-base text-darker-blue-shade
 
 
 .wpcf7
@@ -48,6 +56,29 @@
           @apply outline-red-500 outline-1 outline
       .wpcf7-not-valid-tip
         @apply font-sans font-normal text-sm text-red-500 mt-2 absolute -bottom-6 left-2
+
+      // Checkbox groups — overrides the text-input look above
+      .wpcf7-form-control.wpcf7-checkbox
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-7 gap-y-4 border-0 rounded-none p-0 px-2
+        &.wpcf7-not-valid
+          @apply outline-0
+        .wpcf7-list-item
+          @apply m-0
+        label
+          @apply static flex items-center gap-x-2 font-sans text-base text-darker-blue-shade tracking-normal cursor-pointer
+        input[type="checkbox"]
+          @apply appearance-none shrink-0 w-8 h-8 m-0 bg-white border border-[#E1E1E1] rounded-md cursor-pointer transition-colors duration-200 ease-in-out
+          background-position: center
+          background-repeat: no-repeat
+          &:hover
+            @apply border-blue-shade
+          &:focus-visible
+            @apply outline outline-2 outline-offset-2 outline-blue-shade
+          &:checked
+            @apply bg-blue-shade border-blue-shade
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='11' fill='none' viewBox='0 0 14 11'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 5.5 4 4L13 1.5'/%3E%3C/svg%3E")
+    .wpcf7--custom-grid-inline .wpcf7-form-control.wpcf7-checkbox
+      @apply flex flex-wrap gap-x-16
 
 
     .wpcf7-response-output

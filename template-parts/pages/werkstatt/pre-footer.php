@@ -1,4 +1,4 @@
-<section class="section-contact bg-white py-32">
+<section id="contact" class="section-contact bg-white py-32">
 	<div class="bg-dark-blue-shade rounded-2xl text-white flex justify-center items-center px-5 md:px-10 xl:px-0 py-16 md:py-32 mx-6 md:mx-12 xl:mx-24">
 		<div class="theme-container">
 			<div class="theme-grid">
