@@ -1,0 +1,10 @@
+{
+  "branch": "main",
+  "theme_dir": ".",
+  "version_source": "style.css",
+  "version_files": ["style.css", "package.json", "CHANGELOG.md"],
+  "build": "npx mix --production",
+  "node": "22",
+  "lint": "php -l",
+  "output": "dist"
+}
