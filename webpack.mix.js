@@ -1,7 +1,30 @@
 // webpack.mix.js
 
+// webpack.mix.js
+
+const os = require('os');
+const path = require('path');
+
+// Caminho para os certificados do Local by WPEngine
+const certPath = path.join(
+  os.homedir(),
+  os.platform() === 'win32'
+    ? 'AppData/Roaming/Local/run/router/nginx/certs'
+    : 'Library/Application Support/Local/run/router/nginx/certs'
+);
+
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
+
+// BrowserSync host — override per machine with an untracked
+// browsersync.local.js (gitignored) so releases never wipe your local URL:
+//   module.exports = { host: 'my-site.digid' };
+let bsHost = 'auto-fischer.digid';
+try {
+  bsHost = require('./browsersync.local').host || bsHost;
+} catch (e) {
+  // No local override — keep the default host above.
+}
 
 mix
   .setResourceRoot('./')
@@ -19,9 +42,14 @@ mix
   })
 
   .browserSync({
-    proxy: {
-      target: "http://auto-fischer.digid/",
-      ws: true
+    proxy: `https://${bsHost}/`,
+    host: bsHost,
+    open: "external",
+    port: 3000,
+    ws: true,
+    https: {
+      key: path.join(certPath, `${bsHost}.key`),
+      cert: path.join(certPath, `${bsHost}.crt`),
     },
     files: ["./**/*.php", "./dist/js/*.js", "./dist/css/*.css"]
   })
