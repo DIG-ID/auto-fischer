@@ -1,0 +1,72 @@
+<section class="section-buy-sell bg-white pb-10 md:pb-32 relative overflow-hidden">
+	<div class="theme-container theme-grid">
+
+		<div class="col-span-2 md:col-span-6 xl:col-span-4 bg-light-blue-shade rounded-2xl py-12 px-8 md:p-20 mb-14 md:mb-8 xl:mb-0 relative">
+			<h3 class="title-smaller"><?php the_field( 'buy_title' ); ?></h3>
+			<p class="text-body max-w-[310px] py-7"><?php the_field( 'buy_text' ); ?></p>
+			<?php
+			$button_buy = get_field( 'buy_button' );
+			if ( $button_buy ) :
+				$link_url    = $button_buy['url'];
+				$link_title  = $button_buy['title'];
+				$link_target = $button_buy['target'] ? $button_buy['target'] : '_self';
+				?>
+				<a class="btn-main btn-main--full-blue" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+			<?php
+				endif;
+			?>
+			<?php
+			$buyImg = get_field( 'buy_icon' );
+			if ( $buyImg ) :
+				echo wp_get_attachment_image( $buyImg, 'full', false, array( 'class' => 'w-[95px] object-cover md:absolute md:right-[60px] md:bottom-[60px] mt-10 md:mt-0' ) );
+			endif;
+			?>
+		</div>
+
+		<div class="col-span-2 md:col-span-6 xl:col-span-4 bg-[#FFEDDE] rounded-2xl py-12 px-8 md:p-20 relative">
+			<h3 class="title-smaller"><?php the_field( 'sell_title' ); ?></h3>
+			<p class="text-body max-w-[350px] py-7"><?php the_field( 'sell_text' ); ?></p>
+			<?php
+			$button_sell = get_field( 'sell_button' );
+			if ( $button_sell ) :
+				$link_url    = $button_sell['url'];
+				$link_title  = $button_sell['title'];
+				$link_target = $button_sell['target'] ? $button_sell['target'] : '_self';
+				?>
+				<a class="btn-main btn-main--full-orange" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+			<?php
+				endif;
+			?>
+			<?php
+			$sellImg = get_field( 'sell_icon' );
+			if ( $sellImg ) :
+				echo wp_get_attachment_image( $sellImg, 'full', false, array( 'class' => 'w-[86px] object-cover md:absolute md:right-[60px] md:bottom-[60px] mt-10 md:mt-0' ) );
+			endif;
+			?>
+		</div>
+
+
+		<div class="col-span-2 md:col-span-6 xl:col-span-4 bg-white-shade rounded-2xl py-12 px-8 md:p-20 mb-14 md:mb-8 xl:mb-0 relative">
+			<h3 class="title-smaller"><?php the_field( 'repair_title' ); ?></h3>
+			<p class="text-body max-w-[310px] py-7"><?php the_field( 'repair_text' ); ?></p>
+			<?php
+			$button_repair = get_field( 'repair_button' );
+			if ( $button_repair ) :
+				$link_url    = $button_repair['url'];
+				$link_title  = $button_repair['title'];
+				$link_target = $button_repair['target'] ? $button_repair['target'] : '_self';
+				?>
+				<a class="btn-main btn-main--full-blue" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+				<?php
+				endif;
+			?>
+			<?php
+			$repair_icon = get_field( 'repair_icon' );
+			if ( $repair_icon ) :
+				echo wp_get_attachment_image( $repair_icon, 'full', false, array( 'class' => 'w-[95px] object-cover md:absolute md:right-[60px] md:bottom-[60px] mt-10 md:mt-0' ) );
+			endif;
+			?>
+		</div>
+
+	</div>
+</section>

@@ -4,6 +4,14 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] — 2026-11-17
+
+### Added
+- Home page: third card for service and repairs next to buy and sell (new ACF fields `repair_title`, `repair_text`, `repair_button`, `repair_icon`).
+
+### Changed
+- Werkstatt pre-footer phone number now comes from the general Theme Options.
+
 ## [1.4.0] — 2026-11-17
 
 ### Added

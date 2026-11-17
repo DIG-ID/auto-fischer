@@ -50,7 +50,7 @@
 							?>
 							
 							<h3 class="font-sans font-medium text-xl text-orange-shade"><?php the_field( 'contact_telephone_title' ); ?></h3>
-							<?php $telephone = get_field( 'contact_telephone_number' ); ?>
+							<?php $telephone = get_field( 'general_phone_number', 'option' ); ?>
 							<a class="text-body text-light-blue-shade" href="tel:<?php echo esc_attr( $telephone ); ?>"><?php echo esc_html( $telephone ); ?></a>
 					</div>
 				</div>
