@@ -26,7 +26,7 @@ add_action( 'wp_dashboard_setup', 'disable_default_dashboard_widgets', 999 );
 // Updated to proper 'enqueue' method.
 // http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
 function theme_login_css() {
-	fischer_vite_enqueue_style( 'admin-login-css', 'assets/sass/admin-login.sass' );
+	fischer_vite_enqueue_style( 'admin-login-css', 'assets/sass/admin-login.sass', array( 'login' ) );
 }
 add_action( 'login_enqueue_scripts', 'theme_login_css', 10 );
 

@@ -1,6 +1,7 @@
 // vite.config.mjs
 
 import fs from 'node:fs';
+import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import { defineConfig, loadEnv } from 'vite';
@@ -90,6 +91,45 @@ function wordpress() {
   };
 }
 
+/**
+ * Keeps the dev server's hot file through a production build: the build
+ * empties the output folder (emptyOutDir), hot file included, and with
+ * `npm run dev` still running WordPress would silently switch to the build.
+ * Reads the hot file before the build, and writes it back at the end if
+ * the dev server still answers on its port.
+ *
+ * @returns {import('vite').Plugin}
+ */
+function keepHotFile() {
+  let origin = '';
+
+  return {
+    name: 'keep-hot-file',
+    apply: 'build',
+    buildStart() {
+      origin = fs.existsSync(hotFile) ? fs.readFileSync(hotFile, 'utf8').trim() : '';
+    },
+    async closeBundle() {
+      if (!origin) {
+        return;
+      }
+      const { port } = new URL(origin);
+      // IPv4 on purpose: the dev server listens on 127.0.0.1 (see the PHP loader).
+      const alive = await new Promise((resolve) => {
+        const socket = net.connect({ host: '127.0.0.1', port: Number(port) || 443 });
+        socket.setTimeout(500);
+        socket.once('connect', () => { socket.destroy(); resolve(true); });
+        socket.once('timeout', () => { socket.destroy(); resolve(false); });
+        socket.once('error', () => resolve(false));
+      });
+      if (alive) {
+        fs.mkdirSync(path.dirname(hotFile), { recursive: true });
+        fs.writeFileSync(hotFile, origin);
+      }
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   // Local dev hostname and port — override per machine in an untracked
   // .env.local (gitignored):  DEV_HOST=my-site.digid  DEV_PORT=5174
@@ -107,7 +147,7 @@ export default defineConfig(({ mode }) => {
     base: './',
     publicDir: false,
 
-    plugins: [wordpress()],
+    plugins: [wordpress(), keepHotFile()],
 
     css: {
       devSourcemap: true,

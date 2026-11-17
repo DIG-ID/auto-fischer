@@ -224,38 +224,59 @@ if ( ! function_exists( 'fischer_vite_enqueue_script' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'fischer_vite_style_url' ) ) :
+	/**
+	 * Returns the URL of a Vite stylesheet entry (Sass/CSS): the entry on the
+	 * dev server (Vite answers a stylesheet request with the compiled CSS),
+	 * or the hashed file in production. For pages WordPress doesn't enqueue
+	 * on (wp_die()) and for fischer_vite_enqueue_style().
+	 *
+	 * @since 1.3.1
+	 *
+	 * @param string $entry Entry source path, as in vite.config.mjs.
+	 * @return string The URL, or '' when the entry isn't built.
+	 */
+	function fischer_vite_style_url( $entry ) {
+		$dev_server = fischer_vite_dev_server();
+
+		if ( $dev_server ) {
+			return $dev_server . '/' . $entry;
+		}
+
+		$manifest = fischer_vite_manifest();
+
+		return empty( $manifest[ $entry ]['file'] ) ? '' : get_theme_file_uri( '/dist/' . $manifest[ $entry ]['file'] );
+	}
+endif;
+
 if ( ! function_exists( 'fischer_vite_enqueue_style' ) ) :
 	/**
-	 * Enqueues a Vite stylesheet entry (Sass/CSS).
+	 * Enqueues a Vite stylesheet entry (Sass/CSS) as a regular <link>.
 	 *
-	 * On the dev server the stylesheet is loaded as a module so it can be
-	 * hot-reloaded; in production it is a regular <link> to the hashed file.
+	 * On the dev server the <link> points to the entry (Vite answers with the
+	 * compiled CSS) and the Vite client swaps it on every change, without a
+	 * reload; in production it points to the hashed file. Either way it keeps
+	 * WordPress' stylesheet order, so dependencies apply in both modes.
 	 *
 	 * @since 1.3.0
 	 *
 	 * @param string $handle Style handle.
 	 * @param string $entry  Entry source path, as in vite.config.mjs.
-	 * @param array  $deps   Optional. Style dependencies (production only).
+	 * @param array  $deps   Optional. Style dependencies (e.g. 'login').
 	 * @return bool True if the entry was enqueued.
 	 */
 	function fischer_vite_enqueue_style( $handle, $entry, $deps = array() ) {
-		$dev_server = fischer_vite_dev_server();
+		$url = fischer_vite_style_url( $entry );
 
-		if ( $dev_server ) {
-			$client = fischer_vite_enqueue_client();
-			wp_enqueue_script( $handle, $dev_server . '/' . $entry, array( $client ), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Served by the dev server, never cached.
-			fischer_vite_module_handle( $handle );
-
-			return true;
-		}
-
-		$manifest = fischer_vite_manifest();
-
-		if ( empty( $manifest[ $entry ]['file'] ) ) {
+		if ( ! $url ) {
 			return false;
 		}
 
-		wp_enqueue_style( $handle, get_theme_file_uri( '/dist/' . $manifest[ $entry ]['file'] ), $deps, null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Cache-busting via hashed file name.
+		if ( fischer_vite_dev_server() ) {
+			fischer_vite_enqueue_client(); // Hot updates for the <link>.
+		}
+
+		wp_enqueue_style( $handle, $url, $deps, null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Dev server (never cached) or hashed file name (cache-busting).
 
 		return true;
 	}
