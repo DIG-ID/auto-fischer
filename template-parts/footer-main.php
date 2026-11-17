@@ -17,8 +17,9 @@
 								<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url" class="navbar-brand custom-logo-link max-w-[238px]"><?php do_action( 'theme_logo' ); ?></a>
 						</div>
 						<div class="col-span-1 md:col-span-3 xl:col-span-2 col-start-1 md:col-start-1 xl:col-start-5">
-								<h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Adresse', 'auto-fischer' ) ?></h4>
+								<h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Adressen', 'auto-fischer' ) ?></h4>
 								<p class="text-body text-white !leading-[35px]"><?php the_field( 'general_address', 'option' ); ?></p>
+								<p class="text-body text-white !leading-[35px] mt-5"><?php the_field( 'general_address_werkstatt', 'option' ); ?></p>
 						</div>
 						<div class="copy-menu col-span-1 md:col-span-3 xl:col-span-1 col-start-2 md:col-start-4 xl:col-start-7">
 								<h4 class="title-smallest !font-medium text-white mb-7"><?php esc_html_e( 'Seiten', 'auto-fischer' ) ?></h4>

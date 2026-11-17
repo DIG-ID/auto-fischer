@@ -37,23 +37,41 @@
 
 				$contacts = get_field( 'contacts' );
 				if ( $contacts ) :
-					$address = get_field( 'contacts_address' );
-					$email   = get_field( 'contacts_email' );
-					$phone   = get_field( 'contacts_telephone' );
+					$address           = get_field( 'general_address', 'option' );
+					$address_werkstatt = get_field( 'general_address_werkstatt', 'option' );
+					$email             = get_field( 'contacts_email' );
+					$email_werkstatt   = get_field( 'contacts_email_werkstatt' );
+					$phone             = get_field( 'general_phone_number', 'option' );
 					echo '<address class="contacts flex flex-col gap-y-8 justify-between not-italic">';
 					if ( $address ) :
 						?>
 						<div class="contacts-address flex gap-x-3">
-							<div class="icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.0007 4.0625C8.67944 4.0625 5.14648 7.64734 5.14648 12.1068C5.14648 14.3555 6.0459 16.8458 7.51763 18.7689C8.99316 20.697 10.9461 21.9375 13.0007 21.9375C15.0552 21.9375 17.0081 20.697 18.4837 18.7689C19.9554 16.8458 20.8548 14.3555 20.8548 12.1068C20.8548 7.64734 17.3219 4.0625 13.0007 4.0625ZM3.52148 12.1068C3.52148 6.78329 7.74892 2.4375 13.0007 2.4375C18.2523 2.4375 22.4798 6.78329 22.4798 12.1068C22.4798 14.7496 21.4392 17.5809 19.7742 19.7564C18.113 21.9271 15.7326 23.5625 13.0007 23.5625C10.2687 23.5625 7.88834 21.9271 6.22715 19.7564C4.56217 17.5809 3.52148 14.7496 3.52148 12.1068Z" fill="#005AA9"/>
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M9.48047 11.3751C9.48047 9.43057 11.0568 7.85425 13.0013 7.85425C14.9458 7.85425 16.5221 9.43057 16.5221 11.3751C16.5221 13.3196 14.9458 14.8959 13.0013 14.8959C11.0568 14.8959 9.48047 13.3196 9.48047 11.3751ZM13.0013 9.47925C11.9543 9.47925 11.1055 10.328 11.1055 11.3751C11.1055 12.4221 11.9543 13.2709 13.0013 13.2709C14.0483 13.2709 14.8971 12.4221 14.8971 11.3751C14.8971 10.328 14.0483 9.47925 13.0013 9.47925Z" fill="#F48123"/>
-								</svg>
+							<div class="flex gap-x-3">
+								<div class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M13.0007 4.0625C8.67944 4.0625 5.14648 7.64734 5.14648 12.1068C5.14648 14.3555 6.0459 16.8458 7.51763 18.7689C8.99316 20.697 10.9461 21.9375 13.0007 21.9375C15.0552 21.9375 17.0081 20.697 18.4837 18.7689C19.9554 16.8458 20.8548 14.3555 20.8548 12.1068C20.8548 7.64734 17.3219 4.0625 13.0007 4.0625ZM3.52148 12.1068C3.52148 6.78329 7.74892 2.4375 13.0007 2.4375C18.2523 2.4375 22.4798 6.78329 22.4798 12.1068C22.4798 14.7496 21.4392 17.5809 19.7742 19.7564C18.113 21.9271 15.7326 23.5625 13.0007 23.5625C10.2687 23.5625 7.88834 21.9271 6.22715 19.7564C4.56217 17.5809 3.52148 14.7496 3.52148 12.1068Z" fill="#005AA9"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M9.48047 11.3751C9.48047 9.43057 11.0568 7.85425 13.0013 7.85425C14.9458 7.85425 16.5221 9.43057 16.5221 11.3751C16.5221 13.3196 14.9458 14.8959 13.0013 14.8959C11.0568 14.8959 9.48047 13.3196 9.48047 11.3751ZM13.0013 9.47925C11.9543 9.47925 11.1055 10.328 11.1055 11.3751C11.1055 12.4221 11.9543 13.2709 13.0013 13.2709C14.0483 13.2709 14.8971 12.4221 14.8971 11.3751C14.8971 10.328 14.0483 9.47925 13.0013 9.47925Z" fill="#F48123"/>
+									</svg>
+								</div>
+								<div class="contacts-address-content">
+									<p class="text-body !font-medium"><?php esc_html_e( 'Adresse', 'auto-fischer' ); ?></p>
+									<p class="text-body"><?php echo $address; ?></p>
+								</div>
 							</div>
-							<div class="contacts-address-content">
-								<p class="text-body !font-medium"><?php esc_html_e( 'Adresse', 'auto-fischer' ); ?></p>
-								<p class="text-body"><?php echo $address; ?></p>
+
+							<div class="flex gap-x-3">
+								<div class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M13.0007 4.0625C8.67944 4.0625 5.14648 7.64734 5.14648 12.1068C5.14648 14.3555 6.0459 16.8458 7.51763 18.7689C8.99316 20.697 10.9461 21.9375 13.0007 21.9375C15.0552 21.9375 17.0081 20.697 18.4837 18.7689C19.9554 16.8458 20.8548 14.3555 20.8548 12.1068C20.8548 7.64734 17.3219 4.0625 13.0007 4.0625ZM3.52148 12.1068C3.52148 6.78329 7.74892 2.4375 13.0007 2.4375C18.2523 2.4375 22.4798 6.78329 22.4798 12.1068C22.4798 14.7496 21.4392 17.5809 19.7742 19.7564C18.113 21.9271 15.7326 23.5625 13.0007 23.5625C10.2687 23.5625 7.88834 21.9271 6.22715 19.7564C4.56217 17.5809 3.52148 14.7496 3.52148 12.1068Z" fill="#005AA9"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M9.48047 11.3751C9.48047 9.43057 11.0568 7.85425 13.0013 7.85425C14.9458 7.85425 16.5221 9.43057 16.5221 11.3751C16.5221 13.3196 14.9458 14.8959 13.0013 14.8959C11.0568 14.8959 9.48047 13.3196 9.48047 11.3751ZM13.0013 9.47925C11.9543 9.47925 11.1055 10.328 11.1055 11.3751C11.1055 12.4221 11.9543 13.2709 13.0013 13.2709C14.0483 13.2709 14.8971 12.4221 14.8971 11.3751C14.8971 10.328 14.0483 9.47925 13.0013 9.47925Z" fill="#F48123"/>
+									</svg>
+								</div>
+								<div class="contacts-address-content">
+									<p class="text-body !font-medium"><?php esc_html_e( 'Werkstatt', 'auto-fischer' ); ?></p>
+									<p class="text-body"><?php echo $address_werkstatt; ?></p>
+								</div>
 							</div>
+
 						</div>
 						<?php
 					endif;
@@ -68,7 +86,12 @@
 							</div>
 							<div class="contacts-email-content">
 								<p class="text-body !font-medium"><?php esc_html_e( 'Email', 'auto-fischer' ); ?></p>
-								<a class="text-body" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo $email; ?></a>
+								<div class="flex flex-col">
+									<a class="text-body" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo $email; ?></a>
+									<p><?php esc_html_e( 'Werkstatt:', 'auto-fischer' ); ?> <a class="text-body" href="mailto:<?php echo esc_attr( $email_werkstatt ); ?>"><?php echo $email_werkstatt; ?></a></p>
+								
+								</div>
+
 							</div>
 						</div>
 						<?php

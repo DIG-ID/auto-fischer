@@ -4,6 +4,15 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] — 2026-11-17
+
+### Added
+- Werkstatt address and email on the Kontakt page, and the Werkstatt address in the footer (new ACF fields `general_address_werkstatt` in Theme Options and `contacts_email_werkstatt` on the Kontakt page).
+
+### Changed
+- Kontakt page address and phone now come from the general Theme Options instead of page fields.
+- Footer heading "Adresse" renamed to "Adressen".
+
 ## [1.3.1] — 2026-11-17
 
 ### Fixed
