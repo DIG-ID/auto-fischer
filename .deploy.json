@@ -3,8 +3,8 @@
   "theme_dir": ".",
   "version_source": "style.css",
   "version_files": ["style.css", "package.json", "CHANGELOG.md"],
-  "build": "npx mix --production",
-  "node": "22",
+  "build": "npm run prod",
+  "node": "^20.19.0 || >=22.12.0",
   "lint": "php -l",
   "output": "dist"
 }

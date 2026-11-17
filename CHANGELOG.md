@@ -4,6 +4,14 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] — 2026-11-17
+
+### Changed
+- Build tooling migrated from Laravel Mix to Vite (dev server with HMR, hashed assets via manifest). Run `npm run dev` for local development and `npm run prod` before each deploy; requires Node `^20.19.0 || >=22.12.0`.
+
+### Fixed
+- 404 page background illustration now loads (the stylesheet pointed to a missing `assets/svg/` folder).
+
 ## [1.2.0] — 2026-10-28
 
 ### Added

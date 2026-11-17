@@ -1,0 +1,53 @@
+{
+  "assets/images/404.svg": {
+    "file": "assets/404-Bqeq8kVQ.svg",
+    "src": "assets/images/404.svg"
+  },
+  "assets/images/image-placeholder.jpg": {
+    "file": "assets/image-placeholder-rNELnkfl.jpg",
+    "src": "assets/images/image-placeholder.jpg"
+  },
+  "assets/images/right-up-blue.svg": {
+    "file": "assets/right-up-blue-gpFow5Ad.svg",
+    "src": "assets/images/right-up-blue.svg"
+  },
+  "assets/images/right-up-orange.svg": {
+    "file": "assets/right-up-orange-Dv6IrBrV.svg",
+    "src": "assets/images/right-up-orange.svg"
+  },
+  "assets/images/right-up.svg": {
+    "file": "assets/right-up-qsbVm7xe.svg",
+    "src": "assets/images/right-up.svg"
+  },
+  "assets/js/main.js": {
+    "file": "js/main-utDr1eYl.js",
+    "name": "main",
+    "src": "assets/js/main.js",
+    "isEntry": true
+  },
+  "assets/sass/admin-login.sass": {
+    "file": "css/admin-login-CoJB9n-8.css",
+    "name": "admin-login",
+    "names": [
+      "admin-login.css"
+    ],
+    "src": "assets/sass/admin-login.sass",
+    "isEntry": true
+  },
+  "assets/sass/main.sass": {
+    "file": "css/main-BiAybkz_.css",
+    "name": "main",
+    "names": [
+      "main.css"
+    ],
+    "src": "assets/sass/main.sass",
+    "isEntry": true,
+    "assets": [
+      "assets/404-Bqeq8kVQ.svg",
+      "assets/right-up-blue-gpFow5Ad.svg",
+      "assets/right-up-qsbVm7xe.svg",
+      "assets/right-up-orange-Dv6IrBrV.svg",
+      "assets/image-placeholder-rNELnkfl.jpg"
+    ]
+  }
+}
