@@ -4,6 +4,11 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.6.1] — 2026-11-23
+
+### Changed
+- Kontakt page: smaller bottom spacing under the form on desktop.
+
 ## [1.6.0] — 2026-11-23
 
 ### Added

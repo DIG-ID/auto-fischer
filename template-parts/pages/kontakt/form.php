@@ -1,4 +1,4 @@
-<section class="section-form bg-transparent pb-16 xl:pb-24">
+<section class="section-form bg-transparent pb-16 xl:pb-12">
 	<div class="theme-container theme-grid">
 		<div class="col-span-2 md:col-span-6 xl:col-span-12">
 			<h2 class="title-secondary !font-normal mb-7"><?php the_field( 'intro_subtitle' ); ?></h2>
