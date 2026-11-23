@@ -103,11 +103,20 @@
     map.markers.push( marker );
   
     // If marker contains HTML, add it to an infoWindow.
-    if( $marker.html() ){
-      // Create info window.
-      var infowindow = new google.maps.InfoWindow({
+    if( $marker.html().trim() ){
+      // Create info window, with the marker label (if any) as its header.
+      var infoArgs = {
         content: $marker.html()
-      });
+      };
+      var label = $marker.data('label');
+      if( label ){
+        var header = document.createElement('strong');
+        header.textContent = label;
+        header.style.fontSize = '14px';
+        header.style.fontWeight = '600';
+        infoArgs.headerContent = header;
+      }
+      var infowindow = new google.maps.InfoWindow( infoArgs );
       // Show info window when marker is clicked.
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.open( map, marker );

@@ -4,6 +4,15 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.6.0] — 2026-11-23
+
+### Added
+- Kontakt page: separate contact cards for the showroom and the Werkstatt (address, email, phone, opening hours), below the form.
+- Kontakt page: map with one marker per location (new ACF repeater `map_locations` with `location` and `label`); the label is shown as the marker's info window title.
+
+### Changed
+- Kontakt contact details moved out of the form section into the new contact cards, using page fields again.
+
 ## [1.5.0] — 2026-11-17
 
 ### Added

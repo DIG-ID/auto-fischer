@@ -10,7 +10,9 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/pages/kontakt/intro' );
 			get_template_part( 'template-parts/pages/kontakt/form' );
-			get_template_part( 'template-parts/pages/kontakt/map' );
+			get_template_part( 'template-parts/pages/kontakt/addresses' );
+			// get_template_part( 'template-parts/pages/kontakt/map' );
+			get_template_part( 'template-parts/pages/kontakt/multiple-maps' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;
