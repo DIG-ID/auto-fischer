@@ -5,9 +5,22 @@
 								<p class="title-smaller text-white !font-normal mb-6 md:mb-0 max-w-[260px] md:max-w-[300px] lg:max-w-none"><?php the_field( 'footer_contact_text', 'option' ); ?></p>
 						</div>
 						<div class="col-span-2 md:col-span-3 xl:col-span-3 md:text-right col-start-1 md:col-start-4 xl:col-start-10">
-							<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', get_field( 'general_phone_number', 'option' ) ) ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white">
-								<?php the_field( 'general_phone_number', 'option' ); ?>
-							</a>
+							<?php
+							$phone = '';
+							if ( is_page_template( 'page-templates/page-werkstatt.php' ) ) :
+								$phone = get_field( 'general_phone_number_werkstatt', 'option' );
+							endif;
+							if ( ! $phone ) :
+								$phone = get_field( 'general_phone_number', 'option' );
+							endif;
+							if ( $phone ) :
+								?>
+								<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $phone ) ); ?>" class="title-smaller text-white !font-normal hover:border-b-2 hover:border-white">
+									<?php echo esc_html( $phone ); ?>
+								</a>
+								<?php
+							endif;
+							?>
 						</div>
 				</div>
 		</div>

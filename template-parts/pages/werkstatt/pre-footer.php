@@ -48,10 +48,21 @@
 								?></ul><?php
 							endif;
 							?>
-							
-							<h3 class="font-sans font-medium text-xl text-orange-shade"><?php the_field( 'contact_telephone_title' ); ?></h3>
-							<?php $telephone = get_field( 'general_phone_number', 'option' ); ?>
-							<a class="text-body text-light-blue-shade" href="tel:<?php echo esc_attr( $telephone ); ?>"><?php echo esc_html( $telephone ); ?></a>
+
+							<h3 class="font-sans font-medium text-xl text-orange-shade"><?php the_field( 'contact_contacts_title' ); ?></h3>
+
+							<ul class="space-y-6 text-body text-light-blue-shade">
+								<li class="border-b border-white pb-6 flex flex-col md:flex-row justify-between">
+									<h4 class="text-[#C4C4C4]"><?php the_field( 'contact_contacts_telephone_text' ); ?></h4>
+									<?php $telephone = get_field( 'general_phone_number_werkstatt', 'option' ); ?>
+									<a class="text-body text-light-blue-shade" href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $telephone ) ); ?>"><?php echo esc_html( $telephone ); ?></a>
+								</li>
+								<li class="border-b border-white pb-6 flex flex-col md:flex-row justify-between">
+									<h4 class="text-[#C4C4C4]"><?php the_field( 'contact_contacts_email_text' ); ?></h4>
+									<?php $email = get_field( 'general_email_werkstatt', 'option' ); ?>
+									<a class="text-body text-light-blue-shade" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+								</li>
+							</ul>
 					</div>
 				</div>
 

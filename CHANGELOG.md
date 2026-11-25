@@ -4,6 +4,14 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.7.0] — 2026-11-25
+
+### Added
+- Werkstatt pre-footer: contact list with the Werkstatt phone and email (new ACF fields `contact_contacts_title`, `contact_contacts_telephone_text`, `contact_contacts_email_text`; Theme Options `general_phone_number_werkstatt`, `general_email_werkstatt`).
+
+### Changed
+- Footer phone number shows the Werkstatt number on the Werkstatt page (falls back to the general number when empty).
+
 ## [1.6.1] — 2026-11-23
 
 ### Changed
