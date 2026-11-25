@@ -1,0 +1,30 @@
+<mjml lang="de">
+  <mj-head>
+    <mj-title>Vielen Dank für Ihre Anfrage!</mj-title>
+    <mj-preview>Ihre Anfrage wurde erfolgreich übermittelt, vielen Dank!</mj-preview>
+    <mj-include path="../../partials/font.mjml" />
+    <mj-attributes>
+      <mj-all font-family="dm-sans, Arial, sans-serif" font-size="14px" line-height="26px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <!-- Logo Header -->
+    <mj-include path="../../partials/logo.mjml" />
+
+    <!-- Email Info -->
+    <mj-section background-color="#fafafa" padding-top="40px" padding-bottom="40px">
+      <mj-column width="500px">
+        <mj-text font-size="20px" color="#626262">Vielen Dank für Ihre Anfrage!</mj-text>
+        <mj-text color="#525252">Sehr geehrte/r [your-surname],</mj-text>
+        <mj-text color="#525252">Vielen Dank, dass Sie sich mit uns in Verbindung gesetzt haben. Ihre Nachricht wurde erfolgreich übermittelt und wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen.</mj-text>
+        <mj-text color="#525252">Mit freundlichen Grüssen,<br> Ihr Auto Fischer - Team</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-spacer height="60px" />
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

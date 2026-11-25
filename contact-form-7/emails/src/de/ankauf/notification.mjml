@@ -1,0 +1,118 @@
+<mjml lang="de">
+  <mj-head>
+    <mj-title>Neue E-Mail von Ihrem Kontaktformular.</mj-title>
+    <mj-preview>Sie haben eine neue Anfrage erhalten!</mj-preview>
+    <mj-include path="../../partials/font.mjml" />
+    <mj-attributes>
+      <mj-all font-family="dm-sans, Arial, sans-serif" font-size="14px" line-height="26px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <!-- Logo Header -->
+    <mj-include path="../../partials/logo.mjml" />
+
+    <!-- Email Info -->
+    <mj-section background-color="#fafafa" padding-top="40px" padding-bottom="40px">
+      <mj-column width="500px">
+        <mj-text font-size="20px" color="#626262">Neue E-Mail von autofischer.ch</mj-text>
+        <mj-text color="#525252">Die E-Mail wurde über das Kontaktformular gesendet. Unten finden Sie die ausgefüllten Kontaktinformationen.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Email Content -->
+    <mj-section background-color="white" padding="40px">
+      <mj-column>
+        <mj-text font-weight="bold">Persönliche Informationen</mj-text>
+        <mj-divider border-width="1px" border-color="lightgrey" />
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Vorname</th>
+            <td>[your-vorname]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Nachname</th>
+            <td>[your-nachname]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Telefon</th>
+            <td>[your-telefon]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">E-Mail</th>
+            <td>[your-email]</td>
+          </tr>
+        </mj-table>
+
+        <mj-text font-weight="bold">Fahrzeug Details</mj-text>
+        <mj-divider border-width="1px" border-color="lightgrey" />
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Marke & Modell</th>
+            <td>[your-mark-model]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Typenschein</th>
+            <td>[your-typenschein]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Antrieb</th>
+            <td>[your-antrieb]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Zustand</th>
+            <td>[your-zustand]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">1. Inv.</th>
+            <td>[your-inv]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Kraftstoff</th>
+            <td>[your-kraftstoff]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Preisvorstellung</th>
+            <td>[your-preisvorstellung]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">VIN / Chassisnummer</th>
+            <td>[your-vin-chassisnummer]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Getriebe</th>
+            <td>[your-getriebe]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Laufleistung</th>
+            <td>[your-laufleistung]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Letzter Service</th>
+            <td>[your-letzter-service]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Mängel / Schäden</th>
+            <td>[your-mangel-schaden]</td>
+          </tr>
+        </mj-table>
+
+        <mj-divider border-width="1px" border-color="lightgrey" />
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Kommentare</th>
+          </tr>
+          <tr>
+            <td>[your-kommentare]</td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <!-- Email Content -->
+    <mj-section full-width="full-width" padding="40px 0">
+      <mj-column>
+        <mj-text align="center" color="#525252">Dies ist eine Benachrichtigung, dass ein Kontaktformular auf Ihrer Website ([_site_title] [_site_url]) übermittelt wurde.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

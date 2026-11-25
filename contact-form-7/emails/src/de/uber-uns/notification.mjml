@@ -1,0 +1,53 @@
+<mjml lang="de">
+  <mj-head>
+    <mj-title>Neue E-Mail von autofischer.ch</mj-title>
+    <mj-preview>New email from your Contact Form!</mj-preview>
+    <mj-include path="../../partials/font.mjml" />
+    <mj-attributes>
+      <mj-all font-family="dm-sans, Arial, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <!-- Logo Header -->
+    <mj-include path="../../partials/logo.mjml" />
+
+    <!-- Email Info -->
+    <mj-section background-color="#fafafa" padding-top="40px" padding-bottom="40px">
+      <mj-column width="500px">
+        <mj-text font-size="20px" color="#626262">Neue E-Mail von autofischer.ch</mj-text>
+        <mj-text color="#525252">Die E-Mail wurde über das Kontaktformular gesendet. Unten finden Sie die ausgefüllten Kontaktinformationen.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Email Content -->
+    <mj-section background-color="white" padding="40px">
+      <mj-column>
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Vorname</th>
+            <td>[your-name]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">E-Mail</th>
+            <td>[your-email]</td>
+          </tr>
+        </mj-table>
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Kommentare</th>
+          </tr>
+          <tr>
+            <td>[your-message]</td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <!-- Email Content -->
+    <mj-section full-width="full-width" padding="40px 0">
+      <mj-column>
+        <mj-text align="center" color="#525252">Dies ist eine Benachrichtigung, dass ein Kontaktformular auf Ihrer Website ([_site_title] [_site_url]) übermittelt wurde.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

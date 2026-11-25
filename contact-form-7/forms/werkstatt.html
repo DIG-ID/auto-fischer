@@ -1,0 +1,85 @@
+<div class="wpcf7--custom-grid">
+
+	<div class="col-span-2 md:col-span-6">
+			<h2>Fahrzeug Details</h2>
+			<span class="title-separator"></span>
+	</div>
+
+	<div class="col-span-2 md:col-span-6">
+		<p class="wpcf7--custom-grid-legend">Was benötigen Sie</p>
+			[checkbox* your-leistung use_label_element "Wartung / Service" "Radwechsel" "Reifenwechsel" "Fahrzeugcheck" "MFK Vorbereitung" "Klimaservice" "Reparatur / Diagnose" "Sonstiges"]
+	</div>
+
+	<div class="col-span-2 md:col-span-6 wpcf7--custom-grid-inline">
+		<p class="wpcf7--custom-grid-legend">Wann</p>
+			[checkbox* your-wann use_label_element exclusive "So schnell wie möglich" "Keine Eile" "Informativ"]
+	</div>
+
+	<div class="col-span-2 md:col-span-6">
+		<span class="form-separator !mt-0"></span>
+	</div>
+
+	<div class="wpcf7--custom-grid-row">
+		<span class="col-span-1 block relative">
+			[text* your-vorname id:your-vorname autocomplete:given-name]
+			<label for="your-vorname">Vorname</label>
+		</span>
+		<span class="col-span-1 block relative">
+			[text* your-nachname id:your-nachname autocomplete:family-name]
+			<label for="your-nachname">Nachname</label>
+		</span>
+		<span class="col-span-1 block relative">
+			[text* your-adresse id:your-adresse autocomplete:street-address]
+			<label for="your-adresse">Adresse</label>
+		</span>
+	</div>
+
+	<div class="wpcf7--custom-grid-row">
+		<span class="col-span-1 block relative">
+			[text* your-plz-ort id:your-plz-ort]
+			<label for="your-plz-ort">PLZ / Ort</label>
+		</span>
+		<span class="col-span-1 block relative">
+			[tel* your-telefon id:your-telefon autocomplete:tel]
+			<label for="your-telefon">Tel</label>
+		</span>
+		<span class="col-span-1 block relative">
+			[email* your-email id:your-email autocomplete:email]
+			<label for="your-email">E-Mail</label>
+		</span>
+	</div>
+
+	<div class="wpcf7--custom-grid-row">
+		<span class="col-span-1 block relative">
+			[text* your-fahrzeug id:your-fahrzeug]
+			<label for="your-fahrzeug">Fahrzeug</label>
+		</span>
+		<span class="col-span-1 block relative">
+			[text your-kennzeichen id:your-kennzeichen]
+			<label for="your-kennzeichen">Kennzeichen</label>
+		</span>
+		<div class="col-span-1"></div>
+	</div>
+
+	<div class="col-span-2 md:col-span-6">
+		<span class="block relative">
+			[textarea* your-beschreibung id:your-beschreibung 2x4]
+			<label for="your-beschreibung">Beschreibung</label>
+		</span>
+		<span class="form-separator"></span>
+	</div>
+
+	<div class="col-span-2 md:col-span-6 wpcf7--custom-grid-upload">
+		<label for="file-fahrzeugausweis" class="title-pre" style="position:relative;top:0;">Foto Fahrzeugausweis</label>
+		[multifile file-fahrzeugausweis filetypes:image/jpeg|image/png w:2400 quality:85 max:1]
+		<p class="text-body mt-5">Max. 1 Datei, maximale Dateigrösse 1 MB. Geeignete Dateiformate: jpg & png.</p>
+		<span class="form-separator"></span>
+	</div>
+
+	<div class="col-span-2 md:col-span-6">
+		<div class="wpcf7--custom-grid-form-footer">
+			<p style="font-family: dm-sans;font-size: 20px;font-style: normal;font-weight: 700;line-height: 55px;color: #005AA9;">Bitte bestätigen Sie, dass alle Angaben korrekt sind.</p>[submit "Senden"]
+		</div>
+	</div>
+
+</div>

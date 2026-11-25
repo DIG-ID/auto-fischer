@@ -1,0 +1,57 @@
+<mjml lang="de">
+  <mj-head>
+    <mj-title>Vielen Dank für Ihre Anfrage!</mj-title>
+    <mj-preview>Ihre Anfrage wurde erfolgreich übermittelt, vielen Dank!</mj-preview>
+    <mj-include path="../../partials/font.mjml" />
+    <mj-attributes>
+      <mj-all font-family="dm-sans, Arial, sans-serif" line-height="26px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <!-- Logo Header -->
+    <mj-include path="../../partials/logo.mjml" />
+
+    <!-- Email Info -->
+    <mj-section background-color="#fafafa" padding-top="40px" padding-bottom="40px">
+      <mj-column width="500px">
+        <mj-text font-size="20px" color="#626262">Vielen Dank für Ihre Anfrage!</mj-text>
+        <mj-text color="#525252">Guten Tag [your-vorname] [your-nachname],</mj-text>
+        <mj-text color="#525252">Vielen Dank für Ihre Anfrage an unsere Werkstatt. Ihre Nachricht wurde erfolgreich übermittelt und wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen.</mj-text>
+        <mj-text color="#525252">Freundliche Grüsse<br> Ihr Auto Fischer - Team</mj-text>
+        <mj-spacer height="40px" />
+
+        <!-- Zusammenfassung -->
+        <mj-text font-size="14px" font-weight="bold">Ihre Anfrage</mj-text>
+        <mj-divider border-width="1px" border-color="lightgrey" />
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" valign="top" style="font-weight: bold;">Was benötigen Sie</th>
+            <td>[your-leistung]</td>
+          </tr>
+          <tr>
+            <th align="left" valign="top" style="font-weight: bold;">Wann</th>
+            <td>[your-wann]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Fahrzeug</th>
+            <td>[your-fahrzeug]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Kennzeichen</th>
+            <td>[your-kennzeichen]</td>
+          </tr>
+          <tr>
+            <th align="left" valign="top" style="font-weight: bold;">Beschreibung</th>
+            <td>[your-beschreibung]</td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-spacer height="60px" />
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

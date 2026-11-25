@@ -4,6 +4,15 @@ All notable changes to this theme are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.7.1] — 2026-11-25
+
+### Added
+- Contact Form 7 sources in `contact-form-7/`: form markup (`forms/`) and the notification/confirmation emails as MJML (`emails/src/<lang>/<form>/`), with shared partials for font and logo.
+- `npm run mail` / `npm run mail:watch` compile the emails to `contact-form-7/emails/html/` (ready to paste into CF7).
+
+### Changed
+- Email templates: logo now loads from the live site and the HTML is marked as German (`lang="de"`); Kontakt confirmation uses Swiss spelling ("Grüssen").
+
 ## [1.7.0] — 2026-11-25
 
 ### Added

@@ -1,0 +1,83 @@
+<mjml lang="de">
+  <mj-head>
+    <mj-title>Ihre Anfrage wurde erfolgreich übermittelt.</mj-title>
+    <mj-preview>Vielen Dank, dass Sie sich mit uns in Verbindung gesetzt haben.</mj-preview>
+    <mj-include path="../../partials/font.mjml" />
+    <mj-attributes>
+      <mj-all font-family="dm-sans, Arial, sans-serif" line-height="26px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <!-- Logo Header -->
+    <mj-include path="../../partials/logo.mjml" />
+
+    <!-- Email Info -->
+    <mj-section background-color="#fafafa" padding-top="40px" padding-bottom="40px">
+      <mj-column width="500px">
+        <mj-text font-size="20px" color="#626262">Vielen Dank für Ihre Anfrage!</mj-text>
+        <mj-text color="#525252">Sehr geehrte/r [your-vorname] [your-nachname],</mj-text>
+        <mj-text color="#525252">Vielen Dank, dass Sie sich mit uns in Verbindung gesetzt haben. Ihre Nachricht wurde erfolgreich übermittelt und wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen.</mj-text>
+        <mj-text color="#525252">Mit freundlichen Grüssen,<br>Ihr Auto Fischer - Team</mj-text>
+        <mj-spacer height="40px" />
+        <mj-text font-size="14px" font-weight="bold">Fahrzeug Details</mj-text>
+        <mj-divider border-width="1px" border-color="lightgrey" />
+        <mj-table color="#2c2c2c" cellpadding="5">
+          <tr>
+            <th align="left" style="font-weight: bold;">Marke & Modell</th>
+            <td>[your-mark-model]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Typenschein</th>
+            <td>[your-typenschein]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Antrieb</th>
+            <td>[your-antrieb]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Zustand</th>
+            <td>[your-zustand]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">1. Inv.</th>
+            <td>[your-inv]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Kraftstoff</th>
+            <td>[your-kraftstoff]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Preisvorstellung</th>
+            <td>[your-preisvorstellung]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">VIN / Chassisnummer</th>
+            <td>[your-vin-chassisnummer]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Getriebe</th>
+            <td>[your-getriebe]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Laufleistung</th>
+            <td>[your-laufleistung]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Letzter Service</th>
+            <td>[your-letzter-service]</td>
+          </tr>
+          <tr>
+            <th align="left" style="font-weight: bold;">Mängel / Schäden</th>
+            <td>[your-mangel-schaden]</td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-spacer height="60px" />
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
