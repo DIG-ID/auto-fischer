@@ -103,6 +103,47 @@ scrollToTopBtn.addEventListener('click', (e) => {
   lenis.scrollTo(0); // Smooth scroll to top
 });
 
+// Anchor links (e.g. #services, #form): the browser jumps natively, so route
+// same-page links through Lenis and stop below the fixed header. The skip
+// link stays native — it must move keyboard focus, not just scroll.
+const headerOffset = () => -(header?.offsetHeight || 0);
+
+const anchorTarget = (hash) => {
+  const id = decodeURIComponent(hash.slice(1));
+  return id ? document.getElementById(id) : null;
+};
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href*="#"]');
+  if (!link || link.classList.contains('skip-link') || link.host !== location.host || link.pathname !== location.pathname) {
+    return;
+  }
+
+  const target = anchorTarget(link.hash);
+  if (!target) {
+    return;
+  }
+
+  e.preventDefault();
+  lenis.scrollTo(target, {
+    offset: headerOffset(),
+    duration: 1.8, // seconds — slower than wheel scrolling, as anchors travel far
+    easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2), // easeInOutCubic
+  });
+  history.pushState(null, '', link.hash);
+});
+
+// Arriving from another page with a hash (e.g. /werkstatt/#form): the browser
+// lands under the fixed header, so correct the position once the page loads.
+if (location.hash) {
+  const target = anchorTarget(location.hash);
+  if (target) {
+    window.addEventListener('load', () => {
+      lenis.scrollTo(target, { offset: headerOffset(), immediate: true });
+    });
+  }
+}
+
 if (document.body.classList.contains("unser-highlight-template-default")) {
 	//sticky sidebar for car highlights
 	// Create a GSAP Context
